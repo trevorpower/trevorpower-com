@@ -11,8 +11,11 @@ module NavigationHelpers
     when /the home\s?page/
       home_path
 
-    when /the about page/
+    when /the about\s?page/
       'about'
+
+    when /the contact\s?page/
+      contact_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
