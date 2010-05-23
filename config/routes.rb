@@ -38,7 +38,7 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   map.home '', :controller => 'home', :action => 'index'
-  map.about 'about', :controller => 'home', :action => 'about'
+  map.about 'about', :controller => 'about', :action => 'index'
   map.contact 'contact', :controller => 'contact', :action => 'index'
   map.send_mail 'send_mail', :controller => 'contact', :action => 'send_mail', :method => 'post'
 
