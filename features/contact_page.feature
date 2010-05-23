@@ -5,9 +5,6 @@ Feature: Contact Owner
 Background:
   Given I am on the contact page
   
-Scenario: Title is Contact
-  Then I should see "Contact - Trevor Power" within "title"
-
 Scenario: Link to twitter
   Then I should see a link to "http://twitter.com/trevorpower"
 

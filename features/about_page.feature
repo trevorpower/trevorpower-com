@@ -4,9 +4,6 @@ Feature: About
   
 Background:
   Given I am on the about page
-
-  Scenario: Title is "About"
-    Then I should see "About - Trevor Power" within "title"
     
   Scenario: Navigate to Home page
     When I follow "Home"
