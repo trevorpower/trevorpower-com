@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Contact - Trevor Power</title>
+  </head>
+  <body>
+    
+    <p>follow <a href="http://twitter.com/trevorpower">me on twitter</a></p>
+
+    <% form_tag(send_mail_path) do %>
+    <input type="text" name="name" value="" />  
+    <input type="text" name="email" value="" />
+    <textarea name="message" id="message" rows="8" cols="40" tabindex=""></textarea>
+    <input type="submit" name="submit" id="submit" value="submit" />
+    <% end %>
+  </body>
+</html>
