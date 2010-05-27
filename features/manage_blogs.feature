@@ -11,6 +11,7 @@ Given the following posts:
 Scenario: Posts are visible
   When I am on the blog page
   Then I should see "My first blog" within "h2"
+  Then I should see "New blog post" within "h2"
 
   
   
