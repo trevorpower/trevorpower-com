@@ -13,8 +13,8 @@ module NavigationHelpers
     when /the new blog page/
       new_blog_path
 
-    when /the new blog page/
-      new_blog_path
+    when /the page for "([^\"])*"/
+      post_path
 
 
     # Add more mappings here.

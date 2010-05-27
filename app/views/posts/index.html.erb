@@ -2,7 +2,7 @@
 
 
   <% @posts.each do |post| %>
-  <h2><%=h post.title %></h2>
+  <h2><%= link_to post.title, post %></h2>
   <tr>
     <td><%=h post.slug %></td>
     <td><%=h post.body %></td>
