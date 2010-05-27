@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :posts
+
   
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
@@ -41,6 +43,7 @@ ActionController::Routing::Routes.draw do |map|
   map.about 'about', :controller => 'about', :action => 'index'
   map.contact 'contact', :controller => 'contact', :action => 'index'
   map.send_mail 'send_mail', :controller => 'contact', :action => 'send_mail', :method => 'post'
+  map.blog 'blog', :controller => 'posts', :action => 'index'
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
