@@ -11,6 +11,7 @@ Examples:
 | home      | Home - Trevor Power    |
 | about     | About - Trevor Power   |
 | contact   | Contact - Trevor Power |
+| blog      | Blog - Trevor Power    |
 
 
   
