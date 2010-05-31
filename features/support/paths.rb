@@ -8,14 +8,11 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the home\s?page/
-      '/'
-    when /the new blog page/
-      new_blog_path
+    when /^the "(.*)" post$/
+      post_path Post.find_by_title($1)
 
-    when /the page for "([^\"])*"/
-      post_path
-
+    when /^the blog page$/
+      blog_posts_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

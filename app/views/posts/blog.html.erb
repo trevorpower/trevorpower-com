@@ -1,0 +1,17 @@
+<h1>Listing posts</h1>
+
+
+  <% @posts.each do |post| %>
+  <h2><%= link_to post.title, post %></h2>
+  <tr>
+    <td><%=h post.slug %></td>
+    <td><%=h post.body %></td>
+    <td><%=h post.published %></td>
+    <td><%=h post.published_on %></td>
+    <td><%= link_to 'Show', post %></td>
+  </tr>
+  <% end %>
+
+<br />
+
+<%= link_to 'New post', new_post_path %>
