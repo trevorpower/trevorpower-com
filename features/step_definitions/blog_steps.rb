@@ -1,5 +1,10 @@
 Given /^the following posts:$/ do |posts|
+  Post.delete_all
   Post.create!(posts.hashes)
+end
+
+Given /^I have a post with title "([^\"]*)"$/ do |title|
+  Post.create(:title => title)
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) blog$/ do |pos|

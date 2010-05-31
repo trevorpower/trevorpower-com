@@ -86,7 +86,7 @@ class PostsController < ApplicationController
   # GET /blog
   # GET /blog.xml
   def blog
-    @posts = Post.all
+    @posts = Post.all(:published => true)
 
     respond_to do |format|
       format.html # blog.html.erb
