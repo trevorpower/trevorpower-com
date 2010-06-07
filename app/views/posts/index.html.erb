@@ -2,8 +2,8 @@
 
 
   <% @posts.each do |post| %>
-  <h2><%= link_to post.title, post_path(:slug => post.slug) %></h2>
   <tr>
+    <td><%=h post.title %></td>
     <td><%=h post.slug %></td>
     <td><%=h post.body %></td>
     <td><%=h post.published %></td>
