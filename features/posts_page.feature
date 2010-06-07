@@ -45,4 +45,14 @@ Scenario: Hide a post
   And go to the blog page
   Then I should not see "My first blog"
 
+Scenario: Edit a post
+  When I follow "Edit" for post whose title is "My second blog"
+  And fill in "body" with "Update: this has changed ..."
+  And fill in "title" with "My second blog post"
+  And press "Update"
+  And go to the blog page
+  Then I should see "My second blog post"
+  And I should see "Update: this has changed ..."
+
+
   
