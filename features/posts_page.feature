@@ -35,5 +35,9 @@ Scenario: Delete a post
   And I should not see "My second blog"
   And I should see "New blog post"
 
-  
+Scenario: Publish a post
+  When I follow "Publish" for post whose title is "New blog post"
+  And goto the blog page
+  Then I should see "New blog post"
+
   
