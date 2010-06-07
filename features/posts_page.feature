@@ -10,7 +10,7 @@ Given the following posts:
 | New blog post  | new-blog-post  | This post is not fin.. | false     | 15-Mar-2010  |
 And I am on the posts page
 
-Scenario: View all posts
+Scenario: See all posts
   Then I should see "My first blog"
   And I should see "My second blog"
   And I should see "New blog post"
@@ -29,8 +29,11 @@ Scenario: View a post
   When I follow "New blog post"
   Then I should see "This post is not fin.."
 
-  
-
+Scenario: Delete a post
+  When I follow "Destroy" for post whose title is "My second blog" 
+  Then I should see "My first blog"
+  And I should not see "My second blog"
+  And I should see "New blog post"
 
   
   

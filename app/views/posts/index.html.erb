@@ -1,7 +1,7 @@
 <h1>Listing posts</h1>
 
   <% @posts.each do |post| %>
-  <tr>
+  <tr id="<%= post.dom_id %>">
     <td><%= link_to post.title, post %></td>
     <td><%=h post.title %></td>
     <td><%=h post.slug %></td>
