@@ -21,7 +21,7 @@ Scenario: Draft posts are not visible in the blog
 Scenario: Title links to post
   Given I am on the blog page
   When I follow "My first blog"
-  Then I should see "My first blog" within "h1"
+  Then I should be on the "My first blog" post
   
 
 
