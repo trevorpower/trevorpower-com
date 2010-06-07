@@ -40,4 +40,9 @@ Scenario: Publish a post
   And go to the blog page
   Then I should see "New blog post"
 
+Scenario: Hide a post
+  When I follow "Hide" for post whose title is "My first blog"
+  And go to the blog page
+  Then I should not see "My first blog"
+
   

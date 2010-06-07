@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :posts, :collection => { :blog => :get }
+  map.resources :posts,
+  :collection => { :blog => :get },
+  :member => { :publish => :put, :hide => :put }
 
   
   # Sample of regular route:

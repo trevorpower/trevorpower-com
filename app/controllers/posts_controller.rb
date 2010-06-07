@@ -93,4 +93,26 @@ class PostsController < ApplicationController
       format.xml  { render :xml => @posts }
     end
   end
+
+  def publish
+    @post = Post.find(params[:id])
+    @post.published = true
+    @post.save
+
+    respond_to do |format|
+      format.html { redirect_to(posts_url) }
+      format.xml  { head :ok }
+    end
+  end
+
+  def hide
+    @post = Post.find(params[:id])
+    @post.published = false
+    @post.save
+
+    respond_to do |format|
+      format.html { redirect_to(posts_url) }
+      format.xml  { head :ok }
+    end
+  end
 end
