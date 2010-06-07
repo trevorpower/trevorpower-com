@@ -14,9 +14,9 @@ module NavigationHelpers
     when /^the blog page$/
       blog_posts_path
 
-    when /^the posts page$/
-      posts_path
-
+    when /^(.*) as (.*)$/
+      path_to($1) + "." + $2
+    
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

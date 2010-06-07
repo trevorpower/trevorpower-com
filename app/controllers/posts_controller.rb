@@ -91,6 +91,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # blog.html.erb
       format.xml  { render :xml => @posts }
+      format.atom
     end
   end
 
