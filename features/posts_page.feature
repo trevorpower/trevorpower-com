@@ -15,5 +15,18 @@ Scenario: View all posts
   And I should see "My second blog"
   And I should see "New blog post"
 
+Scenario: Create a new post
+  Given I am on the posts page
+  When I follow "New post"
+  And I fill in "title" with "My new draft"
+  And I press "Create"
+  And I go to the posts page
+  Then I should see "My first blog"
+  And I should see "My second blog"
+  And I should see "New blog post"
+  And I should see "My new draft"
+
+
+
   
   
