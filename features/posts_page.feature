@@ -37,7 +37,7 @@ Scenario: Delete a post
 
 Scenario: Publish a post
   When I follow "Publish" for post whose title is "New blog post"
-  And goto the blog page
+  And go to the blog page
   Then I should see "New blog post"
 
   
