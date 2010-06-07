@@ -18,8 +18,8 @@ Examples:
 | the "Why I really like Ruby" post | Why I really like Ruby - Trevor Power |
 
 Scenario Outline: Pages contain correct heading 1
-  Given I am on <page>
-  Then I should see "<heading>" within "h1"
+Given I am on <page>
+Then I should see "<heading>" within "h1"
 Examples:
 | page | heading |
 | the home page | Trevor Power |
