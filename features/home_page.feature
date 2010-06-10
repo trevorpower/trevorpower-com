@@ -10,9 +10,3 @@ Scenario: Visit home page
     
 Scenario: Link to blog
   Then I should see "Blog"
-
-Scenario: Link to about
-  Then I should see "About"
-
-Scenario: Link to contact
-  Then I should see "Contact"
