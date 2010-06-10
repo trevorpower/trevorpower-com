@@ -1,6 +1,6 @@
 Feature: Contact Owner
   In order to provide feadback, job offers and large sums of money 
-  Visiters will need need to be able to send a message
+  Visitors will need need to be able to send a message
   
 Background:
   Given I am on the contact page
