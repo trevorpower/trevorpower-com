@@ -1,25 +1,19 @@
-<html>
-  <head>
-    <title>Contact - Trevor Power</title>
-  </head>
-  <body>
-    <h1>Contact</h1>
-    <%= link_to "Home", home_path %>
-    <%= link_to "About", about_path %>
+<% title "Contact" %>
+<h1>Contact</h1>
+<%= link_to "Home", home_path %>
+<%= link_to "About", about_path %>
 
-    <p>follow <a href="http://twitter.com/trevorpower">me on twitter</a></p>
+<p>follow <a href="http://twitter.com/trevorpower">me on twitter</a></p>
 
-    <% form_for :email, :url => { :controller => 'contact', :action => 'send_mail' } do |f| %>
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :size => 60 %><br />
-    <%= f.label :address %><br />
-    <%= f.text_field :address, :size => 60 %><br />
-    <%= f.label :subject %><br />
-    <%= f.text_field :subject, :size => 60 %><br />
-    <%= f.label :body %><br />
-    <%= f.text_area :body, :rols => 10, :cols => 60 %><br />
-    <%= submit_tag "Send Email"%>
-    <% end %>
+<% form_for :email, :url => { :controller => 'contact', :action => 'send_mail' } do |f| %>
+<%= f.label :name %><br />
+<%= f.text_field :name, :size => 60 %><br />
+<%= f.label :address %><br />
+<%= f.text_field :address, :size => 60 %><br />
+<%= f.label :subject %><br />
+<%= f.text_field :subject, :size => 60 %><br />
+<%= f.label :body %><br />
+<%= f.text_area :body, :rols => 10, :cols => 60 %><br />
+<%= submit_tag "Send Email"%>
+<% end %>
 
-  </body>
-</html>
