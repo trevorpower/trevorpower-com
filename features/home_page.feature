@@ -7,6 +7,3 @@ Given I am on the home page
 
 Scenario: Visit home page
   Then I should see "Trevor Power"
-    
-Scenario: Link to blog
-  Then I should see "Blog"
