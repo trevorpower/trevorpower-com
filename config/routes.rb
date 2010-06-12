@@ -2,8 +2,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :posts,
   :collection => { :blog => :get },
-  :member => { :publish => :put, :hide => :put }
-
+  :member => { :publish => :put, :hide => :put },
+  :has_many => :comments
   
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'

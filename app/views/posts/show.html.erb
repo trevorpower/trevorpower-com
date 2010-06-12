@@ -21,6 +21,48 @@
   <%=h @post.published_on %>
 </p>
 
+Comments: <%= @post.comments.count %>
+
+
+<%= render :partial => 'comments/comment', :collection => @post.comments %>
+ 
+Leave a comment:
+
+<% form_for [@post, @post.comments.build] do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </p>
+  <!--<p>
+    <%= f.label :published_at %><br />
+    <%= f.date_select :published_at %>
+  </p>-->
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :spam %><br />
+    <%= f.check_box :spam %>
+  </p>
+  <p>
+    <%= f.label :published %><br />
+    <%= f.check_box :published %>
+  </p>
+  <p>
+    <%= f.submit 'Add Comment' %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

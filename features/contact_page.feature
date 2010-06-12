@@ -15,13 +15,3 @@ Scenario: Send author a message
   And I press "Send Email"
   Then 1 email should be delivered to contact@trevorpower.com
 
-
-Scenario: Navigate to Home page
-  When I follow "Home"
-  Then I should be on the home page
-
-Scenario: Navigate to Contact page
-  When I follow "About"
-  Then I should be on the about page
-
-
