@@ -9,7 +9,6 @@ end
 
 Given /^I have a post with title "([^\"]*)" and the comments:$/ do |title, comments|
   post = Post.create(:title => title, :comments => comments.hashes)
-  #post.comments.build(comments.hashes)
   post.save
 end
 
