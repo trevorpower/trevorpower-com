@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   :collection => { :blog => :get },
   :member => { :publish => :put, :hide => :put },
   :has_many => :comments
+
+  map.resources :comments
   
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
@@ -42,6 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
+
   map.home '', :controller => 'home', :action => 'index'
   map.about 'about', :controller => 'about', :action => 'index'
   map.contact 'contact', :controller => 'contact', :action => 'index'
