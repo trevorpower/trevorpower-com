@@ -1,5 +1,5 @@
 class Comment
-  include MongoMapper::EmbeddedDocument
+  include MongoMapper::Document
 
   key :name, String
   key :url, String
@@ -8,6 +8,8 @@ class Comment
   key :published_at, Date
   key :spam, Boolean
   key :published, Boolean
+
+  key :post_id, ObjectId
 
   belongs_to :post
 
