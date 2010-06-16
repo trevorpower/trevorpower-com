@@ -1,12 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :posts,
-  :collection => { :blog => :get },
-  :member => { :publish => :put, :hide => :put },
-  :has_many => :comments
+  map.resources :posts, :collection => { :blog => :get }, :member => { :publish => :put, :hide => :put }, :has_many => [:comments]
+    
+  map.resources :comments, :member => { :spam => :put }
 
-  map.resources :comments
-  
+
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

@@ -1,5 +1,4 @@
 Given /^the following posts:$/ do |posts|
-  Post.delete_all
   Post.create!(posts.hashes)
 end
 

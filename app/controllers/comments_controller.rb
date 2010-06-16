@@ -8,4 +8,14 @@ class CommentsController < ApplicationController
     @post.save()
     redirect_to @post
   end
+  def spam
+    @comment = Comment.find(params[:id])
+    @comment.spam = true
+    @comment.save
+
+    respond_to do |format|
+      format.html { redirect_to(comments_url) }
+      format.xml  { head :ok }
+    end
+  end
 end

@@ -1,13 +1,14 @@
 <h1>Listing comments</h1>
-
+Start
 <table>
-  <% @comments.each do |comment| %>
+  <% @comments.each do |comment| %> 
   <tr id="<%= comment.dom_id %>">
     <td><%=h comment.body %></td>
-    <!--<td>< % = link_to 'Spam it', spam_comment_path(comment) %></td>
-    <td>< % = link_to 'Publish', publish_post_path(post), :method => :put %></td>
+    <td><%= link_to 'Spam', spam_comment_path(comment), :method => :put %></td>
+    <!--<td>< % = link_to 'Publish', publish_post_path(post), :method => :put %></td>
     <td>< % = link_to 'Hide', hide_post_path(post), :method => :put %></td>
     <td>< % = link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>-->
   </tr>
   <% end %>
 </table>
+End

@@ -21,10 +21,9 @@
   <%=h @post.published_on %>
 </p>
 
-Comments: <%= @post.comments.count %>
+Comments: <%= @comments.count %>
 
-
-<%= render :partial => 'comments/comment', :collection => @post.comments %>
+<%= render :partial => @comments %>
  
 Leave a comment:
 
@@ -35,10 +34,6 @@ Leave a comment:
     <%= f.label :body %><br />
     <%= f.text_field :body %>
   </p>
-  <!--<p>
-    <%= f.label :published_at %><br />
-    <%= f.date_select :published_at %>
-  </p>-->
   <p>
     <%= f.label :url %><br />
     <%= f.text_field :url %>
