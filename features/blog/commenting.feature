@@ -4,13 +4,13 @@ Feature: Commenting
 
   Scenario: See comments for the current post
     Given I have a post with title "Interesting fact" and the comments:
-    | body                    |
-    | "Yes that is an interesting fact" |
-    | "Very good point!"      |
-    | "What a great article!" |
+    | body                            |
+    | Yes that is an interesting fact |
+    | Very good point!                |
+    | What a great article!           |
     And I have a post with title "Grumpy and complaining" and the comments:
-    | body                  |
-    | "What a load of crap" |
+    | body                |
+    | What a load of crap |
     And I am on the "Interesting fact" post  
     Then I should see "Yes that is an interesting fact"
     And I should see "Very good point!"
