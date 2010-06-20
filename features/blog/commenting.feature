@@ -25,4 +25,11 @@ Feature: Commenting
     Then I should be on the "Another interesting fact" post
     And should see "Wow, that is correct!"
     
-    
+  Scenario: Comment contains angle brackets
+    Given I have a post with title "Another interesting fact" and the comments:
+    | body                                              |
+    | This is the correct HTML to use, <h1>Heading</h1> |
+    And I am on the "Another interesting fact" post
+    Then I should see "This is the correct HTML to use, <h1>Heading</h1>"
+
+
