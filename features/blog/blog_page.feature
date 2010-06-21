@@ -4,15 +4,17 @@ Feature: Blog
   
 Background:
 Given the following posts:
-| title          | slug           | content                 | published | published_on |
-| My first blog  | my-first-blog  | This is my first blog   | true      | 12-Feb-1990  |
-| My second blog | my-second-blog | This is my second blog  | true      | 14-Feb-1990  |
-| New blog post  | new-blog-post  | This post is not fin..  | false     | 19-Jan-2010  |
+| title          | slug           | body                         | published | published_on |
+| My first blog  | my-first-blog  | This is my <b>first</b> blog | true      | 12-Feb-1990  |
+| My second blog | my-second-blog | This is my second blog       | true      | 14-Feb-1990  |
+| New blog post  | new-blog-post  | This post is not fin..       | false     | 19-Jan-2010  |
 
-Scenario: Published posts are visible in the blog
+Scenario: View published posts
   Given I am on the blog page
   Then I should see "My first blog"
-  Then I should see "My second blog"
+  And I should see "This is my first blog"
+  And I should see "My second blog"
+  And I should see "This is my second blog"
 
 Scenario: Draft posts are not visible in the blog
   Given I am on the blog page

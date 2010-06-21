@@ -6,7 +6,7 @@
   <h2><%= link_to post.title, post %></h2>
   <tr>
     <td><%=h post.slug %></td>
-    <td><%=h post.body %></td>
+    <td><%= post.body %></td>
     <td><%=h post.published %></td>
     <td><%=h post.published_on %></td>
     <td><%= link_to 'Show', post %></td>
