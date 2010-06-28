@@ -16,6 +16,7 @@ Spork.prefork do
   require 'cucumber/rails/active_record'
   require 'cucumber/web/tableish'
 
+  require 'ruby-debug'
 
   require 'webrat'
   require 'webrat/core/matchers'

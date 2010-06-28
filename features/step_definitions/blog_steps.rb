@@ -6,6 +6,10 @@ Given /^I have a post with title "([^\"]*)"$/ do |title|
   Post.create(:title => title)
 end
 
+Given /^I have a post with title "([^\"]*)" and body "([^\"]*)"$/ do |title, body|
+  Post.create(:title => title, :body => body)
+end
+
 Given /^I have a post with title "([^\"]*)" and the comments:$/ do |title, comments|
   post = Post.create(:title => title, :comments => comments.hashes)
   post.save
