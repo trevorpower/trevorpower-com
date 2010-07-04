@@ -29,5 +29,10 @@
   </p>
 <% end %>
 
+<% form_tag(new_image_path, :method => "get", :multipart => true) do %>
+   <%= file_field_tag 'picture' %>
+   <%= submit_tag 'Upload' %>
+<% end %>
+
 <%= link_to 'Show', @post %> |
 <%= link_to 'Back', posts_path %>

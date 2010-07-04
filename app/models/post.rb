@@ -2,6 +2,7 @@ class Post
   include MongoMapper::Document
 
   many :comments
+  many :images
 
   key :title, String
   key :slug, String
@@ -12,6 +13,10 @@ class Post
   # this dom thing is not nice here in my model, must find a better place for it
   def dom_id
     slug
+  end
+
+  def self.create_slug(title)
+    title.gsub /[ ]/, '-'
   end
 
 end
