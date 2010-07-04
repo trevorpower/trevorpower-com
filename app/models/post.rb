@@ -2,7 +2,6 @@ class Post
   include MongoMapper::Document
 
   many :comments
-  many :images
 
   key :title, String
   key :slug, String
