@@ -1,7 +1,8 @@
 class ImageController < ApplicationController
   def create
-    @image = Post.find(params[:post_id])
-    @image = @post.images.build(params[:comment])
+    @post = Post.find(params[:post_id])
+    debugger
+    @image = @post.images.build(params[:file])
     @post.save()
     redirect_to @post
   end

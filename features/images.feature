@@ -6,7 +6,7 @@ Scenario: Add new image
   Given I have a post with title "Simple post with no images"
   And I am on the posts page
   When I follow "Edit" for post whose title is "Simple post with no images"
-  And fill in "test/image1.png" for "picture"
+  And fill in file with name "sample.png" for "picture"
   And I press "Upload"
   Then I should see "http://staticimagelocation.example.com/dir/image1.png"
 
