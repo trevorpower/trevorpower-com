@@ -30,3 +30,7 @@ end
 Then /^I should see the following blogs:$/ do |expected_blogs_table|
   expected_blogs_table.diff!(tableish('table tr', 'td,th'))
 end
+
+Given /^the following images:$/ do |images|
+  pending
+end
