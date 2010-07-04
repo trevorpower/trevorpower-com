@@ -16,7 +16,7 @@ class Post
   end
 
   def self.create_slug(title)
-    title.gsub /[ ]/, '-'
+    title.downcase.gsub /[ ]/, '-'
   end
 
 end

@@ -1,7 +1,7 @@
 class Image
   include MongoMapper::EmbeddedDocument 
 
-  key :slug, String
+  key :name, String
 
   belongs_to :post
 end

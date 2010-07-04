@@ -11,12 +11,12 @@ Given /^I have a post with title "([^\"]*)" and body "([^\"]*)"$/ do |title, bod
 end
 
 Given /^I have a post with title "([^\"]*)" and the comments:$/ do |title, comments|
-  post = Post.create(:title => title, :comments => comments.hashes)
+  post = Post.create(:title => title, :comments => comments.hashes, :slug => Post.create_slug(title))
   post.save
 end
 
 Given /^I have a post with title "([^\"]*)" and the images:$/ do |title, images|
-  post = Post.create(:title => title, :comments => images.hashes)
+  post = Post.create(:title => title, :images => images.hashes, :slug => Post.create_slug(title))
   post.save
 end
 

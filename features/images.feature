@@ -23,6 +23,6 @@ Scenario: Delete image
   | name         |
   | sample-image |
   And I am on the posts page
-  When I follow "Edit" for post whose title is "Simple post with no images"
-  And I follow "delete" for image whose title is "sample-image"
+  When I follow "Edit" for post whose title is "Simple post"
+  And I follow "Delete" for "sample-image"
   Then I should not see "sample-image"
