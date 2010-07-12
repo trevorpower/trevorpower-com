@@ -19,6 +19,6 @@ Scenario: Add new image
   Then I should see "http://staticimagelocation.example.com/dir/sample.png"
 
 Scenario: Delete image
-  When I follow "Delete" for "sample-image"
+  When I follow "Delete" for "sample-image.png"
   Then I should not see "sample-image"
   And I should see "another-image"

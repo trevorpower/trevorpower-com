@@ -1,0 +1,16 @@
+<h1>Listing comments</h1>
+
+<table>
+  <% @images.each do |image| %> 
+  <tr id="<%= image.dom_id %>">
+    <td><%= image.url %></td>
+    <td><%= link_to 'Delete', image, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<% form_tag({:action => "create", :controller => "images"}, :method => :post, :multipart => true) do %>
+  <%= file_field_tag 'picture' %>
+  <%= submit_tag 'Upload' %>
+<% end %>
+

@@ -25,7 +25,7 @@ When /^I (press|follow|check|uncheck|choose) "([^\"]*)" for (.*) whose (.*) is "
 end
 
 When /^I (press|follow|check|uncheck|choose) "([^\"]*)" for "([^\"]*)"$/ do |action, whatyouclick, id|
-  within("tr[id=#{id}]") do
+  within("tr[id='#{id}']") do
     case action
       when "press"
         click_button(whatyouclick)

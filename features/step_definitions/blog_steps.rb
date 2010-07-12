@@ -32,5 +32,8 @@ Then /^I should see the following blogs:$/ do |expected_blogs_table|
 end
 
 Given /^the following images:$/ do |images|
-  pending
+  dir = "public\\uploaded_images\\#{Rails.env}\\"
+  images.hashes.each do |hash|
+    File.open(dir + hash["name"], "w"){}
+  end
 end
