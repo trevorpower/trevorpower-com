@@ -3,7 +3,10 @@ class ImagesController < ApplicationController
   ImageDirectory = "public\\uploaded_images\\#{Rails.env}"
 
   def index
-    @images = Dir.entries(ImageDirectory).map{|filename| Image.new(filename)}
+    Dir.chdir(ImageDirectory) do
+      files = Dir.glob('*')
+      @images = files.collect{|filename| Image.new(filename)}
+    end
   end
 
   def create
@@ -15,6 +18,16 @@ class ImagesController < ApplicationController
   end
  
   def destroy
+    slug = params['id']
+    Dir.chdir(ImageDirectory) do
+      images = Dir.glob('*').collect{|filename| Image.new(filename)}
+      to_delete = images.select{|image| image.slug == slug}
+     
+      to_delete.each do |image|
+        File.delete(image.name)
+      end
+    end
+
     redirect_to :action => 'index'
   end
 

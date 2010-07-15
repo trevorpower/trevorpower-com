@@ -18,4 +18,10 @@ class Image
     @name
   end
 
+  def slug
+    Post.create_slug(@name)
+  end
+
+  alias to_param slug
+
 end
