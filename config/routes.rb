@@ -54,7 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   map.contact 'contact', :controller => 'contact', :action => 'index'
   map.send_mail 'send_mail', :controller => 'contact', :action => 'send_mail', :method => 'post'
 
-  map.login 'login', :controller => 'login'
+  map.login 'login', :controller => 'sessions', :action => 'new'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
 
   map.connect ':controller/:action/:id'
