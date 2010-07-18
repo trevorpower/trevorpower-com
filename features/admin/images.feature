@@ -3,7 +3,8 @@ Feature: Images
   the author will need to be able to upload image files
 
 Background:
-  Given the following images:
+  Given I am logged in
+  And the following images:
   | name              |
   | sample-image.png  |
   | another-image.gif |

@@ -3,7 +3,8 @@ Feature: Comment moderation
   The administrator will need view and moderate all comments
   
   Background:
-    Given I have a post with title "My first post" and the comments:
+    Given I am logged in
+    And I have a post with title "My first post" and the comments:
     | body |
     | What a great first blog entry   |
     | Keep up the good work |

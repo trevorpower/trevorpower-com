@@ -3,7 +3,8 @@ Feature: Posts Page
   The author will need a list of all posts along actions on those posts
 
 Background:
-Given the following posts:
+Given I am logged in
+And the following posts:
 | title          | slug           | body                   | published | published_on |
 | My first blog  | my-first-blog  | This is my first blog  | true      | 12-Feb-1990  |
 | My second blog | my-second-blog | This is my second blog | true      | 14-Feb-1990  |

@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
   
+  before_filter :authenticate
+
   ImageDirectory = "public\\uploaded_images\\#{Rails.env}"
 
   def index
@@ -29,6 +31,12 @@ class ImagesController < ApplicationController
     end
 
     redirect_to :action => 'index'
+  end
+
+  protected
+  
+  def authenticate
+    redirect_to (login_url) unless session[:authenticated]
   end
 
 end

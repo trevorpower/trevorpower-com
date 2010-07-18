@@ -1,4 +1,7 @@
-class PostsController < ApplicationController
+class PostsController < ApplicationController  
+
+  before_filter :authenticate, :except => [ :blog, :show ]
+
   # GET /posts
   # GET /posts.xml
   def index
@@ -116,4 +119,11 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  protected
+
+  def authenticate
+    redirect_to (login_url) unless session[:authenticated]
+  end
+
 end
