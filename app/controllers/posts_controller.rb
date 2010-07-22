@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments.all(:spam => false)
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }

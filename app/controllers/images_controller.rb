@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   
   before_filter :authenticate
 
-  ImageDirectory = "public\\uploaded_images\\#{Rails.env}"
+  ImageDirectory = "public/uploaded_images/#{Rails.env}"
 
   def index
     Dir.chdir(ImageDirectory) do

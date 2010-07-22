@@ -10,4 +10,7 @@ end
 After do
   File.delete( *Dir[ImageDirectory + "*.*"] )
   Dir.rmdir(ImageDirectory)
+
+  Comment.delete_all
+  Post.delete_all
 end
