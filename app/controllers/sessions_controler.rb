@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   
   def create
-    if (params[:password] == 'password1')
+    if (params[:password] == ENV['ADMIN_PASSWORD'])
       flash[:notice] = 'Successfully logged in'
       session[:authenticated] = true;
       redirect_to posts_path

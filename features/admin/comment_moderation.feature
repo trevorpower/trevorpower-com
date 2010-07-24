@@ -3,7 +3,8 @@ Feature: Comment moderation
   The administrator will need view and moderate all comments
   
   Background:
-    Given I am logged in
+    Given that the administrator password is "imageadmin"
+    And I am logged in with password "imageadmin"
     And I have a post with title "My first post" and the comments:
     | body |
     | What a great first blog entry   |

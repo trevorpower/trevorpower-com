@@ -3,7 +3,8 @@ Feature: Images
   the author will need to be able to upload image files
 
 Background:
-  Given I am logged in
+  Given that the administrator password is "imageadmin"
+  And I am logged in with password "imageadmin"
   And the following images:
   | name              |
   | sample-image.png  |
