@@ -1,18 +1,9 @@
-class PostsController < ApplicationController  
-
-  layout "admin"
+class PostsController < AdminController  
 
   before_filter :authenticate, :except => [ :blog, :show ]
 
-  # GET /posts
-  # GET /posts.xml
   def index
     @posts = Post.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @posts }
-    end
   end
 
   # GET /posts/new

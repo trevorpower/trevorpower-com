@@ -1,15 +1,9 @@
-class CommentsController < ApplicationController
+class CommentsController < AdminController
   
-  layout "admin"
   before_filter :authenticate, :except => [ :create ]
 
   def index
     @comments = Comment.all()
-
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @comments }
-    end
   end
 
   def create
