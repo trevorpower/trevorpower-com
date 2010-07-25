@@ -23,3 +23,12 @@ Background:
     | Admin Page    |
     | images page   |
     | comments page |
+
+  Scenario Outline: Navigate to the comments page
+    Given I am on the <Admin Page>
+    When I follow "Comments"
+    Then I should be on the comments page
+    Examples:
+    | Admin Page    |
+    | images page   |
+    | posts page |
