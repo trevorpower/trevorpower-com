@@ -1,1 +1,4 @@
 rails -v 2.3.8
+mongomapper
+cucumber
+gherkin
