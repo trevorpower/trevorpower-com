@@ -9,10 +9,7 @@ module NavigationHelpers
     case page_name
 
     when /^the "(.*)" post$/
-      post_path Post.find_by_title($1)
-
-    when /^the blog page$/
-      blog_posts_path
+      blog_post_path Post.find_by_title($1)
 
     when /^(.*) as (.*)$/
       path_to($1) + "." + $2

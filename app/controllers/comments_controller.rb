@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   
+  layout "admin"
   before_filter :authenticate, :except => [ :create ]
 
   def index
@@ -15,7 +16,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(params[:comment])
     @post.save()
-    redirect_to @post
+    redirect_to blog_post_path(@post)
   end
 
   def spam

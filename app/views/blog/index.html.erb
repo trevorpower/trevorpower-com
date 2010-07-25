@@ -3,7 +3,7 @@
 <a href="http://feeds.feedburner.com/trevorpower">Subscribe</a>
 
   <% @posts.each do |post| %>
-  <h2><%= link_to post.title, post %></h2>
+  <h2><%= link_to post.title, blog_post_path(post) %></h2>
   <tr>
     <td><%=h post.slug %></td>
     <td><%= post.body %></td>
