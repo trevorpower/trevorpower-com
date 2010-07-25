@@ -23,10 +23,5 @@ class CommentsController < AdminController
       format.xml  { head :ok }
     end
   end
-  
-  protected
-  
-  def authenticate
-    redirect_to (login_url) unless session[:authenticated]
-  end
+
 end

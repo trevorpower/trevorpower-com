@@ -33,12 +33,6 @@ class ImagesController < AdminController
     redirect_to :action => 'index'
   end
 
-  protected
-  
-  def authenticate
-    redirect_to (login_url) unless session[:authenticated]
-  end
-
 end
 
   
