@@ -29,6 +29,16 @@ Background:
     When I follow "Comments"
     Then I should be on the comments page
     Examples:
-    | Admin Page    |
-    | images page   |
-    | posts page |
+    | Admin Page  |
+    | images page |
+    | posts page  |
+
+  Scenario Outline: Navigate to the main website page
+    Given I am on the <Admin Page>
+    When I follow "Website"
+    Then I should be on the home page
+    Examples:
+    | Admin Page     |
+    | images page    |
+    | posts page     |
+    | comments page  |
