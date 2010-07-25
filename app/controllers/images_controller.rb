@@ -1,4 +1,4 @@
-class ImagesController < ApplicationController
+class ImagesController < AdminController
   
   before_filter :authenticate
 

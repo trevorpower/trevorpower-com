@@ -4,4 +4,4 @@ db/*.sqlite3
 *~
 **/#*#
 .cucumber.results.html
-**/.*.swp
+*.swp
