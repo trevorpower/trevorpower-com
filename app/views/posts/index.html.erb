@@ -1,11 +1,11 @@
-<h1>Listing posts</h1>
+<h1>Posts</h1>
 
+  <table>
   <% @posts.each do |post| %>
-  <tr id="<%= post.dom_id %>">
-    <td><%= link_to post.title, blog_post_path(post) %></td>
-    <td><%=h post.title %></td>
-    <td><%=h post.slug %></td>
-    <td><%=h post.published %></td>
+  <tr id="<%= post.dom_id %>" class="<%= post.published ? 'published' : 'draft' %>">
+    <td>
+      <%= link_to post.title, blog_post_path(post) %>
+    </td>
     <td><%=h post.published_on %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Publish', publish_post_path(post), :method => :put %></td>
@@ -13,7 +13,7 @@
     <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
   <% end %>
-
+  </table>
 <br />
 
 <%= link_to 'New post', new_post_path %>

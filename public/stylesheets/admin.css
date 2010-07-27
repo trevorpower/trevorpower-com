@@ -1,0 +1,7 @@
+.draft {
+}
+
+.published {
+  font-weight: bold; 
+  background: #88ff88;
+}

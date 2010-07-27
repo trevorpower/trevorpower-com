@@ -7,7 +7,7 @@ class Image
   end
   
   def url
-    "http://staticimagelocation.example.com/dir/" + @name
+    "/uploaded_images/#{Rails.env}/" + @name
   end
 
   def dom_id

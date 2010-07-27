@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:authenticated] = true;
       redirect_to posts_path
     else
-      flash[:notie] = 'Password is incorrect'
+      flash[:notice] = 'Password is incorrect'
       redirect_to login_url
     end
   end

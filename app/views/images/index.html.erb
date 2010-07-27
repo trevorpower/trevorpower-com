@@ -1,8 +1,9 @@
-<h1>Listing comments</h1>
+<h1>Listing images</h1>
 
 <table>
   <% @images.each do |image| %> 
   <tr id="<%= image.dom_id %>">
+    <td><img src="<%= image.url %>" width="60px"/></td>
     <td><%= image.url %></td>
     <td><%= link_to 'Delete', image, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
