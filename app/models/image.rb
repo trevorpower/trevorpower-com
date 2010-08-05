@@ -19,7 +19,7 @@ class Image
   end
 
   def slug
-    Post.create_slug(@name)
+    CGI::escape name
   end
 
   alias to_param slug

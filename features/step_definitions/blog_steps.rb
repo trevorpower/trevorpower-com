@@ -35,5 +35,6 @@ Given /^the following images:$/ do |images|
   dir = "public/uploaded_images/#{Rails.env}/"
   images.hashes.each do |hash|
     File.open(dir + hash["name"], "w"){}
+    S3Object.store(hash["name"], 'Hello world!',S3BucketName)
   end
 end
