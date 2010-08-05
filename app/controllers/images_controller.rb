@@ -28,10 +28,7 @@ class ImagesController < AdminController
   end
  
   def destroy
-    slug = [ params['id'], params['format'] ].compact.join '.' 
-    id = CGI::unescape slug
-
-    object = S3Object.find(id, S3BucketName)   
+    object = S3Object.find(params['id'], S3BucketName)   
     object.delete
 
     Dir.chdir(ImageDirectory) do

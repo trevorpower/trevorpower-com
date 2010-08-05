@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :comments, :member => { :spam => :put }
 
-  map.resources :images, :only => [ :index, :new, :destroy ]
+  map.resources :images, :only => [ :index, :new, :destroy ], :requirements => { :id => /[a-zA-Z0-9\-\.]+/ }
 
   map.resources :sessions
 
