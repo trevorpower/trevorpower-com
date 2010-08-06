@@ -24,6 +24,10 @@ module FileImageStore
     def find (key)
       new(key)      
     end
+    
+    def delete_all
+      File.delete( *Dir[ImageDirectory + "*.*"] )
+    end  
   end
 
   def self.included(model)
