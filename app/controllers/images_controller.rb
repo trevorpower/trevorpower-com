@@ -7,13 +7,13 @@ class ImagesController < AdminController
   ImageDirectory = "public/uploaded_images/#{Rails.env}"
 
   def index
+
     Dir.chdir(ImageDirectory) do
       files = Dir.glob('*')
       @images = files.collect{|filename| Image.new(filename)}
     end
 
-    image_bucket = Bucket.find S3BucketName    
-    @images = image_bucket.objects.collect{|object| Image.new(object.key)}
+    @images = Image.all
   end
 
   def create
@@ -21,7 +21,8 @@ class ImagesController < AdminController
     path = File.join(ImageDirectory, name)
     File.open(path, "wb") do |file| 
       file.write(params['picture'].read) 
-      S3Object.store(name, params['picture'], S3BucketName)
+      image = Image.new(name)
+      image.store(params['picture'])
     end
     
     redirect_to :action => 'index'
@@ -33,7 +34,7 @@ class ImagesController < AdminController
 
     Dir.chdir(ImageDirectory) do
       images = Dir.glob('*').collect{|filename| Image.new(filename)}
-      to_delete = images.select{|image| image.slug == id}
+      to_delete = images.select{|image| image.slug == params['id']}
      
       to_delete.each do |image|
         File.delete(image.name)

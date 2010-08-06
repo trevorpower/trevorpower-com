@@ -1,4 +1,5 @@
 class Image
+  include S3ImageStore
 
   attr :name
 
@@ -19,9 +20,7 @@ class Image
   end
 
   def slug
-    CGI::escape name
+    name
   end
-
-  alias to_param slug
 
 end
