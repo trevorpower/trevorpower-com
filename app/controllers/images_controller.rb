@@ -7,40 +7,20 @@ class ImagesController < AdminController
   ImageDirectory = "public/uploaded_images/#{Rails.env}"
 
   def index
-
-    Dir.chdir(ImageDirectory) do
-      files = Dir.glob('*')
-      @images = files.collect{|filename| Image.new(filename)}
-    end
-
     @images = Image.all
   end
 
   def create
-    name = params['picture'].original_filename
-    path = File.join(ImageDirectory, name)
-    File.open(path, "wb") do |file| 
-      file.write(params['picture'].read) 
-      image = Image.new(name)
-      image.store(params['picture'])
-    end
+    image = Image.new(params['picture'].original_filename)
+    image.store(params['picture'])
     
     redirect_to :action => 'index'
   end
  
   def destroy
-    object = S3Object.find(params['id'], S3BucketName)   
-    object.delete
-
-    Dir.chdir(ImageDirectory) do
-      images = Dir.glob('*').collect{|filename| Image.new(filename)}
-      to_delete = images.select{|image| image.slug == params['id']}
-     
-      to_delete.each do |image|
-        File.delete(image.name)
-      end
-    end
-
+    image = Image.find(params['id'])
+    image.destroy
+    
     redirect_to :action => 'index'
   end
 
