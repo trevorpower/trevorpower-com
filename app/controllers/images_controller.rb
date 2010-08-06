@@ -1,10 +1,6 @@
-include AWS::S3
-
 class ImagesController < AdminController
   
   before_filter :authenticate
-
-  ImageDirectory = "public/uploaded_images/#{Rails.env}"
 
   def index
     @images = Image.all

@@ -1,5 +1,5 @@
 class Image
-  include FileImageStore
+  include S3ImageStore
 
   attr :name
 

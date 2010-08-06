@@ -32,9 +32,10 @@ Then /^I should see the following blogs:$/ do |expected_blogs_table|
 end
 
 Given /^the following images:$/ do |images|
-  dir = "public/uploaded_images/#{Rails.env}/"
   images.hashes.each do |hash|
-    File.open(dir + hash["name"], "w"){}
-    S3Object.store(hash["name"], 'Hello world!',S3BucketName)
+    image = Image.new(hash["name"])
+    File.open('tmp/' + hash["name"], "w+") do |file|
+      image.store(file)
+    end
   end
 end

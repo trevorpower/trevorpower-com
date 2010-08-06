@@ -1,5 +1,7 @@
 module FileImageStore
 
+  attr :directory
+
   def store(file)
     path = File.join(ImageDirectory, name)
     File.open(path, "wb") do |f| 
