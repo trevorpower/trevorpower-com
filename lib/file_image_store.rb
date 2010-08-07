@@ -14,6 +14,10 @@ module FileImageStore
     File.delete(path)
   end
 
+  def url
+    "/uploaded_images/#{Rails.env}/" + name
+  end
+
   module ClassMethods
     def all
       Dir.chdir(ImageDirectory) do

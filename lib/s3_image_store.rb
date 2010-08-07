@@ -11,6 +11,10 @@ module S3ImageStore
     object.delete
   end
 
+  def url
+    "http://#{S3BucketName}.aws.amazon.com/#{name}"
+  end
+
   module ClassMethods
     def all
       image_bucket = Bucket.find S3BucketName    
