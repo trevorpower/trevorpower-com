@@ -1,5 +1,3 @@
 rails -v 2.3.8
 mongo_mapper
-cucumber
-gherkin
 aws-s3
