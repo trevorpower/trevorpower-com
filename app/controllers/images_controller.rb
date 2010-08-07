@@ -7,7 +7,10 @@ class ImagesController < AdminController
   end
 
   def create
-    image = Image.new(params['picture'].original_filename)
+    original_name = params['picture'].original_filename
+    key = Image.create_slug(original_name)
+
+    image = Image.new(key)
     image.store(params['picture'])
     
     redirect_to :action => 'index'
