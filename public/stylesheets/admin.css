@@ -1,7 +1,32 @@
+body {
+  background: white;
+  color: navy;
+}
+
+a, a:visited {
+  color: inherit;
+}
+
 .draft {
 }
 
 .published {
   font-weight: bold; 
-  background: #88ff88;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table, tr {
+  border: 2px solid navy; 
+}
+.action {
+  text-align: center;
+  background: navy;
+  color: white;
+}
+.action  a {
+  font-weight: normal;
+  text-decoration: none;
 }

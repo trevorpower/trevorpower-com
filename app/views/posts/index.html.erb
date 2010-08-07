@@ -1,19 +1,23 @@
 <h1>Posts</h1>
-
+<%= link_to 'New post', new_post_path %>
   <table>
+    <colgroup span="2"></colgroup>
+    <colgroup span="4" class="action"></colgroup>
   <% @posts.each do |post| %>
   <tr id="<%= post.dom_id %>" class="<%= post.published ? 'published' : 'draft' %>">
+    <td><%=h post.published_on %></td>
     <td>
       <%= link_to post.title, blog_post_path(post) %>
     </td>
-    <td><%=h post.published_on %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Publish', publish_post_path(post), :method => :put %></td>
-    <td><%= link_to 'Hide', hide_post_path(post), :method => :put %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="action"><%= link_to 'Edit', edit_post_path(post) %></td>
+    <% if post.published %>
+      <td class="action"><%= link_to 'Hide', hide_post_path(post), :method => :put %></td>
+    <% else %>
+      <td class="action"><%= link_to 'Publish', publish_post_path(post), :method => :put %></td>
+    <% end %>
+    <td class="action"><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
   <% end %>
   </table>
 <br />
 
-<%= link_to 'New post', new_post_path %>
