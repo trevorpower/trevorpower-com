@@ -1,8 +1,17 @@
 body {
   background: white;
   color: navy;
+  padding: 0px;
+  margin: 0px;
 }
 
+h1 {
+  background: navy;
+  color: white;
+  padding: 10px;
+  margin-bottom: 2px;
+}
+  
 a, a:visited {
   color: inherit;
 }
@@ -20,6 +29,9 @@ table {
 }
 table, tr {
   border: 2px solid navy; 
+}
+td {
+  padding: 6px;
 }
 .action {
   text-align: center;
