@@ -3,7 +3,7 @@ include AWS::S3
 module S3ImageStore
 
   def store(file)
-    S3Object.store(name, file, S3BucketName)
+    S3Object.store(name, file, S3BucketName, :access => :public_read)
   end
 
   def destroy
@@ -12,7 +12,7 @@ module S3ImageStore
   end
 
   def url
-    "http://#{S3BucketName}.aws.amazon.com/#{name}"
+    "http://s3.amazonaws.com/#{S3BucketName}/#{name}"
   end
 
   module ClassMethods

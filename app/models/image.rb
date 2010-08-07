@@ -13,5 +13,5 @@ class Image
   def self.create_slug(title)
     title.downcase.gsub /[^a-zA-Z0-9\.]/, '-'
   end
-
 end
+

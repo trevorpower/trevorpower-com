@@ -5,7 +5,7 @@
   <tr id="<%= image.dom_id %>">
     <td><img src="<%= image.url %>" width="60px"/></td>
     <td><%= image.url %></td>
-    <td><%= link_to 'Delete', image.name, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Delete', image_path(image.name), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
   <% end %>
 </table>

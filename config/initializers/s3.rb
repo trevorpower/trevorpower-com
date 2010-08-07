@@ -3,4 +3,4 @@ AWS::S3::Base.establish_connection!(
   :secret_access_key => ENV['S3_SECRET']
 )
 S3BucketName = "trevorpower-com-#{Rails.env}"
-AWS::S3::Bucket.create(S3BucketName) unless AWS::S3::Service.buckets.any? {|b| b.name == S3BucketName} 
+AWS::S3::Bucket.create(S3BucketName, :access => :public_read) unless AWS::S3::Service.buckets.any? {|b| b.name == S3BucketName} 
