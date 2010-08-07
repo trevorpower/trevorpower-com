@@ -23,7 +23,6 @@ Scenario: Add new image
 
 Scenario: Delete image
   When I follow "Delete" for "sample-image.png"
-  And I wait a few minutes
   And I go to the images page
   Then I should not see "sample-image"
   And I should see "another-image"

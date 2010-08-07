@@ -5,7 +5,7 @@ development:
   use_s3: true
 
 cucumber:
-  use_s3: false
+  use_s3: true
 
 test:
   use_s3: false

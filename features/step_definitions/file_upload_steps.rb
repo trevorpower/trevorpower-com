@@ -2,7 +2,11 @@ When /^I fill in file with name "([^"]*)" for "([^"]*)"$/ do |filename, field|
   fill_in(field, :with => File.join(RAILS_ROOT, 'features', 'upload_images', filename))
 end
 
-When /^I wait a few minutes$/ do 
-  sleep(1)
+Given /^the following images:$/ do |images|
+  images.hashes.each do |hash|
+    image = Image.new(hash["name"])
+    File.open('tmp/' + hash["name"], "w+") do |file|
+      image.store(file)
+    end
+  end
 end
-

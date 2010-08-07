@@ -15,11 +15,6 @@ Given /^I have a post with title "([^\"]*)" and the comments:$/ do |title, comme
   post.save
 end
 
-Given /^I have a post with title "([^\"]*)" and the images:$/ do |title, images|
-  post = Post.create(:title => title, :images => images.hashes, :slug => Post.create_slug(title))
-  post.save
-end
-
 When /^I delete the (\d+)(?:st|nd|rd|th) blog$/ do |pos|
   visit blogs_path
   within("table tr:nth-child(#{pos.to_i+1})") do
@@ -31,11 +26,3 @@ Then /^I should see the following blogs:$/ do |expected_blogs_table|
   expected_blogs_table.diff!(tableish('table tr', 'td,th'))
 end
 
-Given /^the following images:$/ do |images|
-  images.hashes.each do |hash|
-    image = Image.new(hash["name"])
-    File.open('tmp/' + hash["name"], "w+") do |file|
-      image.store(file)
-    end
-  end
-end
