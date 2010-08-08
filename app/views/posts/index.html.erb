@@ -5,7 +5,7 @@
   <table>
   <% @posts.each do |post| %>
   <tr id="<%= post.dom_id %>" class="<%= post.published ? 'published' : 'draft' %>">
-    <td><%=h post.published_on %></td>
+    <td><%= post.published_on.to_s(:admin) %></td>
     <td>
       <%= link_to post.title, blog_post_path(post) %>
     </td>

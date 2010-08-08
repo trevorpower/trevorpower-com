@@ -1,3 +1,4 @@
 rails -v 2.3.8
 mongo_mapper
 aws-s3
+mm-multi-parameter-attributes
