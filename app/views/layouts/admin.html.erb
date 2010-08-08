@@ -4,21 +4,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title><%= yield(:title) || "Admin" %> - Trevor Power</title>
+    <title><%= yield(:title) || "Admin" %> - Admin - Trevor Power</title>
     <%= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'admin' %>
   </head>
   <body>
     
-    <p style="color: green"><%= flash[:notice] %></p>
     
+    <%= link_to 'Website', home_path %>
+
+    <%= link_to 'Log Out', logout_path %>
+
+    <h1><%= yield(:title) %></h1>
+
     <%= link_to 'Posts', posts_path %>
     <%= link_to 'Comments', comments_path %>
     <%= link_to 'Images', images_path %>
 
-    <%= link_to 'Website', home_path %>
-
-    <%= link_to 'Log Out', logout_path %>
+    <p style="color: green"><%= flash[:notice] %></p>
 
     <%= yield %>
     

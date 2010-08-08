@@ -1,5 +1,5 @@
-<h1>Editing post</h1>
-
+<% title "Posts" %>
+<div class="content">
 <% form_for(@post) do |f| %>
   <%= f.error_messages %>
 
@@ -28,12 +28,6 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<% form_tag({:action => "create", :controller => "image"}, :method => :post, :multipart => true) do %>
-  <%= hidden_field_tag(:post_id, @post.id) %>   
-  <%= file_field_tag 'picture' %>
-  <%= submit_tag 'Upload' %>
-<% end %>
-
+</div>
 <%= link_to 'Show', @post %> |
 <%= link_to 'Back', posts_path %>

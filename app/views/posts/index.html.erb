@@ -1,8 +1,8 @@
-<h1>Posts</h1>
-<%= link_to 'New post', new_post_path %>
+<% title "Posts" %>
+<div class="content">
+  <%= link_to 'New post', new_post_path %>
+</div>
   <table>
-    <colgroup span="2"></colgroup>
-    <colgroup span="4" class="action"></colgroup>
   <% @posts.each do |post| %>
   <tr id="<%= post.dom_id %>" class="<%= post.published ? 'published' : 'draft' %>">
     <td><%=h post.published_on %></td>
