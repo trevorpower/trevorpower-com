@@ -53,12 +53,10 @@ Scenario: Hide a post
 Scenario: Edit a post
   When I follow "Edit" for post whose title is "My second blog"
   And fill in "body" with "Update: this has changed ..."
-  And fill in "title" with "My second blog post"
+  And fill in "title" with "My second blog post (updated)"
   And press "Update"
-  And go to the blog page
-  Then I should see "My second blog post"
-  And I should see "Update: this has changed ..."
-
+  Then I should be on the posts page
+  Then I should see "My second blog post (updated)"
 
 # The following scenario is failing and I suspect that the webrat fill_in function is 
 # decoding the angle brackets, tests in browser show this scenario to be working fine
