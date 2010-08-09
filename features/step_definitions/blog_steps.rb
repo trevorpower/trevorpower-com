@@ -3,7 +3,7 @@ Given /^the following posts:$/ do |posts|
 end
 
 Given /^I have a post with title "([^\"]*)"$/ do |title|
-  Post.create(:title => title, :slug => Post.create_slug(title))
+  Post.create(:title => title, :slug => Post.create_slug(title), :body => "body for this post (#{title})")
 end
 
 Given /^I have a post with title "([^\"]*)" and body "([^\"]*)"$/ do |title, body|
@@ -11,7 +11,7 @@ Given /^I have a post with title "([^\"]*)" and body "([^\"]*)"$/ do |title, bod
 end
 
 Given /^I have a post with title "([^\"]*)" and the comments:$/ do |title, comments|
-  post = Post.create(:title => title, :comments => comments.hashes, :slug => Post.create_slug(title))
+  post = Post.create(:title => title, :comments => comments.hashes, :slug => Post.create_slug(title), :body => "body for this post (#{title})")
   post.save
 end
 

@@ -20,6 +20,7 @@ Scenario: See all posts
 Scenario: Create a new post
   When I follow "New post"
   And I fill in "title" with "My new draft"
+  And I fill in "body" with "A long time ago, in a galaxy far far away..."
   And I select "08-Sep-2010" as the date
   And I press "Create"
   And I go to the posts page
