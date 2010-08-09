@@ -9,19 +9,18 @@
     <%= stylesheet_link_tag 'admin' %>
   </head>
   <body>
-    
-    
-    <%= link_to 'Website', home_path %>
+    <div id="header">     
+      <%= link_to 'Website', home_path %>
+      <%= link_to 'Log Out', logout_path %>
 
-    <%= link_to 'Log Out', logout_path %>
+      <h1><%= yield(:title) %></h1>
 
-    <h1><%= yield(:title) %></h1>
+      <%= link_to 'Posts', posts_path %>
+      <%= link_to 'Comments', comments_path %>
+      <%= link_to 'Images', images_path %>
+    </div>
 
-    <%= link_to 'Posts', posts_path %>
-    <%= link_to 'Comments', comments_path %>
-    <%= link_to 'Images', images_path %>
-
-    <p style="color: green"><%= flash[:notice] %></p>
+    <p class="notice"><%= flash[:notice] %></p>
 
     <%= yield %>
     
