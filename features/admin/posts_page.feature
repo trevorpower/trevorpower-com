@@ -1,5 +1,5 @@
 Feature: Posts Page
-  In order to create new posts manage existing posts
+  In order to create new posts and manage existing posts
   The author will need a list of all posts along actions on those posts
 
 Background:
@@ -23,8 +23,8 @@ Scenario: Create a new post
   And I fill in "body" with "A long time ago, in a galaxy far far away..."
   And I select "08-Sep-2010" as the date
   And I press "Create"
-  And I go to the posts page
-  Then I should see "My first blog"
+  Then I should be on the posts page
+  And I should see "My first blog"
   And I should see "My second blog"
   And I should see "New blog post"
   And I should see "My new draft"
