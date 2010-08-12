@@ -1,7 +1,7 @@
 <% title "Images" %>
 
 <div class="content">
-  <% form_tag({:action => "create", :controller => "images"}, :method => :post, :multipart => true) do %>
+  <% form_tag(images_url, :method => :post, :multipart => true) do %>
     <%= file_field_tag 'picture' %>
     <%= submit_tag 'Upload' %>
   <% end %>

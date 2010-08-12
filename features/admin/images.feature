@@ -19,7 +19,8 @@ Scenario: View images
 Scenario: Add new image
   When I fill in file with name "sample.png" for "picture"
   And I press "Upload"
-  Then I should see "sample-image.png"
+  Then I should see "Image successfully uploaded"
+  And I should see "sample-image.png"
 
 Scenario: Delete image
   When I follow "Delete" for "sample-image.png"

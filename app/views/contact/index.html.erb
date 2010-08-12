@@ -3,7 +3,7 @@
 
 <p>follow <a href="http://twitter.com/trevorpower">me on twitter</a></p>
 
-<% form_for :email, :url => { :controller => 'contact', :action => 'send_mail' } do |f| %>
+<% form_for :email, :url => send_mail_path do |f| %>
 <%= f.label :name %><br />
 <%= f.text_field :name, :size => 60 %><br />
 <%= f.label :address %><br />

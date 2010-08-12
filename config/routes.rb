@@ -6,8 +6,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :comments, :member => { :spam => :put }
 
-  map.resources :images, :only => [ :index, :new, :destroy ], :requirements => { :id => /[a-zA-Z0-9\-\.]+/ }
-
+  map.resources(  :images,
+                  :only => [ :index, :create, :destroy ],
+                  :requirements => { :id => /[a-zA-Z0-9\-\.]+/ } )
+  
   map.resources :sessions
 
   # Sample of regular route:
@@ -57,7 +59,4 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
-
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
 end

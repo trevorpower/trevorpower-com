@@ -13,6 +13,7 @@ class ImagesController < AdminController
     image = Image.new(key)
     image.store(params['picture'])
     
+    flash[:notice] = "Image successfully uploaded"
     redirect_to :action => 'index'
   end
  
