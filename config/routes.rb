@@ -1,16 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources( :posts,
-                 :member => { :publish => :put, :hide => :put },
-                 :has_many => [:comments] )
-  
-  map.resources :comments, :member => { :spam => :put }
+  map.resources :posts, :member => { :publish => :put, :hide => :put } do |_post|
+   _post.resources :comments, :except => [:new, :edit, :update]
+  end
+
+  map.resources :comments, :except => [ :new ], :member => { :spam => :put }
 
   map.resources(  :images,
                   :only => [ :index, :create, :destroy ],
                   :requirements => { :id => /[a-zA-Z0-9\-\.]+/ } )
   
-  map.resources :sessions
+  map.resources :sessions, :only => [ :create ]
 
   map.home '', :controller => 'home', :action => 'index'
   map.about 'about', :controller => 'about', :action => 'index'
