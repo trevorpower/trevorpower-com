@@ -5,7 +5,7 @@
       <td><%=h comment.body %></td>
       <td><%=h comment.name %></td>
       <td><%=h comment.url %></td>
-      <td class="action"><%= link_to 'Spam', spam_comment_path(comment), :method => :put %></td>
+      <td class="action"><%= link_to 'Hide', hide_comment_path(comment), :method => :put %></td>
     </tr>
   <% end %>
 </table>

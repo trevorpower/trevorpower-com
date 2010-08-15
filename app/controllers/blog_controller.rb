@@ -11,7 +11,7 @@ class BlogController < ApplicationController
 
   def post
     @post = Post.find(params[:id])
-    @comments = @post.comments.all(:spam => false)
+    @comments = @post.comments.all(:published => true)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -13,9 +13,9 @@ class CommentsController < AdminController
     redirect_to blog_post_path(@post)
   end
 
-  def spam
+  def hide
     @comment = Comment.find(params[:id])
-    @comment.spam = true
+    @comment.published = false
     @comment.save
 
     respond_to do |format|

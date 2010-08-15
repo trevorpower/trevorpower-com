@@ -6,8 +6,7 @@ class Comment
   key :email, String
   key :body, String
   key :published_at, Date
-  key :spam, Boolean, :default => false
-  key :published, Boolean
+  key :published, Boolean, :default => true
 
   key :post_id, ObjectId
 

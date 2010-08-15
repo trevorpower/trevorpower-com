@@ -21,9 +21,9 @@ Feature: Comment moderation
     And I should see "http://joe.example.com"
     And I should see "Another good article"
 
-  Scenario: Mark comment as spam
+  Scenario: Can hide a comment
     Given I am on the comments page
-    When I follow "Spam" for comment whose body is "Keep up the good work"
+    When I follow "Hide" for comment whose body is "Keep up the good work"
     And I go to the "My first post" post
     Then I should see "What a great first blog entry"
     And I should not see "Keep up the good work"

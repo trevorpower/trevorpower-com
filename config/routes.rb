@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
    _post.resources :comments, :except => [:new, :edit, :update]
   end
 
-  map.resources :comments, :except => [ :new ], :member => { :spam => :put }
+  map.resources :comments, :except => [ :new ], :member => { :hide => :put }
 
   map.resources(  :images,
                   :only => [ :index, :create, :destroy ],
