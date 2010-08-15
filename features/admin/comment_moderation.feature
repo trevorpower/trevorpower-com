@@ -18,10 +18,14 @@ Feature: Comment moderation
     Given I am on the comments page
     Then I should see "What a great first blog entry"
     And I should see "Keep up the good work"
-    And I should see "Joe Soap"
-    And I should see "http://joe.example.com"
     And I should see "Another good article"
     And I should see "Want to buy cheap meds"
+
+  Scenario: View comment details
+    Given I am on the comments page
+    And I should see "Keep up the good work"
+    And I should see "Joe Soap"
+    And I should see "http://joe.example.com"
 
   Scenario: Can hide a comment
     Given I am on the comments page
