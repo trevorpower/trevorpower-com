@@ -34,4 +34,15 @@ class CommentsController < AdminController
       format.xml  { head :ok }
     end
   end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(comments_url) }
+      format.xml  { head :ok }
+    end
+  end
+
 end

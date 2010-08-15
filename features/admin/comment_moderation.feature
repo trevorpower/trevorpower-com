@@ -37,3 +37,13 @@ Feature: Comment moderation
     Then I should see "What a great first blog entry"
     And I should see "Keep up the good work"
     And I should see "Want to buy cheap meds"
+
+  Scenario: Delete a comment
+    Given I am on the comments page
+    When I follow "Destroy" for comment whose body is "Keep up the good work"
+    Then I should see "What a great first blog entry"
+    And I should not see "Keep up the good work"
+    And I should not see "Joe Soap"
+    And I should not see "http://joe.example.com"
+    And I should see "Another good article"
+    And I should see "Want to buy cheap meds"

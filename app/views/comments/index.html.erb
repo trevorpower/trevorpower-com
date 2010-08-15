@@ -7,6 +7,7 @@
       <td><%=h comment.url %></td>
       <td class="action"><%= link_to 'Hide', hide_comment_path(comment), :method => :put %></td>
       <td class="action"><%= link_to 'Show', show_comment_path(comment), :method => :put %></td>
+      <td class="action"><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
