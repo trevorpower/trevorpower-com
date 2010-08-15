@@ -6,7 +6,7 @@ Feature: Comment moderation
     Given that the administrator password is "commentadmin"
     And I am logged in with password "commentadmin"
 
-  Scenario: View all comments
+  Scenario: View comments from all posts
     Given I have a post with title "My first post" and the comments:
     | body 				|
     | What a great first blog entry 	|
@@ -15,7 +15,7 @@ Feature: Comment moderation
     And I have a post with title "Another post" and the comments:
     | body			|
     | Another good article   	|
-    And I am on the comments page
+    When I go to the comments page
     Then I should see "What a great first blog entry"
     And I should see "Keep up the good work"
     And I should see "Want to buy cheap meds"
@@ -23,12 +23,13 @@ Feature: Comment moderation
 
   Scenario: View comment details
     Given I have a post with title "My first post" and the comments:
-    | body 				| name 		| url 				| published |
-    | Keep up the good work 		| Joe Soap 	| http://joe.example.com 	| true      |
-    And I am on the comments page
-    And I should see "Keep up the good work"
+    | body   		    | name     | url 			| published_on |
+    | Keep up the good work | Joe Soap | http://joe.example.com	| 11-Jun-1999  | 
+    When I go to the comments page
+    Then I should see "Keep up the good work"
     And I should see "Joe Soap"
     And I should see "http://joe.example.com"
+    And I should see "11-Jun-1999"
 
   Scenario: Can hide a comment
     Given I have a post with title "My first post" and the comments:
@@ -41,7 +42,7 @@ Feature: Comment moderation
     And I go to the "My first post" post
     Then I should see "What a great first blog entry"
     And I should see "Keep up the good work"
-    And I should not see "Want to buy cheap meds"
+    But I should not see "Want to buy cheap meds"
     
   Scenario: Can show a comment
     Given I have a post with title "My first post" and the comments:

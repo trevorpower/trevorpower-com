@@ -5,7 +5,7 @@ class Comment
   key :url, String
   key :email, String
   key :body, String
-  key :published_at, Date
+  key :published_on, Date, :default => Date.today
   key :published, Boolean, :default => true
 
   key :post_id, ObjectId

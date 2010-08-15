@@ -5,6 +5,7 @@
       <td><%=h comment.body %></td>
       <td><%=h comment.name %></td>
       <td><%=h comment.url %></td>
+      <td><%=h comment.published_on.to_s(:admin) %></td>
       <td class="action"><%= link_to 'Hide', hide_comment_path(comment), :method => :put %></td>
       <td class="action"><%= link_to 'Show', show_comment_path(comment), :method => :put %></td>
       <td class="action"><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
