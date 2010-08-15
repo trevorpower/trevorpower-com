@@ -24,4 +24,14 @@ class CommentsController < AdminController
     end
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+    @comment.published = true
+    @comment.save
+
+    respond_to do |format|
+      format.html { redirect_to(comments_url) }
+      format.xml  { head :ok }
+    end
+  end
 end
