@@ -10,6 +10,7 @@ class Post
   key :published_on, Date, :default => Date.today
 
   after_create :create_default_slug
+  after_save :update_comment_titles
 
   # this dom thing is not nice here in my model, must find a better place for it
   def dom_id
@@ -25,4 +26,12 @@ class Post
   def create_default_slug
     #slug = Post.create_slug(title)
   end
+
+  def update_comment_titles
+    comments.each do |comment|
+      comment.post_title = self.title
+      comment.save
+    end
+  end
+
 end

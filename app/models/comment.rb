@@ -8,6 +8,7 @@ class Comment
   key :published_on, Date, :default => Date.today
   key :published, Boolean, :default => true
 
+  key :post_title, String
   key :post_id, ObjectId
 
   belongs_to :post

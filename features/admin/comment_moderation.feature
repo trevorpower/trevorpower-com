@@ -30,6 +30,7 @@ Feature: Comment moderation
     And I should see "Joe Soap"
     And I should see "http://joe.example.com"
     And I should see "11-Jun-1999"
+    And I should see "My first post"
 
   Scenario: Can hide a comment
     Given I have a post with title "My first post" and the comments:
