@@ -9,7 +9,7 @@ class Post
   key :published, Boolean
   key :published_on, Date, :default => Date.today
 
-  after_create :create_default_slug
+  before_create :create_default_slug
   after_save :update_comment_titles
 
   # this dom thing is not nice here in my model, must find a better place for it
@@ -18,13 +18,13 @@ class Post
   end
 
   def self.create_slug(title)
-    title.downcase.gsub /[ .]/, '-'
+    title.downcase.gsub /[ \.]/, '-'
   end
 
   private
 
   def create_default_slug
-    #slug = Post.create_slug(title)
+    self.slug = Post.create_slug(self.title)
   end
 
   def update_comment_titles
