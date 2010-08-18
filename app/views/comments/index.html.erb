@@ -1,12 +1,10 @@
 <% title "Comments" %>
 <table>
   <% @comments.each do |comment| %> 
-    <tr id="<%= comment.dom_id %>">
+    <tr id="<%= comment.dom_id %>" class="<%= comment.published ? 'published' : 'draft' %>">
+      <td><%=h comment.name %><br/><%=h comment.url %></td>
       <td><%=h comment.body %></td>
-      <td><%=h comment.post_title %></td>
-      <td><%=h comment.name %></td>
-      <td><%=h comment.url %></td>
-      <td><%=h comment.published_on.to_s(:admin) %></td>
+      <td><%=h comment.post_title %><br/><%=h comment.published_on.to_s(:admin) %></td>
       <% if comment.published %>
         <td class="action"><%= link_to 'Hide', hide_comment_path(comment), :method => :put %></td>
       <% else %>

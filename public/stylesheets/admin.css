@@ -22,7 +22,6 @@ h1 {
 
 a, a:visited {
   color: inherit;
-  margin: 0px 6px 0px 10px;
   line-height: 28px;
 }
 
@@ -53,6 +52,7 @@ tr {
   border: 2px solid navy; 
 }
 td {
+  padding: 1px 6px 1px 6px;
 }
 .action {
   text-align: center;
@@ -62,7 +62,8 @@ td {
 .action  a {
   font-weight: normal;
   text-decoration: none;
-  padding: 0px;
+  padding: 0px 6px 0px 10px;
+  display: block;
 }
 
 .action  a:hover {
@@ -107,4 +108,6 @@ td {
   list-style: square;
 }
 
-
+#header a {
+  margin: 0px 6px 0px 10px;
+}
