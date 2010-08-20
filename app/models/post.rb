@@ -4,12 +4,12 @@ class Post
   many :comments
 
   key :title, String, :required => true
-  key :slug, String
+  key :slug, String, :required => true
   key :body, String, :required => true
   key :published, Boolean
   key :published_on, Date, :default => Date.today
 
-  before_create :create_default_slug
+  before_validation_on_create :create_default_slug
   after_save :update_comment_titles
 
   # this dom thing is not nice here in my model, must find a better place for it

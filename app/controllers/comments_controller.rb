@@ -9,7 +9,6 @@ class CommentsController < AdminController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(params[:comment])
-    @comment.post_title = @post.title
     @post.save()
     redirect_to blog_post_path(@post)
   end
