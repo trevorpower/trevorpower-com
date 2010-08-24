@@ -6,7 +6,7 @@ class Post
   key :title, String, :required => true
   key :slug, String, :required => true
   key :body, String, :required => true
-  key :published, Boolean
+  key :published, Boolean, :default => false
   key :published_on, Date, :default => Date.today
 
   before_validation_on_create :create_default_slug
