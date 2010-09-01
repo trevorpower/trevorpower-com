@@ -8,6 +8,7 @@ class Post
   key :body, String, :required => true
   key :published, Boolean, :default => false
   key :published_on, Date, :default => Date.today
+  key :tags, Array
 
   before_validation_on_create :create_default_slug
   after_save :update_comment_titles

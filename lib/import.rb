@@ -25,6 +25,7 @@ class Import
     post = Post.new
     post.title = item.title
     post.body = get_body(item.content_encoded)
+    post.tags = item.categories.select{|cat| cat.domain == 'tag'}.map{|tag| tag.content} 
     post
   end
   

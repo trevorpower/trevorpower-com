@@ -41,6 +41,10 @@ class ImportTest < ActiveSupport::TestCase
         <title>Test Post</title>
         <content:encoded><![CDATA[<p>Hello</p>]]></content:encoded>
         <wp:post_type>post</wp:post_type>
+        <category>Software Development</category>
+        <category domain="category" nicename="software-development">Software Development</category>
+        <category domain="tag">Rails</category>
+        <category domain="tag">Ruby</category>
       </item>
     </channel>
   </rss>
@@ -64,6 +68,19 @@ class ImportTest < ActiveSupport::TestCase
   test "imported post is draft" do
     Import.import_posts_from_rss ComplexPostRss
     assert_equal false, Post.all[0].published
+  end
+
+  test "imported post has correct published date" do
+    Import.import_posts_from_rss ComplexPostRss
+    assert_equal false, Post.all[0].published
+  end
+
+  test "imported post has correct tags" do
+    Import.import_posts_from_rss ComplexPostRss
+    post = Post.all[0]
+    assert_equal 2, post.tags.count
+    assert post.tags.include? 'Rails'
+    assert post.tags.include? 'Ruby'
   end
 
   ImageRss = %q{<p>Hello<img src='http://blog.trevorpower.com/wp-content/uploads/2009/10/CopyConfigFiles.png' /> </p>}
