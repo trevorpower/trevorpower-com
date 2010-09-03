@@ -9,7 +9,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should create comment" do
-    currentpost = Post.create!()
+    currentpost = Post.create!(:title => 'title', :body => 'body')
 
     assert_difference('Comment.count') do
       post :create, { :comment => { :body => 'a comment' } , :post_id => currentpost.id.to_param }

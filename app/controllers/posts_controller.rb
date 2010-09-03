@@ -24,7 +24,6 @@ class PostsController < AdminController
 
   def create
     @post = Post.new(params[:post])
-
     respond_to do |format|
       if @post.save
         flash[:notice] = 'Post was successfully created.'
@@ -52,8 +51,6 @@ class PostsController < AdminController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.xml
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
