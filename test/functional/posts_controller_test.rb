@@ -13,7 +13,6 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :index
     get :new
     assert_response :success
   end
