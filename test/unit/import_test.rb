@@ -104,7 +104,7 @@ class ImportTest < ActiveSupport::TestCase
         <title>Test Post</title>
           <wp:comment>
             <wp:comment_author>Trevor Power</wp:comment_author>
-            <wp:comment_author_email/>
+            <wp:comment_author_email>email@trevorpower.com</wp:comment_author_email>
             <wp:comment_author_url/>
             <wp:comment_date>2009-01-25 19:56:00</wp:comment_date>
             <wp:comment_date_gmt>2009-01-25 12:56:00</wp:comment_date_gmt>
@@ -125,10 +125,29 @@ class ImportTest < ActiveSupport::TestCase
   </rss>
   }
 
-  test "importing post with comment rss results in one new posts" do
+  def import_post_with_two_comments
     Import.import_posts_from_rss PostWithCommentsRss
     assert_equal 1, Post.all.count
-    assert_equal 2, Post.all[0].comments.count
-    assert_equal "This is a comment!", Post.all[0].comments[0].body
+    post = Post.all.first
+    assert_equal 2, post.comments.count
+    post
+  end
+  
+  test "imported comments should contain the corrent body" do
+    post = import_post_with_two_comments
+    assert_equal "This is a comment!", post.comments[0].body
+    assert_equal "Hello world!", post.comments[1].body
+  end
+
+  test "imported comments should contain the corrent name" do
+    post = import_post_with_two_comments
+    assert_equal "Trevor Power", post.comments[0].name
+    assert_equal "wsctpm", post.comments[1].name
+  end
+
+  test "imported comments should contain the corrent email" do
+    post = import_post_with_two_comments
+    assert_equal "email@trevorpower.com", post.comments[0].email
+    assert_equal "ywtzyj@rxjyjh.com", post.comments[1].email
   end
 end

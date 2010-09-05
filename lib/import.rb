@@ -25,7 +25,9 @@ class Import
     post.tags = item.xpath("category[@domain='tag']").map{|tag| tag.content}
     item.xpath("wp:comment").each do |comment|
       post.comments.build({
-        :body => comment.xpath('wp:comment_content').first.content
+        :body => comment.xpath('wp:comment_content').first.content,
+        :name => comment.xpath('wp:comment_author').first.content,
+        :email => comment.xpath('wp:comment_author_email').first.content
       })
     end
     post

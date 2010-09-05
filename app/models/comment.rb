@@ -1,10 +1,10 @@
 class Comment
   include MongoMapper::Document
 
-  key :name, String
+  key :name, String, :required => true
   key :url, String
-  key :email, String
-  key :body, String
+  key :email, String, :required => true
+  key :body, String, :required => true
   key :published_on, Date, :default => Date.today
   key :published, Boolean, :default => true
 

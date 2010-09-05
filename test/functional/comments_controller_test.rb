@@ -9,10 +9,19 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should create comment" do
-    currentpost = Post.create!(:title => 'title', :body => 'body')
+    currentpost = Post.create!(
+      :title => 'title',
+      :body => 'body'
+    )
 
+    comment_params = {
+      :email => 'test@example.com',
+      :name => 'tester',
+      :body => 'a comment' 
+    }
+    
     assert_difference('Comment.count') do
-      post :create, { :comment => { :body => 'a comment' } , :post_id => currentpost.id.to_param }
+      post :create, { :comment => comment_params , :post_id => currentpost.id.to_param }
     end
 
     assert_redirected_to blog_post_path(assigns(:post))
