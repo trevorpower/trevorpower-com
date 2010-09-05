@@ -113,7 +113,7 @@ class ImportTest < ActiveSupport::TestCase
           <wp:comment>
             <wp:comment_author>wsctpm</wp:comment_author>
             <wp:comment_author_email>ywtzyj@rxjyjh.com</wp:comment_author_email>
-            <wp:comment_author_url>http://jdjvctjptqrr.com/</wp:comment_author_url>
+            <wp:comment_author_url>http://homepage.com/</wp:comment_author_url>
             <wp:comment_date>2010-02-05 15:26:12</wp:comment_date>
             <wp:comment_date_gmt>2010-02-05 15:26:12</wp:comment_date_gmt>
             <wp:comment_content><![CDATA[Hello world!]]></wp:comment_content>
@@ -149,5 +149,17 @@ class ImportTest < ActiveSupport::TestCase
     post = import_post_with_two_comments
     assert_equal "email@trevorpower.com", post.comments[0].email
     assert_equal "ywtzyj@rxjyjh.com", post.comments[1].email
+  end
+
+  test "imported comments should contain the corrent URL" do
+    post = import_post_with_two_comments
+    assert_equal "", post.comments[0].url
+    assert_equal "http://homepage.com/", post.comments[1].url
+  end
+
+  test "imported comments should not be published" do
+    post = import_post_with_two_comments
+    assert_equal false, post.comments[0].published
+    assert_equal false, post.comments[1].published
   end
 end

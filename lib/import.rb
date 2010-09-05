@@ -27,7 +27,9 @@ class Import
       post.comments.build({
         :body => comment.xpath('wp:comment_content').first.content,
         :name => comment.xpath('wp:comment_author').first.content,
-        :email => comment.xpath('wp:comment_author_email').first.content
+        :email => comment.xpath('wp:comment_author_email').first.content,
+        :url => comment.xpath('wp:comment_author_url').first.content,
+        :published => false
       })
     end
     post
