@@ -30,7 +30,7 @@ module FileImageStore
     end
     
     def delete_all
-      File.delete( *Dir[ImageDirectory + "*.*"] )
+      File.delete( *Dir[ImageDirectory + "*"] )
     end  
   end
 

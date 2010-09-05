@@ -8,9 +8,8 @@ class ImagesController < AdminController
 
   def create
     original_name = params['picture'].original_filename
-    key = Image.create_slug(original_name)
 
-    image = Image.new(key)
+    image = Image.from_original_name(original_name)
     image.store(params['picture'])
     
     flash[:notice] = "Image successfully uploaded"

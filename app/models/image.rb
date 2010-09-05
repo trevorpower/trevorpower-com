@@ -6,9 +6,13 @@ class Image
     @name = key
   end
   
+  def self.from_original_name(original_name)
+    Image.new(create_slug(original_name))
+  end
+  
   def dom_id
     @name
-  end
+  end 
 
   def self.create_slug(title)
     title.downcase.gsub /[^a-zA-Z0-9\.]/, '-'

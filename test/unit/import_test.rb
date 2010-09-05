@@ -89,7 +89,7 @@ class ImportTest < ActiveSupport::TestCase
   test "importing post with image results in one new image" do
     Import.get_body ImageRss
     assert Image.all.count == 1
-    assert Image.all.first.name == 'CopyConfigFiles.png'
+    assert_equal 'copyconfigfiles.png', Image.all.first.name
   end
 
   test "content of imported posts point at imported images" do

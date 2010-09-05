@@ -10,7 +10,7 @@ class Import
       src = img['src']
       puts "\tProcessing image: #{src}"
       url = URI.parse(src)
-      image = Image.new(File.basename(url.path))
+      image = Image.from_original_name(File.basename(url.path))
       image.store(open(src))
       img.set_attribute('src', image.url)
     end
