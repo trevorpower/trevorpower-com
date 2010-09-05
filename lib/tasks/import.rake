@@ -1,4 +1,3 @@
-require 'rss/2.0'
 require 'lib/import'
 
 desc "Import content from previous blog"
