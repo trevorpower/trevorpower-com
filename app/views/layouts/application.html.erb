@@ -6,18 +6,23 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title><%= yield(:title) || "Blog" %> - Trevor Power</title>
     <%= stylesheet_link_tag 'scaffold' %>
+    <%= stylesheet_link_tag 'public' %>
   </head>
   <body>
     
-    <p style="color: green"><%= flash[:notice] %></p>
-    
+    <div class='header'>
+      Trevor Power
+    </div>
+
+    <h1><%= yield(:title) %></h1>
+
     <%= link_to 'Contact', contact_path %>
     <%= link_to 'About', about_path %>
     <%= link_to 'Blog', blog_path %>
     <%= link_to 'Home', home_path %>
 
-    <%= link_to 'Log Out', logout_path %>
-
+    <p class="notice"><%= flash[:notice] %></p>
+    
     <%= yield %>
     
   </body>
