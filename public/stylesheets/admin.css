@@ -111,3 +111,47 @@ td {
 #header a {
   margin: 0px 6px 0px 10px;
 }
+
+form {
+  width: 620px;
+  margin-top: 15px;
+}
+
+form input, form textarea {
+  padding: 5px;
+  width: 471px;
+  margin: 0px 0px 10px 0px;
+  border: 2px solid navy;
+}
+
+form textarea {
+  height: 90px;
+}
+
+/*form textarea:focus, form input:focus {
+  border: 2px solid #900;
+}*/
+
+form input[type=checkbox] {
+  width: auto;
+}
+
+form input[type=submit]{
+  width: 100px;
+  float: right;
+  color: white;
+  background: navy;
+}
+
+form input[type=submit]:hover {
+  background: navy;
+}
+
+label {
+  float: left;
+  text-align: right;
+  margin-right: 15px;
+  width: 120px;
+  padding-top: 5px;
+  font-size: 1.4em;
+}
