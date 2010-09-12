@@ -7,7 +7,7 @@
 
     <div class='content'>
       <h2><%= link_to post.title, blog_post_path(post) %></h2>
-      <span class='date'><%=h post.published_on %></span><br />
+      <span class='date'><%=h post.published_on.to_s(:public) %></span><br />
       <%= post.body %>
     </div>
       

@@ -12,9 +12,14 @@ Given the following posts:
 Scenario: View published posts
   Given I am on the blog page
   Then I should see "My first blog"
-  And I should see "This is my first blog"
   And I should see "My second blog"
   And I should see "A post about <div> tags"
+
+Scenario: View post details
+  Given I am on the blog page
+  Then I should see "My first blog"
+  And I should see "This is my first blog"
+  And I should see "12 February 1990"
 
 Scenario: Draft posts are not visible in the blog
   Given I am on the blog page
