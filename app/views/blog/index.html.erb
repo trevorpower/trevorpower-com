@@ -1,13 +1,14 @@
 <% title "Blog" %>
-<a href="http://feeds.feedburner.com/trevorpower">Subscribe</a>
+  <div class='content'>
+    <a href="http://feeds.feedburner.com/trevorpower">Subscribe</a> to this blog.
+  </div>
 
   <% @posts.each do |post| %>
-  <h2><%= link_to post.title, blog_post_path(post) %></h2>
-  <tr>
-    <td><%=h post.slug %></td>
-    <td><%= post.body %></td>
-    <td><%=h post.published %></td>
-    <td><%=h post.published_on %></td>
-    <td><%= link_to 'Show', post %></td>
-  </tr>
+
+    <div class='content'>
+      <h2><%= link_to post.title, blog_post_path(post) %></h2>
+      <span class='date'><%=h post.published_on %></span><br />
+      <%= post.body %>
+    </div>
+      
   <% end %>
