@@ -5,6 +5,13 @@ body {
   margin: 0px;
 }
 
+#logo {
+  text-align: center;
+  padding: 8px;
+  font-size: 36px; 
+  font-weight: bold;
+}
+
 h1 {
   background: darkolivegreen;
   color: white;
