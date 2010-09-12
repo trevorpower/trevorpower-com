@@ -10,16 +10,17 @@
   </head>
   <body>
     
-    <div class='header'>
+    <div id='header'>
       Trevor Power
+
+      <h1><%= yield(:title) %></h1>
+
+      <%= link_to 'Contact', contact_path %>
+      <%= link_to 'About', about_path %>
+      <%= link_to 'Blog', blog_path %>
+      <%= link_to 'Home', home_path %>
+
     </div>
-
-    <h1><%= yield(:title) %></h1>
-
-    <%= link_to 'Contact', contact_path %>
-    <%= link_to 'About', about_path %>
-    <%= link_to 'Blog', blog_path %>
-    <%= link_to 'Home', home_path %>
 
     <p class="notice"><%= flash[:notice] %></p>
     
