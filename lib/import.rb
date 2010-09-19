@@ -22,6 +22,7 @@ class Import
     post = Post.new
     post.title = item.xpath('title').first.content
     post.body = get_body(item.xpath('content:encoded').first.content)
+    post.published_on = item.xpath('pubDate').first.content
     post.tags = item.xpath("category[@domain='tag']").map{|tag| tag.content}
     item.xpath("wp:comment").each do |comment|
       post.comments.build({

@@ -14,15 +14,18 @@ class ImportTest < ActiveSupport::TestCase
       <item>
         <title>Test Post</title>
         <content:encoded><![CDATA[Hello]]></content:encoded>
+        <pubDate>Sun, 30 Nov 2008 16:44:00 +0000</pubDate>
         <wp:post_type>post</wp:post_type>
       </item>
       <item>
         <title>Not a post</title>
         <content:encoded><![CDATA[Hello]]></content:encoded>
+        <pubDate>Sun, 30 Nov 2008 16:44:00 +0000</pubDate>
         <wp:post_type>attachement</wp:post_type>
       </item>
       <item>
         <title>Test Post 2</title>
+        <pubDate>Sun, 30 Nov 2008 16:44:00 +0000</pubDate>
         <content:encoded><![CDATA[Hello 2]]></content:encoded>
         <wp:post_type>post</wp:post_type>
         </item>
@@ -40,6 +43,7 @@ class ImportTest < ActiveSupport::TestCase
       <item>
         <title>Test Post</title>
         <content:encoded><![CDATA[<p>Hello</p>]]></content:encoded>
+        <pubDate>Sun, 30 Nov 2008 16:44:00 +0000</pubDate>
         <wp:post_type>post</wp:post_type>
         <category>Software Development</category>
         <category>Software</category>
@@ -83,6 +87,15 @@ class ImportTest < ActiveSupport::TestCase
     assert post.tags.include? 'Rails'
     assert post.tags.include? 'Ruby'
   end
+  
+  test "imported post has correct date" do
+    Import.import_posts_from_rss ComplexPostRss
+    assert_equal 1, Post.all.count
+    post = Post.all[0]
+    assert_equal 2008, post.published_on.year
+    assert_equal 11, post.published_on.month
+    assert_equal 30, post.published_on.day
+  end
 
   ImageRss = %q{<p>Hello<img src='http://blog.trevorpower.com/wp-content/uploads/2009/10/CopyConfigFiles.png' /> </p>}
 
@@ -102,6 +115,7 @@ class ImportTest < ActiveSupport::TestCase
     <channel>
       <item>
         <title>Test Post</title>
+        <pubDate>Sun, 30 Nov 2008 16:44:00 +0000</pubDate>
           <wp:comment>
             <wp:comment_author>Trevor Power</wp:comment_author>
             <wp:comment_author_email>email@trevorpower.com</wp:comment_author_email>
