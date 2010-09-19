@@ -24,7 +24,7 @@ class CommentsControllerTest < ActionController::TestCase
       post :create, { :comment => comment_params , :post_id => currentpost.id.to_param }
     end
 
-    assert_redirected_to blog_post_path(assigns(:post))
+    assert_redirected_to blog_post_path(:slug => assigns(:post).slug)
   end
 
 end

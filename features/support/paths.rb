@@ -9,7 +9,7 @@ module NavigationHelpers
     case page_name
 
     when /^the "(.*)" post$/
-      blog_post_path Post.find_by_title($1)
+      blog_post_path :slug => Post.find_by_title($1).slug
 
     when /^(.*) as (.*)$/
       path_to($1) + "." + $2

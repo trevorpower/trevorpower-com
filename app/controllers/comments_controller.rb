@@ -10,7 +10,7 @@ class CommentsController < AdminController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(params[:comment])
     @post.save()
-    redirect_to blog_post_path(@post)
+    redirect_to blog_post_path(:slug => @post.slug)
   end
 
   def hide

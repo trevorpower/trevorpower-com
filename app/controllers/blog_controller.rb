@@ -10,7 +10,7 @@ class BlogController < ApplicationController
   end
 
   def post
-    @post = Post.find(params[:id])
+    @post = Post.find_by_slug(params[:slug])
     @comments = @post.comments.all(:published => true)
 
     respond_to do |format|
