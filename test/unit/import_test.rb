@@ -171,6 +171,13 @@ class ImportTest < ActiveSupport::TestCase
     assert_equal "http://homepage.com/", post.comments[1].url
   end
 
+  test "imported comments should contain the corrent dates" do
+    post = import_post_with_two_comments
+    assert_equal 2009, post.comments[0].published_on.year
+    assert_equal 1, post.comments[0].published_on.month
+    assert_equal 25, post.comments[0].published_on.day
+  end
+
   test "imported comments should not be published" do
     post = import_post_with_two_comments
     assert_equal false, post.comments[0].published
