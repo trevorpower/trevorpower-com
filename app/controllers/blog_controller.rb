@@ -12,11 +12,21 @@ class BlogController < ApplicationController
   def post
     @post = Post.find_by_slug(params[:slug])
     @comments = @post.comments.all(:published => true)
+    @comment = @post.comments.build
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html 
       format.xml  { render :xml => @post }
     end
+
   end
 
+  def comment
+    @post = Post.find_by_slug(params[:slug])
+    @comment = @post.comments.build(params[:comment])
+    @comment_saved = @comment.save()
+    #@post.save()
+    @comments = @post.comments.all(:published => true)
+    render :post
+  end
 end

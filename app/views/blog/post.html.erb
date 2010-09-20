@@ -1,58 +1,30 @@
 <% title @post.title %>
 
-<p>
-  <b>Slug:</b>
-  <%=h @post.slug %>
-</p>
-
-<p>
-  <b>Body:</b>
+<div class='content'>
+  <h2><%= link_to @post.title, blog_post_path(:slug => @post.slug) %></h2>
+  <span class='date'><%=h @post.published_on.to_s(:public) %></span><br />
   <%= @post.body %>
-</p>
-
-<p>
-  <b>Published:</b>
-  <%=h @post.published %>
-</p>
-
-<p>
-  <b>Published on:</b>
-  <%=h @post.published_on %>
-</p>
-
-Comments: <%= @comments.count %>
+</div>
 
 <%= render :partial => @comments %>
  
-Leave a comment:
-
-<% form_for [@post, @post.comments.build] do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_field :body %>
-  </p>
-  <p>
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :published %><br />
-    <%= f.check_box :published %>
-  </p>
-  <p>
-    <%= f.submit 'Add Comment' %>
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="content">
+  <% unless @comment_saved %>
+    Leave a comment:
+    <% form_for @comment, :url => comment_path(:slug => @post.slug) do |f| %>
+      <%= f.error_messages %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+      <%= f.submit 'Add Comment' %>
+      <div style="clear: both;"></div>
+    <% end %>
+  <% else %>
+    Your comment has been saved.
+  <% end %>
+</div>
