@@ -17,6 +17,14 @@ Feature: Commenting
     And I should see "What a great article!"
     And I should not see "What a load of crap"
 
+  Scenario: See details of comments on the current post
+    Given I have a post with title "Interesting fact" and the comments:
+    | body                            | name      | email            |
+    | What a great article!           | Mr. Smith | john.smith@it.it |
+    And I am on the "Interesting fact" post  
+    Then I should see "What a great article!"
+    Then I should see "Mr. Smith"
+    
   Scenario: Add new comment
     Given I have a post with title "Another interesting fact"
     And I am on the "Another interesting fact" post
