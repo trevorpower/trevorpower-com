@@ -11,7 +11,7 @@
 <div class="content">
   <% unless @comment_saved %>
     Leave a comment:
-    <% form_for @comment, :url => comment_path(:slug => @post.slug) do |f| %>
+    <% form_for @comment, :url => blog_post_path(:slug => @post.slug) do |f| %>
       <%= f.error_messages %>
       <%= f.label :name %>
       <%= f.text_field :name %>

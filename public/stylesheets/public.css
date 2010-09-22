@@ -100,7 +100,7 @@ td {
   background: white;
 }
 
-.fieldWithErrors {
+.fieldWithErrors label {
   padding: 2px;
   background-color: darkolivegreen;
   display: table;
@@ -108,7 +108,7 @@ td {
 }
 
 #errorExplanation {
-  width: 400px;
+  width: 620px;
   border: 2px solid darkolivegreen;
   padding: 7px;
   padding-bottom: 12px;
@@ -142,7 +142,7 @@ td {
 }
 
 form {
-  width: 600px;
+  width: 620px;
   margin-top: 15px;
 }
 
@@ -176,7 +176,7 @@ label {
   float: left;
   text-align: right;
   margin-right: 15px;
-  width: 100px;
+  width: 120px;
   padding-top: 5px;
   font-size: 1.4em;
 }
