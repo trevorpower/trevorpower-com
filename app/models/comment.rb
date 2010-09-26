@@ -33,6 +33,8 @@ class Comment
     unless url.nil?
       uri = URI.parse url
       uri.normalize.to_s
-    end 
+    end
+  rescue
+    nil 
   end
 end

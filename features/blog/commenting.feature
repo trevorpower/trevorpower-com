@@ -25,6 +25,14 @@ Feature: Commenting
     Then I should see "What a great article!"
     Then I should see "Mr. Smith"
     
+  Scenario: See date of comment on the current post
+    Given I have a post with title "Interesting fact" and the comments:
+    | body                            | name      | email            | published_on |
+    | What a great article!           | Mr. Smith | john.smith@it.it | 12-Jan-2006  |
+    And I am on the "Interesting fact" post  
+    Then I should see "What a great article!"
+    Then I should see "12 January 2006"
+
   Scenario: Have link to users url with comments on the current post
     Given I have a post with title "Interesting fact" and the comments:
     | body                            | name       | email            | url     		|

@@ -62,6 +62,12 @@ h2 a {
   text-decoration: none;
 }
 
+h3{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 4px;
+}
+
 .date {
   color: white;
   background: darkolivegreen;

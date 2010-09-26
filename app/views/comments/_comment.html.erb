@@ -1,6 +1,5 @@
-Comment:
-<% div_for comment do %>
-<%=h comment.body %>
-<%= link_to comment.name, comment.normalized_url %>
-<%=h comment.name %>
+<% div_for comment, :class => 'content' do %>
+  <h3><%= comment.normalized_url ? (link_to comment.name, comment.normalized_url) : comment.name%> </h3>
+  <span class='date'><%=h comment.published_on.to_s(:public) %></span><br />
+  <%=h comment.body %>
 <% end %>
