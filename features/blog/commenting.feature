@@ -28,7 +28,7 @@ Feature: Commenting
   Scenario: See date of comment on the current post
     Given I have a post with title "Interesting fact" and the comments:
     | body                            | name      | email            | published_on |
-    | What a great article!           | Mr. Smith | john.smith@it.it | 12-Jan-2006  |
+    | What a great article!           | Mr. Smith | john.smith@it.it | 12-Jan-20a6  |
     And I am on the "Interesting fact" post  
     Then I should see "What a great article!"
     Then I should see "12 January 2006"

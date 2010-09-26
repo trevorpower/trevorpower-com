@@ -19,7 +19,7 @@ class BlogController < ApplicationController
       @comment_saved = @comment.save()
     end
     
-    @comments = @post.comments.all(:published => true)
+    @comments = @post.comments.all(:published => true).sort_by(&:published_on)
 
     respond_to do |format|
       format.html 
