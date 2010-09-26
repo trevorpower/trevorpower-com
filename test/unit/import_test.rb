@@ -167,7 +167,7 @@ class ImportTest < ActiveSupport::TestCase
 
   test "imported comments should contain the corrent URL" do
     post = import_post_with_two_comments
-    assert_equal "", post.comments[0].url
+    assert_nil post.comments[0].url
     assert_equal "http://homepage.com/", post.comments[1].url
   end
 

@@ -1,5 +1,6 @@
 Comment:
 <% div_for comment do %>
 <%=h comment.body %>
+<%= link_to comment.name, comment.normalized_url %>
 <%=h comment.name %>
 <% end %>

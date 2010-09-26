@@ -17,7 +17,7 @@ Feature: Commenting
     And I should see "What a great article!"
     And I should not see "What a load of crap"
 
-  Scenario: See details of comments on the current post
+  Scenario: See name of user with comments on the current post
     Given I have a post with title "Interesting fact" and the comments:
     | body                            | name      | email            |
     | What a great article!           | Mr. Smith | john.smith@it.it |
@@ -25,6 +25,16 @@ Feature: Commenting
     Then I should see "What a great article!"
     Then I should see "Mr. Smith"
     
+  Scenario: Have link to users url with comments on the current post
+    Given I have a post with title "Interesting fact" and the comments:
+    | body                            | name       | email            | url     		|
+    | What a great article!           | Mr. Smith  | john.smith@it.it | http://blog.me.me 	|
+    | What a another great article!   | Mrs. Smith | mary.smith@it.it | http://blog.this.me 	|
+    And I am on the "Interesting fact" post  
+    Then I should see "What a great article!"
+    Then I should see a link to "http://blog.me.me/"
+    Then I should see a link to "http://blog.this.me/"
+
   Scenario: Add new comment
     Given I have a post with title "Another interesting fact"
     And I am on the "Another interesting fact" post
@@ -42,4 +52,13 @@ Feature: Commenting
     And I am on the "Another interesting fact" post
     Then I should see "This is the correct HTML to use, <h1>Heading</h1>"
 
-
+  Scenario: User is told that the url must contain "http://"
+    Given I have a post with title "Another interesting fact"
+    And I am on the "Another interesting fact" post
+    When I fill in "Body" with "Wow, that is correct!"
+    And I fill in "Name" with "Mr. T"
+    And I fill in "Email" with "mr.t@gmail.com"
+    And I fill in "Url" with "gmail.com"
+    And press "Add Comment"
+    Then I should be on the "Another interesting fact" post
+    And should see "The URL is invalid, it must start with 'http://'"

@@ -29,7 +29,7 @@ class Import
         :body => comment.xpath('wp:comment_content').first.content,
         :name => comment.xpath('wp:comment_author').first.content,
         :email => comment.xpath('wp:comment_author_email').first.content,
-        :url => comment.xpath('wp:comment_author_url').first.content,
+        :url => (comment.xpath('wp:comment_author_url').first.content.empty? ? nil : comment.xpath('wp:comment_author_url').first.content),
         :published_on => comment.xpath('wp:comment_date').first.content,
         :published => false
       })
