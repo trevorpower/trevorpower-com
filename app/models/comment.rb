@@ -20,7 +20,7 @@ class Comment
   validates_format_of :email, :with => /([a-z0-9_.-]+)@([a-z0-9-]+)\.[a-z.]+/i
   validates_format_of( :url, 
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix,
-    :if => "!url.empty?",
+    :if => "!url.nil? && !url.empty?",
     :message => "The URL is invalid, it must start with 'http://'"
   )
 
