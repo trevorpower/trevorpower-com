@@ -1,6 +1,9 @@
 production:
   use_s3: true
 
+stage:
+  use_s3: true
+
 development:
   use_s3: false
 
