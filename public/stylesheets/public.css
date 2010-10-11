@@ -5,11 +5,12 @@ body {
   margin: 0px;
 }
 
-#logo {
+#logo, #logo a {
   text-align: center;
   padding: 8px;
   font-size: 36px; 
   font-weight: bold;
+  text-decoration: none;
 }
 
 h1 {
@@ -32,7 +33,7 @@ a, a:visited {
   line-height: 28px;
 }
 
-a:hover {
+.menu a:hover {
   color: white;
   background: darkolivegreen;
 }
