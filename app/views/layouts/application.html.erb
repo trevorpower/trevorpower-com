@@ -13,7 +13,7 @@
     <div id='header'>
       <div id='logo'><%= link_to 'Trevor Power', home_path %></div>
 
-      <h1><%= yield(:title) %></h1>
+      <h1><%= yield(:section) || yield(:title) %></h1>
       <div class="menu">
         <%= link_to 'Home', home_path %>
         <%= link_to 'Blog', blog_path %>

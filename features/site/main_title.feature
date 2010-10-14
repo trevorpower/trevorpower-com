@@ -22,12 +22,12 @@ Scenario Outline: Pages contain correct heading 1
 Given I am on the <Page>
 Then I should see "<Heading>" within "h1"
 Examples:
-  | Page                              | Heading                |
-  | home page                         | Home	               |
-  | about page                        | About                  |
-  | contact page                      | Contact                |
-  | blog page                         | Blog                   |
-  | "Why I really like Ruby" post     | Why I really like Ruby |
+  | Page                              | Heading |
+  | home page                         | Home	|
+  | about page                        | About   |
+  | contact page                      | Contact |
+  | blog page                         | Blog    |
+  | "Why I really like Ruby" post     | Blog	|
 
   
   

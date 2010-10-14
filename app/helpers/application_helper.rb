@@ -3,4 +3,7 @@ module ApplicationHelper
   def title(page_title)
     content_for(:title) { h page_title }
   end
+  def section(page_section)
+    content_for(:section) { h page_section }
+  end
 end
