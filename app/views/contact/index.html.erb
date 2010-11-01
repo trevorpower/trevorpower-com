@@ -6,7 +6,8 @@
 
 <div class="content">
   Send me an email:
-  <% form_for :email, :url => send_mail_path do |f| %>
+  <% form_for @message, :url => contact_url do |f| %>
+    <%= f.error_messages %>
     <%= f.label :name %>
     <%= f.text_field :name, :size => 60 %><br />
     <%= f.label :address, 'Email' %>

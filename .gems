@@ -3,3 +3,4 @@ mongo_mapper
 aws-s3
 mm-multi-parameter-attributes
 nokogiri
+activerecord-tabless

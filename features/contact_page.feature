@@ -11,6 +11,7 @@ Scenario: Link to twitter
 Scenario: Send author a message
   When I fill in "name" with "Joe Blogs"
   And I fill in "email" with "joe.bloggs@example.com"
+  And I fill in "subject" with "Hello"
   And I fill in "message" with "Hello, this is a very nice website."
   And I press "Send"
   Then 1 email should be delivered to contact@trevorpower.com
