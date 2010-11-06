@@ -4,3 +4,7 @@ aws-s3
 mm-multi-parameter-attributes
 nokogiri
 activerecord-tableless
+webrat
+sqlite3
+pickle
+database_cleaner
