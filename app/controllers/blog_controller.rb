@@ -1,6 +1,6 @@
 class BlogController < ApplicationController
   def index
-    @posts = Post.all(:published => true)
+    @posts = Post.all(:published => true, :order => 'published_on DESC')
 
     respond_to do |format|
       format.html # blog.html.erb

@@ -7,4 +7,7 @@ class PostTest < ActiveSupport::TestCase
   test "the slug is lowercase" do
     assert_equal "tolower", Post.create_slug("TOLOWER")
   end
+  test "the slug removes commas" do
+    assert_equal "simpletitle", Post.create_slug("simple,title")
+  end
 end
