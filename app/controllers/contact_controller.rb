@@ -6,6 +6,8 @@ class ContactController < ApplicationController
       @message = Message.new params[:message]
       if (@message.valid?)
         Emailer::deliver_contact_email(@message)
+        flash[:notice] = 'Message sent successfully'
+        @message = Message.new
       end
     end
   end
