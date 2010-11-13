@@ -23,13 +23,20 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
+  config.gem "nokogiri"
   config.gem "aws-s3", :lib => "aws/s3"
   config.gem "mongo_mapper"
   config.gem "mm-multi-parameter-attributes"
-  config.gem "sqlite3"
   config.gem "database_cleaner"
   config.gem "pickle"
   config.gem "webrat"
+  config.gem "cucumber-rails", :lib => "cucumber"
+
+  config.action_mailer.smtp_settings = {
+    :address => ENV['SMTP_SERVER'],
+    :user_name => ENV['SMTP_USER_NAME'],
+    :password => ENV['SMTP_PASSWORD']
+  }
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

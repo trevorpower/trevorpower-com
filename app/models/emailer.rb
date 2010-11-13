@@ -1,7 +1,7 @@
 class Emailer < ActionMailer::Base
 
   def contact_email(contact)
-    @recipients = "contact@trevorpower.com"
+    @recipients = "email@trevorpower.com"
     @from = contact.name + " <" + contact.address + ">"
     @subject = "[via trevorpower.com]" + contact.subject
     @sent_on = Time.now
