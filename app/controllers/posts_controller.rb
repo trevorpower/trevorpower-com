@@ -3,11 +3,9 @@ class PostsController < AdminController
   before_filter :authenticate, :except => [ :blog, :show ]
 
   def index
-    @posts = Post.all
+    @posts = Post.all :order => 'published_on DESC'
   end
 
-  # GET /posts/new
-  # GET /posts/new.xml
   def new
     @post = Post.new
 
