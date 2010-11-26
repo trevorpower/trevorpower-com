@@ -183,4 +183,95 @@ class ImportTest < ActiveSupport::TestCase
     assert_equal false, post.comments[0].published
     assert_equal false, post.comments[1].published
   end
+
+  ComplexPostWithCommentRss = %q{<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"  xmlns:wp="http://wordpress.org/export/1.0/">
+    <channel>
+<item>
+<title>Have too much money?</title>
+<link>http://blog.trevorpower.com/index.php/have-too-much-money/</link>
+<pubDate>Thu, 19 Jan 2006 14:45:00 +0000</pubDate>
+<dc:creator><![CDATA[trevorpower]]></dc:creator>
+
+		<category><![CDATA[Uncategorized]]></category>
+
+		<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+
+		<category domain="tag"><![CDATA[Donate]]></category>
+
+		<category domain="tag" nicename="donate"><![CDATA[Donate]]></category>
+
+		<category domain="tag"><![CDATA[Money]]></category>
+
+		<category domain="tag" nicename="money"><![CDATA[Money]]></category>
+
+		<category domain="tag"><![CDATA[Paypal]]></category>
+
+		<category domain="tag" nicename="paypal"><![CDATA[Paypal]]></category>
+
+<guid isPermaLink="false">http://trevorpower.com/blog/?p=14</guid>
+<description></description>
+<content:encoded><![CDATA[Just give it to me!<br /><br /><center><br /><form action="https://www.paypal.com/cgi-bin/webscr" method="post"><br /><input type="hidden" name="cmd" value="_xclick"><br /><input type="hidden" name="business" value="trevor_power@yahoo.com"><br /><input type="hidden" name="item_name" value="Trevor Power"><br /><input type="hidden" name="item_number" value="TP"><br /><input type="hidden" name="no_note" value="1"><br /><input type="hidden" name="currency_code" value="EUR"><br /><input type="hidden" name="tax" value="0"><br /><input type="hidden" name="bn" value="PP-DonationsBF"><br /><input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-butcc-donate.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"><br /></form><br /><i>You will be paying securely via PayPal.</i><br /></center>]]></content:encoded>
+<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+<wp:post_id>14</wp:post_id>
+<wp:post_date>2006-01-19 21:45:00</wp:post_date>
+<wp:post_date_gmt>2006-01-19 14:45:00</wp:post_date_gmt>
+<wp:comment_status>open</wp:comment_status>
+<wp:ping_status>open</wp:ping_status>
+<wp:post_name>have-too-much-money</wp:post_name>
+<wp:status>publish</wp:status>
+<wp:post_parent>0</wp:post_parent>
+<wp:menu_order>0</wp:menu_order>
+<wp:post_type>post</wp:post_type>
+<wp:post_password></wp:post_password>
+<wp:postmeta>
+<wp:meta_key>blogger_blog</wp:meta_key>
+<wp:meta_value>blog.trevorpower.com</wp:meta_value>
+</wp:postmeta>
+<wp:postmeta>
+<wp:meta_key>blogger_author</wp:meta_key>
+<wp:meta_value>Trevor Powerhttp://www.blogger.com/profile/11004501310130398775noreply@blogger.com</wp:meta_value>
+</wp:postmeta>
+<wp:postmeta>
+<wp:meta_key>blogger_permalink</wp:meta_key>
+<wp:meta_value>/2006/01/have-too-much-money.html</wp:meta_value>
+</wp:postmeta>
+<wp:postmeta>
+<wp:meta_key>_edit_lock</wp:meta_key>
+<wp:meta_value>1251641737</wp:meta_value>
+</wp:postmeta>
+<wp:postmeta>
+<wp:meta_key>_edit_last</wp:meta_key>
+<wp:meta_value>1</wp:meta_value>
+</wp:postmeta>
+<wp:comment>
+<wp:comment_id>5</wp:comment_id>
+<wp:comment_author><![CDATA[Trevor Power]]></wp:comment_author>
+<wp:comment_author_email></wp:comment_author_email>
+<wp:comment_author_url></wp:comment_author_url>
+<wp:comment_author_IP></wp:comment_author_IP>
+<wp:comment_date>2006-01-19 23:28:00</wp:comment_date>
+<wp:comment_date_gmt>2006-01-19 16:28:00</wp:comment_date_gmt>
+<wp:comment_content><![CDATA[Thanks, Brian, for your <i>two cents</i>. Unfortunately, paypal took it all for fees.]]></wp:comment_content>
+<wp:comment_approved>1</wp:comment_approved>
+<wp:comment_type></wp:comment_type>
+<wp:comment_parent>0</wp:comment_parent>
+<wp:comment_user_id>0</wp:comment_user_id>
+</wp:comment>
+	</item>
+    </channel>
+  </rss>
+  }
+
+  def import_complex_post_with_one_comment
+    Import.import_posts_from_rss ComplexPostWithCommentRss
+    assert_equal 1, Post.all.count
+    post = Post.all.first
+    assert_equal 1, post.comments.count
+    post
+  end
+
+  test "can import comment from complex post" do
+    post = import_complex_post_with_one_comment
+  end
+
 end
