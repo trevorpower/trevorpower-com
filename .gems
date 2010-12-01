@@ -1,5 +1,5 @@
 rails -v 2.3.8
-mongo_mapper
+mongo_mapper -v 0.8.6
 aws-s3
 mm-multi-parameter-attributes
 nokogiri
@@ -7,4 +7,3 @@ activerecord-tableless
 sqlite3
 pickle
 database_cleaner
-cucumber-rails
