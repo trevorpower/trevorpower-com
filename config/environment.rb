@@ -29,8 +29,6 @@ Rails::Initializer.run do |config|
   config.gem "mm-multi-parameter-attributes"
   config.gem "database_cleaner"
   config.gem "pickle"
-  config.gem "webrat"
-  #config.gem "cucumber-rails", :lib => "cucumber"
 
   config.action_mailer.smtp_settings = {
     :address => ENV['SMTP_SERVER'],
