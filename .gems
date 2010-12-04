@@ -4,6 +4,6 @@ aws-s3 -v 0.6.2
 mm-multi-parameter-attributes
 nokogiri
 activerecord-tableless
-sqlite3
+sqlite3-ruby
 pickle
 database_cleaner
