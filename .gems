@@ -1,6 +1,6 @@
 rails -v 2.3.8
 mongo_mapper -v 0.8.6
-aws-s3
+aws-s3 -v 0.6.2
 mm-multi-parameter-attributes
 nokogiri
 activerecord-tableless
