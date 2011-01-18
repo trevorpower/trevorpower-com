@@ -7,3 +7,5 @@ activerecord-tableless
 sqlite3-ruby
 pickle
 database_cleaner
+webrat
+cucumber-rails
