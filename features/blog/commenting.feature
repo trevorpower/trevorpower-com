@@ -55,10 +55,11 @@ Feature: Commenting
     
   Scenario: Comment contains angle brackets
     Given I have a post with title "Another interesting fact" and the comments:
-    | body                                              | name      | email            |
-    | This is the correct HTML to use, <h1>Heading</h1> | spammer   | email@spam.org   |
+    | body                                   		 | name      | email            |
+    | This is malicious <script>alert('hello');</script> | spammer   | email@spam.org   |
     And I am on the "Another interesting fact" post
-    Then I should see "This is the correct HTML to use, <h1>Heading</h1>"
+    Then I should see "This is malicious alert('hello');"
+    And The page source should not contain "<script>alert('hello');</script>"
 
   Scenario: User is told that the url must contain "http://"
     Given I have a post with title "Another interesting fact"

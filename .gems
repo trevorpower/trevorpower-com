@@ -9,3 +9,4 @@ pickle
 database_cleaner
 webrat
 cucumber-rails
+sanitize
