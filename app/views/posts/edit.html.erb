@@ -5,7 +5,7 @@
       <%= f.label :title %>
       <%= f.text_field :title %>
       <%= f.label :slug %>
-      <%= f.text_field :slug %>
+      <%= f.text_field :slug, :size => "40x20" %>
       <%= f.label :body %>
       <%= f.text_area :body %>
       <%= f.label :published %>
@@ -14,4 +14,5 @@
       <%= f.date_select :published_on %><br />
       <%= f.submit 'Update' %>
   <% end %>
+  <br clear="both"/>
 </div>
