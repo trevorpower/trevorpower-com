@@ -1,16 +1,15 @@
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
-  test "the slug replaces spaces with hyphens" do
-    assert_equal "simple-title", Post.create_slug("simple title")
+  def assert_creates_slug(title, slug)
+    assert_equal slug, Post.create_slug(title)
   end
-  test "the slug is lowercase" do
-    assert_equal "tolower", Post.create_slug("TOLOWER")
-  end
-  test "the slug removes commas" do
-    assert_equal "simple-title", Post.create_slug("simple,title")
-  end
-  test "the slug removes slashes and question marks" do
-    assert_equal "simple-title", Post.create_slug("simple/title?")
+  
+  test "that slugs created as expected" do
+    assert_creates_slug "Simple Title", "simple-title"
+    assert_creates_slug "UPPERCASE TITLE", "uppercase-title"
+    assert_creates_slug "comma, seperated, list", "comma-seperated-list"
+    assert_creates_slug "slash/question mark?", "slash-question-mark"
+    assert_creates_slug "---?complex-questions?-&-answers--with, symbols-?", "complex-questions-answers-with-symbols"
   end
 end
