@@ -8,6 +8,9 @@ class PostTest < ActiveSupport::TestCase
     assert_equal "tolower", Post.create_slug("TOLOWER")
   end
   test "the slug removes commas" do
-    assert_equal "simpletitle", Post.create_slug("simple,title")
+    assert_equal "simple-title", Post.create_slug("simple,title")
+  end
+  test "the slug removes slashes and question marks" do
+    assert_equal "simple-title", Post.create_slug("simple/title?")
   end
 end
