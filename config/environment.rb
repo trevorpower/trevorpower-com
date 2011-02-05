@@ -30,6 +30,7 @@ Rails::Initializer.run do |config|
   config.gem "database_cleaner"
   config.gem "pickle"
   config.gem "sanitize"
+  config.gem "html_truncator"
 
   config.action_mailer.smtp_settings = {
     :address => ENV['SMTP_SERVER'],

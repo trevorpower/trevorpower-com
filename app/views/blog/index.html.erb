@@ -8,7 +8,8 @@
     <div class='content'>
       <h2><%= link_to post.title, blog_post_path(:slug => post.slug) %></h2>
       <span class='date'><%=h post.published_on.to_s(:public) %></span><br />
-      <%= post.body %>
+      <%= HTML_Truncator.truncate(post.body, 120, "...<br />#{link_to('read more', blog_post_path(:slug => post.slug))}") %>
+      <br clear="both"/>
     </div>
       
   <% end %>
