@@ -11,5 +11,6 @@ class PostTest < ActiveSupport::TestCase
     assert_creates_slug "comma, seperated, list", "comma-seperated-list"
     assert_creates_slug "slash/question mark?", "slash-question-mark"
     assert_creates_slug "---?complex-questions?-&-answers--with, symbols-?", "complex-questions-answers-with-symbols"
+    assert_creates_slug "what's up with google's site","whats-up-with-googles-site"
   end
 end
