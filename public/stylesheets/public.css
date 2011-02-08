@@ -26,6 +26,7 @@ h1 {
   background: darkolivegreen;
   margin-top: 0px;
   padding-left: 10px;
+  clear: both;
 }
 
 a, a:visited {
@@ -38,6 +39,15 @@ a, a:visited {
   background: darkolivegreen;
 }
 
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  float: left;
+}
 .draft {
 }
 
@@ -51,6 +61,10 @@ a, a:visited {
   margin-top: 0px;
   padding: 8px;
   padding-top: 0px;
+}
+
+.body{
+  clear: both;
 }
 
 h2{

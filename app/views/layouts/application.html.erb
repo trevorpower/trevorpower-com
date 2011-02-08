@@ -32,17 +32,21 @@
 
       <h1><%= yield(:section) || yield(:title) %></h1>
       <div class="menu">
-        <%= link_to 'Home', home_path %>
-        <%= link_to 'Blog', blog_path %>
-        <%= link_to 'About', about_path %>
-        <%= link_to 'Contact', contact_path %>
+        <ul>
+          <li><%= link_to 'Home', home_path %></li>
+          <li><%= link_to 'Blog', blog_path %></li>
+          <li><%= link_to 'About', about_path %></li>
+          <li><%= link_to 'Contact', contact_path %></li>
+        </ul>
       </div>
-
+      <div clear="both"></div>      
     </div>
 
     <p class="notice"><%= flash[:notice] %></p>
     
-    <%= yield %>
+    <div class="body">
+      <%= yield %>
+    </div>
   </body>
     <script type="text/javascript">
       function path()
