@@ -1,9 +1,12 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def area(page_area)
+    @area = page_area
+  end
+  def navigate_to(name, url, area)
+    link_to name, url, :class => @area == area ? 'selected' : nil
+  end
   def title(page_title)
     content_for(:title) { h page_title }
-  end
-  def section(page_section)
-    content_for(:section) { h page_section }
   end
 end

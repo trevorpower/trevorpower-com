@@ -5,22 +5,19 @@ body {
   margin: 0px;
 }
 
+#logo {
+  padding: 8px;
+}
+
 #logo, #logo a {
   text-align: center;
-  padding: 8px;
   font-size: 36px; 
   font-weight: bold;
   text-decoration: none;
-}
-
-h1 {
   background: darkolivegreen;
   color: white;
-  padding: 10px;
-  margin-bottom: 2px;
-  margin-top: 0px;
 }
-  
+
 .notice {
   color: white;
   background: darkolivegreen;
@@ -34,20 +31,40 @@ a, a:visited {
   line-height: 28px;
 }
 
+.menu {
+  border-top: 4px solid darkolivegreen;
+  border-bottom: 4px solid darkolivegreen;
+}
+.menu a {
+  padding: 3px 7px;
+  font-size: 16pt;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 20px;
+}
 .menu a:hover {
   color: white;
   background: darkolivegreen;
 }
 
+.menu a.selected {
+  color: white;
+  background: darkolivegreen;
+  text-decoration: none;
+}
+  
 .menu ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 .menu li {
   float: left;
+  margin: 0px;
+  padding: 0px;
 }
+
 .draft {
 }
 
@@ -158,9 +175,10 @@ td {
   list-style: square;
 }
 
-#header a {
-  margin: 0px 6px 0px 10px;
+#header {
+  padding-bottom: 8px;
 }
+
 
 form {
   width: 620px;

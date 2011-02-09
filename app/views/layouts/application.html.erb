@@ -30,16 +30,15 @@
     <div id='header'>
       <div id='logo'><%= link_to 'Trevor Power', home_path %></div>
 
-      <h1><%= yield(:section) || yield(:title) %></h1>
       <div class="menu">
         <ul>
-          <li><%= link_to 'Home', home_path %></li>
-          <li><%= link_to 'Blog', blog_path %></li>
-          <li><%= link_to 'About', about_path %></li>
-          <li><%= link_to 'Contact', contact_path %></li>
+          <li><%= navigate_to 'Home', home_path, :home %></li>
+          <li><%= navigate_to 'Blog', blog_path, :blog %></li>
+          <li><%= navigate_to 'About', about_path, :about %></li>
+          <li><%= navigate_to 'Contact', contact_path, :contact %></li>
         </ul>
+        <div style="clear: both;"></div>
       </div>
-      <div clear="both"></div>      
     </div>
 
     <p class="notice"><%= flash[:notice] %></p>

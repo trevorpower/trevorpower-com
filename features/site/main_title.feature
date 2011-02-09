@@ -18,11 +18,11 @@ Examples:
   | "Why I really like Ruby" post | Why I really like Ruby - Trevor Power |
   | blog page as atom             | Trevor Power's blog                   |
 
-Scenario Outline: Pages contain correct heading 1
+Scenario Outline: Visiting a page shows the correct area selected in the navigation bar
 Given I am on the <Page>
-Then I should see "<Heading>" within "h1"
+Then I should see "<Area>" selected in the navigation bar
 Examples:
-  | Page                              | Heading |
+  | Page                              | Area    |
   | home page                         | Home	|
   | about page                        | About   |
   | contact page                      | Contact |
