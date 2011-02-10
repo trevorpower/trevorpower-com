@@ -5,17 +5,6 @@ body {
   margin: 0px;
 }
 
-div[data-role=header] h1 {
-  margin: 0px;
-  padding: 10px;
-  text-align: center;
-  font-size: 36px; 
-  font-weight: bold;
-  text-decoration: none;
-  background: darkolivegreen;
-  color: white;
-}
-
 .notice {
   color: white;
   background: darkolivegreen;
