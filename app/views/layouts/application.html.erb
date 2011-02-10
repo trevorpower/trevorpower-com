@@ -12,9 +12,9 @@
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
   </head>
   <body>
-    <div data-role="page">
-      <div data-role='header'>
-        <h1>Trevor Power</h1>
+    <div data-role="page" data-theme="c">
+      <div data-role='header' data-theme="a">
+        <h2>Trevor Power</h2>
 
         <div data-role="navbar">
           <ul>
@@ -23,16 +23,11 @@
             <li><%= navigate_to 'About', about_path, :about %></li>
             <li><%= navigate_to 'Contact', contact_path, :contact %></li>
           </ul>
-          <div style="clear: both;"></div>
         </div>
       </div>
-      <div data-role='content'>
+      <div data-role="content">
 
-        <p class="notice"><%= flash[:notice] %></p>
-      
-        <div class="body">
           <%= yield %>
-        </div>
       </div>
       <script type="text/javascript">
         function path()

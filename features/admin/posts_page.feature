@@ -107,6 +107,6 @@ Scenario: Create new post with simple HTML in the body and title
   And I fill in "body" with "I <u>don't</u> like it when '&lt;p&gt;' tags &amp; '&amp;' characters are not handled properly." 
   And I press "Create"
   And I go to the "<p> tags & '&' characters" post
-  Then I should see "<p> tags & '&' characters" within "h2"
+  Then I should see "<p> tags & '&' characters" within "h1"
   #And I should see "I don't like it when '<p>' tags & '&' characters are not handled properly."
   

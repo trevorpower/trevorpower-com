@@ -1,16 +1,18 @@
 <% title "Blog" %>
 <% area :blog %>
-  <div class='content'>
-    <a href="http://feeds.feedburner.com/trevorpower">Subscribe</a> to this blog.
-  </div>
 
-  <% @posts.each do |post| %>
+  <ul data-role="listview">
 
-    <div class='content'>
-      <h2><%= link_to post.title, blog_post_path(:slug => post.slug), :'data-ajax' => 'false' %></h2>
-      <span class='date'><%=h post.published_on.to_s(:public) %></span><br />
-      <%= HTML_Truncator.truncate(post.body, 120, "...<br />#{link_to('read more', blog_post_path(:slug => post.slug))}") %>
-      <br clear="both"/>
-    </div>
-      
-  <% end %>
+    <li data-role="listdevider" data-theme="e"><a href="http://feeds.feedburner.com/trevorpower">Subscribe</a> to this blog</li>
+
+    <% @posts.each do |post| %>
+  
+      <li>
+        <h2><%= link_to post.title, blog_post_path(:slug => post.slug), :'data-ajax' => 'false' %></h2>
+        <p class="ui-li-aside"><%=h post.published_on.to_s(:public) %></p>
+        <p><%= HTML_Truncator.truncate(Sanitize.clean(post.body), 80, "...") %></p>
+        <%= link_to('read more', blog_post_path(:slug => post.slug), :'data-ajax' => 'false' ) %>
+      </li>
+        
+    <% end %>
+  </ul>

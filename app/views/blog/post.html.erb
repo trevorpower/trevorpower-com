@@ -1,6 +1,7 @@
 <% title @post.title %>
 <% area :blog %>
 
+        <p class="notice"><%= flash[:notice] %></p>
   <h1><%= link_to h(@post.title), blog_post_path(:slug => @post.slug), :'data-ajax' => 'false' %></h1>
   <span class='date'><%=h @post.published_on.to_s(:public) %></span><br />
   <%= @post.body %>
@@ -8,8 +9,8 @@
 <%= render :partial => @comments %>
  
   <% unless @comment_saved %>
-    <div data-role='collapsible' data-collapsed='true' data-theme='c'>
-    <h3>Leave a Comment</h3>
+    <div data-role='header' data-theme="b" data-backbtn="false"><h3>Leave a Comment</h3></div>
+    <div class="ui-body ui-body-b">
     <% form_for @comment, :url => blog_post_path(:slug => @post.slug) do |f| %>
       <%= f.error_messages %>
       <%= f.label :name %>
@@ -24,6 +25,6 @@
     <% end %>
     </div>
   <% else %>
-    Your comment has been saved.
+    <div data-role='header' data-theme="e"><h3>Your comment has been saved</h3></div>
   <% end %>
 
