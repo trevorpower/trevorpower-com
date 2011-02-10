@@ -18,47 +18,6 @@ a, a:visited {
   line-height: 28px;
 }
 
-.menu {
-  border-top: 4px solid darkolivegreen;
-  border-bottom: 4px solid darkolivegreen;
-}
-.menu a {
-  padding: 3px 7px;
-  font-size: 16pt;
-  font-weight: bold;
-  text-decoration: none;
-  margin-left: 20px;
-}
-.menu a:hover {
-  color: white;
-  background: darkolivegreen;
-}
-
-.menu a.selected {
-  color: white;
-  background: darkolivegreen;
-  text-decoration: none;
-}
-  
-.menu ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-
-.menu li {
-  float: left;
-  margin: 0px;
-  padding: 0px;
-}
-
-.draft {
-}
-
-.published {
-  font-weight: bold; 
-}
-
 .content{
   border-left: 10px solid darkolivegreen; 
   margin-bottom: 10px;
@@ -108,23 +67,6 @@ tr {
 td {
   padding: 1px 6px 1px 6px;
 }
-.action {
-  text-align: center;
-  background: darkolivegreen;
-  color: white;
-}
-.action  a {
-  font-weight: normal;
-  text-decoration: none;
-  padding: 0px 6px 0px 10px;
-  display: block;
-}
-
-.action  a:hover {
-  color: darkolivegreen;
-  background: white;
-}
-
 .fieldWithErrors label {
   padding: 2px;
   background-color: darkolivegreen;
@@ -160,44 +102,4 @@ td {
 #errorExplanation ul li {
   font-size: 12px;
   list-style: square;
-}
-
-form {
-  width: 620px;
-  margin-top: 15px;
-}
-
-form input, form textarea {
-  padding: 5px;
-  width: 471px;
-  margin: 0px 0px 10px 0px;
-  border: 2px solid darkolivegreen;
-}
-
-form textarea {
-  height: 90px;
-}
-
-/*form textarea:focus, form input:focus {
-  border: 2px solid #900;
-}*/
-
-form input[type=submit]{
-  width: 100px;
-  float: right;
-  color: white;
-  background: darkolivegreen;
-}
-
-form input[type=submit]:hover {
-  background: darkolivegreen;
-}
-
-label {
-  float: left;
-  text-align: right;
-  margin-right: 15px;
-  width: 120px;
-  padding-top: 5px;
-  font-size: 1.4em;
 }

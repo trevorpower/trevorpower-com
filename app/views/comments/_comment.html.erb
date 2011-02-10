@@ -1,5 +1,5 @@
-<% div_for comment, :class => 'content' do %>
-  <h3><%= comment.normalized_url ? (link_to comment.name, comment.normalized_url) : comment.name%> </h3>
+<% div_for comment, :class => 'ui-body ui-body-b' do %>
+  <h4><%= comment.normalized_url ? (link_to comment.name, comment.normalized_url) : comment.name%> </h3>
   <span class='date'><%=h comment.published_on.to_s(:public) %></span><br />
   <%= Sanitize.clean(comment.body, Sanitize::Config::BASIC) %>
 <% end %>

@@ -1,17 +1,15 @@
 <% title @post.title %>
 <% area :blog %>
 
-<div class='content'>
-  <h2><%= link_to h(@post.title), blog_post_path(:slug => @post.slug), :'data-ajax' => 'false' %></h2>
+  <h1><%= link_to h(@post.title), blog_post_path(:slug => @post.slug), :'data-ajax' => 'false' %></h1>
   <span class='date'><%=h @post.published_on.to_s(:public) %></span><br />
   <%= @post.body %>
-</div>
 
 <%= render :partial => @comments %>
  
-<div class="content">
   <% unless @comment_saved %>
-    Leave a comment:
+    <div data-role='collapsible' data-collapsed='true' data-theme='c'>
+    <h3>Leave a Comment</h3>
     <% form_for @comment, :url => blog_post_path(:slug => @post.slug) do |f| %>
       <%= f.error_messages %>
       <%= f.label :name %>
@@ -23,9 +21,9 @@
       <%= f.label :body %>
       <%= f.text_area :body %>
       <%= f.submit 'Add Comment' %>
-      <div style="clear: both;"></div>
     <% end %>
+    </div>
   <% else %>
     Your comment has been saved.
   <% end %>
-</div>
+
