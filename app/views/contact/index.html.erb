@@ -2,12 +2,11 @@
 <% area :contact %>
 
         <p class="notice"><%= flash[:notice] %></p>
-<div class="content">
-  Follow or reply to <a href="http://twitter.com/trevorpower">me on twitter</a>.
-</div>
+<h1>Twitter</h1>
+<p>You can follow or reply to me on twitter where I go by the name <a href="http://twitter.com/trevorpower">@trevorpower</a></p>
 
-<div class="content">
-  Send me an email:
+<h1>Email</h1>
+<p>You can send me an email using the following form:</p>
   <% form_for @message, :url => contact_url do |f| %>
     <%= f.error_messages %>
     <%= f.label :name %>
@@ -21,5 +20,4 @@
     <%= submit_tag "Send"%>
     <div style='clear: both;'/>
   <% end %>
-</div>
 
