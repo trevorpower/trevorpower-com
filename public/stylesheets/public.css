@@ -5,11 +5,9 @@ body {
   margin: 0px;
 }
 
-#logo {
-  padding: 8px;
-}
-
-#logo, #logo a {
+div[data-role=header] h1 {
+  margin: 0px;
+  padding: 10px;
   text-align: center;
   font-size: 36px; 
   font-weight: bold;
@@ -174,11 +172,6 @@ td {
   font-size: 12px;
   list-style: square;
 }
-
-#header {
-  padding-bottom: 8px;
-}
-
 
 form {
   width: 620px;

@@ -13,75 +13,77 @@
     <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
   </head>
   <body>
-    <div id='header'>
-      <div id='logo'><%= link_to 'Trevor Power', home_path %></div>
+    <div data-role="page">
+      <div data-role='header'>
+        <h1>Trevor Power</h1>
 
-      <div class="menu">
-        <ul>
-          <li><%= navigate_to 'Home', home_path, :home %></li>
-          <li><%= navigate_to 'Blog', blog_path, :blog %></li>
-          <li><%= navigate_to 'About', about_path, :about %></li>
-          <li><%= navigate_to 'Contact', contact_path, :contact %></li>
-        </ul>
-        <div style="clear: both;"></div>
+        <div class="menu">
+          <ul>
+            <li><%= navigate_to 'Home', home_path, :home %></li>
+            <li><%= navigate_to 'Blog', blog_path, :blog %></li>
+            <li><%= navigate_to 'About', about_path, :about %></li>
+            <li><%= navigate_to 'Contact', contact_path, :contact %></li>
+          </ul>
+          <div style="clear: both;"></div>
+        </div>
       </div>
-    </div>
 
-    <p class="notice"><%= flash[:notice] %></p>
-    
-    <div class="body">
-      <%= yield %>
+      <p class="notice"><%= flash[:notice] %></p>
+      
+      <div class="body">
+        <%= yield %>
+      </div>
+      <script type="text/javascript">
+        function path()
+        {
+          var args = arguments, result = [];
+              
+          for(var i = 0; i < args.length; i++)
+              result.push(args[i].replace('@', 'http://alexgorbatchev.com/pub/sh/current/scripts/'));
+          return result
+        };
+  
+        SyntaxHighlighter.autoloader.apply(null, path(
+          'applescript            @shBrushAppleScript.js',
+          'actionscript3 as3      @shBrushAS3.js',
+          'bash shell             @shBrushBash.js',
+          'coldfusion cf          @shBrushColdFusion.js',
+          'cpp c                  @shBrushCpp.js',
+          'c# c-sharp csharp      @shBrushCSharp.js',
+          'css                    @shBrushCss.js',
+          'delphi pascal          @shBrushDelphi.js',
+          'diff patch pas         @shBrushDiff.js',
+          'erl erlang             @shBrushErlang.js',
+          'groovy                 @shBrushGroovy.js',
+          'java                   @shBrushJava.js',
+          'jfx javafx             @shBrushJavaFX.js',
+          'js jscript javascript  @shBrushJScript.js',
+          'perl pl                @shBrushPerl.js',
+          'php                    @shBrushPhp.js',
+          'text plain             @shBrushPlain.js',
+          'py python              @shBrushPython.js',
+          'ruby rails ror rb      @shBrushRuby.js',
+          'sass scss              @shBrushSass.js',
+          'scala                  @shBrushScala.js',
+          'sql                    @shBrushSql.js',
+          'vb vbnet               @shBrushVb.js',
+          'xml xhtml xslt html    @shBrushXml.js'
+        ));
+      SyntaxHighlighter.all();
+      </script>
+      <script type="text/javascript">
+      
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-10968948-2']);
+        _gaq.push(['_trackPageview']);
+      
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      
+      </script>
     </div>
-    <script type="text/javascript">
-      function path()
-      {
-        var args = arguments, result = [];
-            
-        for(var i = 0; i < args.length; i++)
-            result.push(args[i].replace('@', 'http://alexgorbatchev.com/pub/sh/current/scripts/'));
-        return result
-      };
-
-      SyntaxHighlighter.autoloader.apply(null, path(
-        'applescript            @shBrushAppleScript.js',
-        'actionscript3 as3      @shBrushAS3.js',
-        'bash shell             @shBrushBash.js',
-        'coldfusion cf          @shBrushColdFusion.js',
-        'cpp c                  @shBrushCpp.js',
-        'c# c-sharp csharp      @shBrushCSharp.js',
-        'css                    @shBrushCss.js',
-        'delphi pascal          @shBrushDelphi.js',
-        'diff patch pas         @shBrushDiff.js',
-        'erl erlang             @shBrushErlang.js',
-        'groovy                 @shBrushGroovy.js',
-        'java                   @shBrushJava.js',
-        'jfx javafx             @shBrushJavaFX.js',
-        'js jscript javascript  @shBrushJScript.js',
-        'perl pl                @shBrushPerl.js',
-        'php                    @shBrushPhp.js',
-        'text plain             @shBrushPlain.js',
-        'py python              @shBrushPython.js',
-        'ruby rails ror rb      @shBrushRuby.js',
-        'sass scss              @shBrushSass.js',
-        'scala                  @shBrushScala.js',
-        'sql                    @shBrushSql.js',
-        'vb vbnet               @shBrushVb.js',
-        'xml xhtml xslt html    @shBrushXml.js'
-      ));
-     SyntaxHighlighter.all();
-    </script>
-    <script type="text/javascript">
-    
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-10968948-2']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    
-    </script>
   </body>
 </html>
