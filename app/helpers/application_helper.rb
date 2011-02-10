@@ -4,7 +4,7 @@ module ApplicationHelper
     @area = page_area
   end
   def navigate_to(name, url, area)
-    link_to name, url, :class => @area == area ? 'selected' : nil, :'data-ajax' => 'false'
+    link_to name, url, :class => @area == area ? 'ui-btn-active' : nil, :'data-ajax' => 'false'
   end
   def title(page_title)
     content_for(:title) { h page_title }

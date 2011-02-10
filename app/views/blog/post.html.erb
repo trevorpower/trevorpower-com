@@ -2,7 +2,7 @@
 <% area :blog %>
 
 <div class='content'>
-  <h2><%= link_to h(@post.title), blog_post_path(:slug => @post.slug) %></h2>
+  <h2><%= link_to h(@post.title), blog_post_path(:slug => @post.slug), :'data-ajax' => 'false' %></h2>
   <span class='date'><%=h @post.published_on.to_s(:public) %></span><br />
   <%= @post.body %>
 </div>
