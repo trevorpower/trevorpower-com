@@ -2,15 +2,14 @@
 <% area :blog %>
 
         <p class="notice"><%= flash[:notice] %></p>
-  <h1><%= link_to h(@post.title), blog_post_path(:slug => @post.slug), :'data-ajax' => 'false' %></h1>
-  <span class='date'><%=h @post.published_on.to_s(:public) %></span><br />
+  <h1><%= h(@post.title) %></h1>
+  <h3><%=h @post.published_on.to_s(:public) %></h3><br />
   <%= @post.body %>
 
-<%= render :partial => @comments %>
+  <%= render :partial => @comments %>
  
   <% unless @comment_saved %>
-    <div data-role='header' data-theme="b" data-backbtn="false"><h3>Leave a Comment</h3></div>
-    <div class="ui-body ui-body-b">
+    <h3>Leave a Comment</h3>
     <% form_for @comment, :url => blog_post_path(:slug => @post.slug) do |f| %>
       <%= f.error_messages %>
       <%= f.label :name %>
@@ -23,8 +22,7 @@
       <%= f.text_area :body %>
       <%= f.submit 'Add Comment' %>
     <% end %>
-    </div>
   <% else %>
-    <div data-role='header' data-theme="e"><h3>Your comment has been saved</h3></div>
+    <h3>Your comment has been saved</h3>
   <% end %>
 
