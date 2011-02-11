@@ -1,23 +1,19 @@
 <% title "Posts" %>
-<div class="content">
-  <%= link_to 'New post', new_post_path %>
-</div>
-  <table>
+<%= link_to 'New post', new_post_path, :'data-role'=>'button' %>
+<ul data-role="listview">
   <% @posts.each do |post| %>
-  <tr id="<%= post.dom_id %>" class="<%= post.published ? 'published' : 'draft' %>">
-    <td><%= post.published_on.to_s(:admin) %></td>
-    <td>
-      <%= link_to post.title, blog_post_path(:slug => post.slug ) %>
-    </td>
-    <td class="action"><%= link_to 'Edit', edit_post_path(post) %></td>
+  <li id="<%= post.dom_id %>" class="<%= post.published ? 'published' : 'draft' %>">
+    <h3><%= link_to post.title, blog_post_path(:slug => post.slug ) %></h3>
+    <p><%= post.published_on.to_s(:admin) %></p>
+    <div data-inline="true">
+    <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete%>
     <% if post.published %>
-      <td class="action"><%= link_to 'Hide', hide_post_path(post), :method => :put %></td>
+      <%= link_to 'Hide', hide_post_path(post), :method => :put%>
     <% else %>
-      <td class="action"><%= link_to 'Publish', publish_post_path(post), :method => :put %></td>
+      <%= link_to 'Publish', publish_post_path(post), :method => :put%>
     <% end %>
-    <td class="action"><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    </div>
+    <%= link_to 'Edit', edit_post_path(post) %>
+  </li>
   <% end %>
-  </table>
-<br />
-
+</ul>

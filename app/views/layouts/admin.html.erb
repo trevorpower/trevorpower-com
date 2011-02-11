@@ -1,28 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title><%= yield(:title) || "Admin" %> - Admin - Trevor Power</title>
-    <%= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'admin' %>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
   </head>
   <body>
-    <div id="header">     
-      <%= link_to 'Website', home_path %>
-      <%= link_to 'Log Out', logout_path %>
+    <div data-role="page" data-theme="a">
+      <div data-role="header" data-theme="b">
+        <%= link_to 'Website', home_path %>
+        <%= link_to 'Log Out', logout_path %>
 
-      <h1><%= yield(:title) %></h1>
-
-      <%= link_to 'Posts', posts_path %>
-      <%= link_to 'Comments', comments_path %>
-      <%= link_to 'Images', images_path %>
-    </div>
+        <h2><%= yield(:title) %></h1>
+        <div data-role="navbar"> 
+          <ul>
+            <li><%= navigate_to 'Posts', posts_path, :posts %></li>
+            <li><%= navigate_to 'Comments', comments_path, :comments %></li>
+            <li><%= navigate_to 'Images', images_path, :images %></li>
+          </li>
+        </div>
+      </div>
 
     <p class="notice"><%= flash[:notice] %></p>
 
     <%= yield %>
     
+    </div>
   </body>
 </html>
