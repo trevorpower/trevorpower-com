@@ -1,20 +1,16 @@
 <% title "Images" %>
 
-<div class="content">
   <% form_tag(images_url, :method => :post, :multipart => true) do %>
     <%= file_field_tag 'picture' %>
     <%= submit_tag 'Upload' %>
   <% end %>
-</div>
 
-<table>
-  <% @images.each do |image| %> 
-  <tr id="<%= image.dom_id %>">
-    <td><img src="<%= image.url %>" width="60px"/></td>
-    <td><%= image.url %></td>
-    <td class="action"><%= link_to 'Delete', image_path(image.name), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<ul data-role="listview">
+  <% @images.each do |image| %>
+  <li id="<%= image.dom_id %>">
+    <img src="<%= image.url %>"/>
+    <h3><%= image.url %></h3>
+    <%= link_to 'Delete', image_path(image.name), :confirm => 'Are you sure?', :method => :delete %>
+  </li>
   <% end %>
-</table>
-
-
+</ul>
