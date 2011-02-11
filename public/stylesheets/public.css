@@ -1,105 +1,13 @@
-body {
-  background: white;
-  color: darkolivegreen;
-  padding: 0px;
-  margin: 0px;
+img {
+  max-width: 240px;
+  height: auto;
 }
 
-.notice {
-  color: white;
-  background: darkolivegreen;
-  margin-top: 0px;
-  padding-left: 10px;
-  clear: both;
+.min-width-480px img{
+  max-width: 320px;
 }
 
-a, a:visited {
-  color: inherit;
-  line-height: 28px;
-}
-
-.content{
-  border-left: 10px solid darkolivegreen; 
-  margin-bottom: 10px;
-  margin-top: 0px;
-  padding: 8px;
-  padding-top: 0px;
-}
-
-.body{
-  clear: both;
-}
-
-h2{
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 4px;
-}
-
-h2 a {
-  text-decoration: none;
-}
-
-h3{
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 4px;
-}
-
-.date {
-  color: white;
-  background: darkolivegreen;
-  padding: 2px;
-  margin-left: -8px;
-  padding-left: 8px;
-  padding-right: 4px;
-  font-size: smaller;
-  clear: both;
-}
-
-table {
-  border-collapse: collapse;
-  border-left: 10px solid darkolivegreen; 
-}
-tr {
-  border: 2px solid darkolivegreen; 
-}
-td {
-  padding: 1px 6px 1px 6px;
-}
-.fieldWithErrors label {
-  padding: 2px;
-  background-color: darkolivegreen;
-  display: table;
-  color: white;
-}
-
-#errorExplanation {
-  width: 620px;
-  border: 2px solid darkolivegreen;
-  padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: white;
-}
-
-#errorExplanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: darkolivegreen;
-  color: white;
-}
-
-#errorExplanation p {
-  color: darkolivegreen;
-  margin-bottom: 0;
-  padding: 5px;
-}
-
-#errorExplanation ul li {
-  font-size: 12px;
-  list-style: square;
+.min-width-768px img{
+  max-width: 100%;
+  width: auto;
 }

@@ -1,7 +1,7 @@
 <% title @post.title %>
 <% area :blog %>
 
-        <p class="notice"><%= flash[:notice] %></p>
+  <p class="notice"><%= flash[:notice] %></p>
   <h1><%= h(@post.title) %></h1>
   <h3><%=h @post.published_on.to_s(:public) %></h3><br />
   <%= @post.body %>
