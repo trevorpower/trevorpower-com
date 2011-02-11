@@ -23,8 +23,11 @@
           </li>
         </div>
       </div>
-
-    <p class="notice"><%= flash[:notice] %></p>
+      <% if flash[:notice] %>
+        <div data-role="header" data-theme="e">
+          <h3><%= flash[:notice] %></h3>
+        </div>
+      <% end %>
 
     <%= yield %>
     
