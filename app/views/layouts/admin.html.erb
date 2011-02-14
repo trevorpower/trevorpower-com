@@ -10,16 +10,16 @@
   </head>
   <body>
     <div data-role="page" data-theme="a">
-      <div data-role="header" data-theme="b">
-        <%= link_to 'Website', home_path, :'data-ajax' => 'false', :'data-icon' => 'home' %>
-        <%= link_to 'Log Out', logout_path, :'data-ajax' => 'false', :'data-icon' => 'delete' %>
+      <div data-role="header" data-position='inline' data-theme="b">
+        <%= link_to 'Website', home_path, 'data-ajax' => 'false', 'data-icon' => 'home' %>
+        <%= link_to 'Log Out', logout_path, 'data-ajax' => 'button', 'data-icon' => 'delete' %>
 
         <h2><%= yield(:title) %></h1>
         <div data-role="navbar"> 
           <ul>
-            <li><%= navigate_to 'Posts', posts_path, :posts %></li>
-            <li><%= navigate_to 'Comments', comments_path, :comments %></li>
-            <li><%= navigate_to 'Images', images_path, :images %></li>
+            <li><%= navigate_to 'Posts', posts_path %></li>
+            <li><%= navigate_to 'Comments', comments_path %></li>
+            <li><%= navigate_to 'Images', images_path %></li>
           </li>
         </div>
       </div>
