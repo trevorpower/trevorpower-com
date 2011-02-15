@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < AdminController
   
   def create
     if (params[:password] == ENV['ADMIN_PASSWORD'])
