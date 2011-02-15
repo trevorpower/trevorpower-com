@@ -6,7 +6,10 @@
   <h3><%=h @post.published_on.to_s(:public) %></h3><br />
   <%= @post.body %>
 
-  <%= render :partial => @comments %>
+  <% if @comments.count > 0 %>
+    <h3>Comments</h3>
+    <%= render :partial => @comments %>
+  <% end %>
  
   <% unless @comment_saved %>
     <h3>Leave a Comment</h3>
