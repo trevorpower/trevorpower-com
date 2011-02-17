@@ -8,10 +8,10 @@
     <% @posts.each do |post| %>
   
       <li>
-        <h2><%= link_to post.title, blog_post_path(:slug => post.slug), :'data-ajax' => 'false' %></h2>
+        <h2><%= link_to post.title, blog_post_path(:slug => post.slug) %></h2>
         <p class="ui-li-aside"><%=h post.published_on.to_s(:public) %></p>
         <p><%= HTML_Truncator.truncate(Sanitize.clean(post.body), 80, "...") %></p>
-        <%= link_to('read more', blog_post_path(:slug => post.slug), :'data-ajax' => 'false' ) %>
+        <%= link_to('read more', blog_post_path(:slug => post.slug)) %>
       </li>
         
     <% end %>
