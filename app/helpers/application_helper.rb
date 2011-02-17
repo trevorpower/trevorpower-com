@@ -7,7 +7,7 @@ module ApplicationHelper
     (@page || controller.controller_name.downcase).to_s == area.to_s ? 'ui-btn-active' : nil
   end
   def navigate_to(name, url, area = nil)
-    link_to name, url, :class => navigation_class(area || name.downcase), :'data-ajax' => 'false'
+    link_to name, url, :class => navigation_class(area || name.downcase)
   end
   def title(page_title)
     content_for(:title) { h page_title }
