@@ -1,5 +1,4 @@
 <% title "Blog" %>
-<% area :blog %>
 
   <ul data-role="listview">
 
@@ -9,9 +8,12 @@
   
       <li>
         <h2><%= link_to post.title, blog_post_path(:slug => post.slug) %></h2>
-        <p class="ui-li-aside"><%=h post.published_on.to_s(:public) %></p>
         <p><%= HTML_Truncator.truncate(Sanitize.clean(post.body), 80, "...") %></p>
         <%= link_to('read more', blog_post_path(:slug => post.slug)) %>
+        <p><b><%=h post.published_on.to_s(:public) %></b></p>
+        <% if post.comments.count > 0 %>
+          <p class="ui-li-count"><%= post.comments.count == 1 ? "1 comment" : "#{post.comments.count} comments" %></p>
+        <% end %>
       </li>
         
     <% end %>
