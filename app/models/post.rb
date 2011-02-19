@@ -10,7 +10,6 @@ class Post
   key :published_on, Date, :default => Date.today
   key :tags, Array
 
-  before_validation_on_create :create_default_slug
   after_save :update_comment_titles
 
   # this dom thing is not nice here in my model, must find a better place for it
@@ -22,11 +21,12 @@ class Post
     title.downcase.delete("'").gsub(/[^a-z0-9]+/, '-').gsub(/\A-|-\Z/, '')
   end
 
-  private
 
-  def create_default_slug
+  before_validation(:on => :create) do
     self.slug = Post.create_slug(self.title)
   end
+
+  private
 
   def update_comment_titles
     comments.each do |comment|
