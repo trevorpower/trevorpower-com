@@ -27,7 +27,7 @@ Comments: <%= @comments.count %>
  
 Leave a comment:
 
-<% form_for [@post, @post.comments.build] do |f| %>
+<%= form_for [@post, @post.comments.build] do |f| %>
   <%= f.error_messages %>
 
   <p>

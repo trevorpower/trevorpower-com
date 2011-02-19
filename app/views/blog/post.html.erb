@@ -13,7 +13,7 @@
  
   <% unless @comment_saved %>
     <h2>Leave a Comment</h2>
-    <% form_for @comment, :url => blog_post_path(:slug => @post.slug) do |f| %>
+    <%= form_for @comment, :url => blog_post_path(:slug => @post.slug) do |f| %>
       <%= f.error_messages %>
       <%= f.label :name %>
       <%= f.text_field :name %>

@@ -1,6 +1,6 @@
 <% title "Posts" %>
 <div class="content">
-  <% form_for(@post) do |f| %>
+  <%= form_for(@post) do |f| %>
     <%= f.error_messages %>
       <%= f.label :title %>
       <%= f.text_field :title %>
