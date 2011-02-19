@@ -1,7 +1,7 @@
-log/*.log
+.bundle
 db/*.sqlite3
-tmp/**/*
-tmp/*
+log/*.log
+tmp/
 *~
 **/#*#
 .cucumber.results.html
