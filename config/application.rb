@@ -9,14 +9,6 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 module Blog
   class Application < Rails::Application
 
-  config.gem "nokogiri"
-  config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "mongo_mapper"
-  config.gem "mm-multi-parameter-attributes"
-  config.gem "database_cleaner"
-  config.gem "pickle"
-  config.gem "sanitize"
-  config.gem "html_truncator"
 
   config.action_mailer.smtp_settings = {
     :address => ENV['SMTP_SERVER'],
