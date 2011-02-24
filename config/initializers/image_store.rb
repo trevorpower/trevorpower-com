@@ -1,6 +1,6 @@
 require 'image'
 
-IMAGE_STORE_CONFIG = YAML.load_file("#{RAILS_ROOT}/config/image_store.yml")[RAILS_ENV]
+IMAGE_STORE_CONFIG = YAML.load_file("#{::Rails.root.to_s}/config/image_store.yml")[::Rails.env.to_s]
 
 if IMAGE_STORE_CONFIG['use_s3']
 

@@ -10,17 +10,18 @@ module Blog
   class Application < Rails::Application
 
 
-  config.action_mailer.smtp_settings = {
-    :address => ENV['SMTP_SERVER'],
-    :user_name => ENV['SMTP_USER_NAME'],
-    :password => ENV['SMTP_PASSWORD']
-  }
+  #config.action_mailer.smtp_settings = {
+  #  :address => ENV['SMTP_SERVER'],
+  #  :user_name => ENV['SMTP_USER_NAME'],
+  #  :password => ENV['SMTP_PASSWORD']
+  #}
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
