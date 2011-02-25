@@ -1,7 +1,5 @@
-require 'tableless'
-
-class Message < ActiveRecord::Base
-  has_no_table
+class Message 
+  include ActiveModel::Validations
 
   attr_accessor :name, :address, :subject, :body
   
