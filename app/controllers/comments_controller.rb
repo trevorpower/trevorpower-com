@@ -1,7 +1,5 @@
 class CommentsController < AdminController
   
-  before_filter :authenticate, :except => [ :create ]
-
   def index
     @comments = Comment.all
   end

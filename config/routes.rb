@@ -7,7 +7,7 @@ Blog::Application.routes.draw do
       put 'publish'
       put 'hide'
     end
-   #_post.resources :comments, :except => [:new, :edit, :update]
+    resources :comments, :except => [:new, :edit, :update]
   end
 
   resources :comments, :except => [ :new, :create ] do
@@ -18,17 +18,17 @@ Blog::Application.routes.draw do
   end
 
   resources :images, :only => [ :index, :create, :destroy ], :requirements => { :id => /[a-zA-Z0-9\-\.]+/ }
-  #
-  #map.resources :sessions, :only => [ :create ]
-#
+  
+  resources :sessions, :only => [ :create ]
+
   match '' => 'home#index', :as => :home
-  #map.about 'about', :controller => 'about', :action => 'index'
-  #map.contact 'contact', :controller => 'contact', :action => 'index'
-  #map.send_mail 'send_mail', :controller => 'contact', :action => 'send_mail', :method => 'post'
-  ##map.blog 'blog.:format', :controller => 'blog', :action => 'index'
-  #map.blog_post 'blog/:slug', :controller => 'blog', :action => 'post'
-#
-  #map.login 'login', :controller => 'sessions', :action => 'new'
+  match 'about' => 'about#index', :as => :about
+  match 'contact' => 'contact#index', :as => :contact
+  match 'contact/send_mail' => 'contact#send_mail', :via => 'post', :as => :send_mail
+  match 'blog.:format' => 'blog#index', :as => :blog
+  match 'blog/:slug' => 'blog#post', :as => :blog_post
+
+  match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'controller#destroy', :as => :logout
 
   # Sample of regular route:
