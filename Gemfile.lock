@@ -42,6 +42,8 @@ GEM
       gherkin (~> 2.3.2)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
+    cucumber-rails (0.3.2)
+      cucumber (>= 0.8.0)
     database_cleaner (0.6.4)
     diff-lcs (1.1.2)
     erubis (2.6.6)
@@ -111,6 +113,10 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    webrat (0.7.3)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
     xml-simple (1.0.14)
     yard (0.6.4)
 
@@ -120,6 +126,7 @@ PLATFORMS
 DEPENDENCIES
   aws-s3
   bson_ext
+  cucumber-rails
   database_cleaner
   html_truncator
   mm-multi-parameter-attributes
@@ -128,3 +135,4 @@ DEPENDENCIES
   pickle
   rails (= 3.0.4)
   sanitize
+  webrat
