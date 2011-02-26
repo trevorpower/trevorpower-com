@@ -1,4 +1,5 @@
 class Message 
+  extend ActiveModel::Naming
   include ActiveModel::Validations
 
   attr_accessor :name, :address, :subject, :body
