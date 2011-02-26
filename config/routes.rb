@@ -12,8 +12,8 @@ Blog::Application.routes.draw do
 
   resources :comments, :except => [ :new, :create ] do
     member do
+      put 'publish'
       put 'hide'
-      put 'show'
     end
   end
 
@@ -25,8 +25,8 @@ Blog::Application.routes.draw do
   match 'about' => 'about#index', :as => :about
   match 'contact' => 'contact#index', :as => :contact
   match 'contact/send_mail' => 'contact#send_mail', :via => 'post', :as => :send_mail
-  match 'blog.:format' => 'blog#index', :as => :blog
-  match 'blog/:slug' => 'blog#post', :as => :blog_post
+  match 'blog' => 'blog#index', :as => :blog
+  match 'blog/:slug' => 'blog#post', :via => ['get', 'post'], :as => :blog_post
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'controller#destroy', :as => :logout

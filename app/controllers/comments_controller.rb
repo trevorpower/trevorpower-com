@@ -15,7 +15,7 @@ class CommentsController < AdminController
     end
   end
 
-  def show
+  def publish
     @comment = Comment.find(params[:id])
     @comment.published = true
     @comment.save
