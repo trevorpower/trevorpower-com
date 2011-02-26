@@ -2,19 +2,26 @@ Blog::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  #map.resources :posts, :member => { :publish => :put, :hide => :put } do |_post|
+  resources :posts do
+    member do
+      put 'publish'
+      put 'hide'
+    end
    #_post.resources :comments, :except => [:new, :edit, :update]
-  #end
+  end
 
-  #map.resources :comments, :except => [ :new, :create ], :member => { :hide => :put, :show => :put}
-#
-  #map.resources(  :images,
-                  #:only => [ :index, :create, :destroy ],
-                  #:requirements => { :id => /[a-zA-Z0-9\-\.]+/ } )
+  resources :comments, :except => [ :new, :create ] do
+    member do
+      put 'hide'
+      put 'show'
+    end
+  end
+
+  resources :images, :only => [ :index, :create, :destroy ], :requirements => { :id => /[a-zA-Z0-9\-\.]+/ }
   #
   #map.resources :sessions, :only => [ :create ]
 #
-  #map.home '', :controller => 'home', :action => 'index'
+  match '' => 'home#index', :as => :home
   #map.about 'about', :controller => 'about', :action => 'index'
   #map.contact 'contact', :controller => 'contact', :action => 'index'
   #map.send_mail 'send_mail', :controller => 'contact', :action => 'send_mail', :method => 'post'
@@ -22,7 +29,7 @@ Blog::Application.routes.draw do
   #map.blog_post 'blog/:slug', :controller => 'blog', :action => 'post'
 #
   #map.login 'login', :controller => 'sessions', :action => 'new'
-  #map.logout 'logout', :controller => 'sessions', :action => 'destroy'
+  match 'logout' => 'controller#destroy', :as => :logout
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
@@ -76,5 +83,5 @@ Blog::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ':controller(/:action(/:id(.:format)))'
+  # match ':controller(/:action(/:id(.:format)))'
 end
