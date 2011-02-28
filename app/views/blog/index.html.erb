@@ -4,7 +4,7 @@
 
     <li data-role="listdevider" data-theme="e"><a href="http://feeds.feedburner.com/trevorpower">Subscribe</a> to this blog</li>
 
-    <% @posts.each do |post| %>
+    <%= @posts.each do |post| %>
   
       <li>
         <h2><%= link_to post.title, blog_post_path(:slug => post.slug) %></h2>

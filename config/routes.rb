@@ -17,7 +17,7 @@ Blog::Application.routes.draw do
     end
   end
 
-  resources :images, :only => [ :index, :create, :destroy ], :requirements => { :id => /[a-zA-Z0-9\-\.]+/ }
+  resources :images, :only => [ :index, :create, :destroy ], :constraints => { :id => /[a-zA-Z0-9\-\.]+/ }
   
   resources :sessions, :only => [ :create ]
 
