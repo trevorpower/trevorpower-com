@@ -1,4 +1,5 @@
 class CommentsController < AdminController
+  before_filter :authenticate
   
   def index
     @comments = Comment.all
