@@ -1,16 +1,16 @@
 <% title "Comments" %>
 <ul data-role="listview">
-    <% @comments.each do |comment| %> 
-      <li id="<%= comment.dom_id %>" data-theme="<%= comment.published ? 'a' : 'd' %>">
-        <h3><%=h comment.name %><br/><%=h comment.url %></h3>
-        <p><%=h comment.body %></p>
-        <h4><%=h comment.post_title %><br/><%=h comment.published_on.to_s(:admin) %></h3>
-        <% if comment.published %>
-          <%= link_to 'Hide', hide_comment_path(comment), :method => :put %>
-        <% else %>
-          <%= link_to 'Show', publish_comment_path(comment), :method => :put %>
-        <% end %>
-        <%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %>
-      </li>
-    <% end %>
-  </ul>
+  <% @comments.each do |comment| %> 
+    <li id="<%= comment.dom_id %>" data-theme="<%= comment.published ? 'a' : 'd' %>">
+      <h3><%=h comment.name %><br/><%=h comment.url %></h3>
+      <p><%=h comment.body %></p>
+      <h3><%=h comment.post_title %><br/><%=h comment.published_on.to_s(:admin) %></h3>
+      <% if comment.published %>
+        <%= link_to 'Hide', hide_comment_path(comment), :method => :put %>
+      <% else %>
+        <%= link_to 'Show', publish_comment_path(comment), :method => :put %>
+      <% end %>
+      <%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %>
+    </li>
+  <% end %>
+</ul>

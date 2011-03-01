@@ -3,14 +3,14 @@ class Post
   
   many :comments
 
-  key :title, String#, :required => true
+  key :title, String, :required => true
   key :slug, String, :required => true
   key :body, String, :required => true
   key :published, Boolean, :default => false
   key :published_on, Date, :default => Date.today
   key :tags, Array
 
-  #after_save :update_comment_titles
+  after_save :update_comment_titles
 
   # this dom thing is not nice here in my model, must find a better place for it
   def dom_id

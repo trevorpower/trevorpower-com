@@ -2,6 +2,7 @@ require 'uri'
 
 class Comment
   include MongoMapper::Document
+  #include ActiveModel::Validations
 
   key :name, String#, :required => true
   key :url, String
