@@ -29,7 +29,7 @@ Blog::Application.routes.draw do
   match 'blog/:slug' => 'blog#post', :via => ['get', 'post'], :as => :blog_post
 
   match 'login' => 'sessions#new', :as => :login
-  match 'logout' => 'controller#destroy', :as => :logout
+  match 'logout' => 'sessions#destroy', :as => :logout
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
