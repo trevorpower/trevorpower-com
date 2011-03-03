@@ -18,12 +18,12 @@ class Comment
 
   #validates_length_of :name, :in => 4..100
   #validates_length_of :body, :in => 4..2000
-  #validates_format_of :email, :with => /([a-z0-9_.-]+)@([a-z0-9-]+)\.[a-z.]+/i
-  #validates_format_of( :url, 
-  #  :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix,
-  #  :if => "!url.nil? && !url.empty?",
-  #  :message => "The URL is invalid, it must start with 'http://'"
-  #)
+  validates_format_of :email, :with => /([a-z0-9_.-]+)@([a-z0-9-]+)\.[a-z.]+/i
+  validates_format_of( :url, 
+    :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix,
+    :if => "!url.nil? && !url.empty?",
+    :message => "The URL is invalid, it must start with 'http://'"
+  )
 
   # this dom thing is not nice here in my model, must find a better place for it
   def dom_id
