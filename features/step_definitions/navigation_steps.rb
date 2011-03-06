@@ -13,7 +13,7 @@ When /^I (press|follow|check|uncheck|choose) "([^\"]*)" for (.*) whose (.*) is "
       when "press"
         click_button(whatyouclick)
       when "follow"
-        if (whatyouclick == "Destroy")
+        if (whatyouclick =~ /(Destroy)|(Delete)/i)
           click_link(whatyouclick, :method => 'delete')
         else
           click_link(whatyouclick)
@@ -34,7 +34,11 @@ When /^I (press|follow|check|uncheck|choose) "([^\"]*)" for "([^\"]*)"$/ do |act
       when "press"
         click_button(whatyouclick)
       when "follow"
-        click_link(whatyouclick)
+        if (whatyouclick =~ /(Destroy)|(Delete)/i)
+          click_link(whatyouclick, :method => 'delete')
+        else
+          click_link(whatyouclick)
+        end
       when "check"
         check(whatyouclick)
       when "uncheck"
