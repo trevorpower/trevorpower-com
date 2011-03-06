@@ -4,8 +4,8 @@ Blog::Application.routes.draw do
 
   resources :posts do
     member do
-      put 'publish'
-      put 'hide'
+      get 'publish'
+      get 'hide'
     end
     resources :comments, :except => [:new, :edit, :update]
   end
