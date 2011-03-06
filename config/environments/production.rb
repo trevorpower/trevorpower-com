@@ -1,4 +1,9 @@
 Blog::Application.configure do
+  config.action_mailer.smtp_settings = {
+    :address => ENV['SMTP_SERVER'],
+    :user_name => ENV['SMTP_USER_NAME'],
+    :password => ENV['SMTP_PASSWORD']
+  }
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
