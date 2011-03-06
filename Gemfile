@@ -38,4 +38,5 @@ group :development, :test do
   gem "cucumber-rails"
   gem "database_cleaner"
   gem "pickle"
+  gem "spork"
 end
