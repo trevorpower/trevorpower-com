@@ -12,8 +12,8 @@ Blog::Application.routes.draw do
 
   resources :comments, :except => [ :new, :create ] do
     member do
-      put 'publish'
-      put 'hide'
+      get 'publish'
+      get 'hide'
     end
   end
 
