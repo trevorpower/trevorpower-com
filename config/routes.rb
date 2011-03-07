@@ -23,7 +23,7 @@ Blog::Application.routes.draw do
 
   match '' => 'home#index', :as => :home
   match 'about' => 'about#index', :as => :about
-  match 'contact' => 'contact#index', :as => :contact
+  match 'contact' => 'contact#index', :as => :contact, :via => ['get', 'post']
   match 'contact/send_mail' => 'contact#send_mail', :via => 'post', :as => :send_mail
   match 'blog' => 'blog#index', :as => :blog
   match 'blog/:slug' => 'blog#post', :via => ['get', 'post'], :as => :blog_post
