@@ -6,7 +6,7 @@
 
     <% @posts.each do |post| %>
   
-      <li>
+      <li id="<%= post.slug %>">
         <h2><%= link_to post.title, blog_post_path(:slug => post.slug) %></h2>
         <p><%= HTML_Truncator.truncate(Sanitize.clean(post.body), 80, "...") %></p>
         <%= link_to('read more', blog_post_path(:slug => post.slug)) %>
