@@ -12,7 +12,7 @@
         <%= link_to('read more', blog_post_path(:slug => post.slug)) %>
         <p><b><%=h post.published_on.to_s(:public) %></b></p>
         <% if post.comments.all(:published => true).count > 0 %>
-          <p class="ui-li-count"><%= post.comments.all(:published => true).count == 1 ? "1 comment" : "#{post.comments.all(:published => true).count} comments" %></p>
+          <p class="ui-li-count"><%= pluralize(post.comments.all(:published => true).count, 'comment') %></p>
         <% end %>
       </li>
         
