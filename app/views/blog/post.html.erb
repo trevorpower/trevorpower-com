@@ -4,7 +4,7 @@
   <p class="notice"><%= flash[:notice] %></p>
   <h1><%= h(@post.title) %></h1>
   <h3><%=h @post.published_on.to_s(:public) %></h3><br />
-  <%= @post.body %>
+  <%= @post.body.html_safe %>
 
   <% if @comments.count > 0 %>
     <h2>Comments</h2>
@@ -13,8 +13,17 @@
  
   <% unless @comment_saved %>
     <h2>Leave a Comment</h2>
-    <% form_for @comment, :url => blog_post_path(:slug => @post.slug) do |f| %>
-      <%= f.error_messages %>
+    <%= form_for @comment, :url => blog_post_path(:slug => @post.slug) do |f| %>
+      <% if @comment.errors.any? %>  
+        <div id="errorExplanation">  
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>  
+          <ul>  
+          <% @comment.errors.full_messages.each do |msg| %>  
+            <li><%= msg %></li>  
+          <% end %>  
+          </ul>  
+        </div>  
+      <% end %>
       <%= f.label :name %>
       <%= f.text_field :name %>
       <%= f.label :email %>

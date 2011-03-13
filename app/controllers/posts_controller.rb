@@ -1,6 +1,5 @@
 class PostsController < AdminController  
-
-  before_filter :authenticate, :except => [ :blog, :show ]
+  before_filter :authenticate
 
   def index
     @posts = Post.all :order => 'published_on DESC'

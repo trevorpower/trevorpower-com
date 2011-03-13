@@ -1,5 +1,5 @@
 <% title "Login" %>
-<% form_tag({:action => "create", :controller => "sessions"}, :method => :post) do %>
+<%= form_tag({:action => "create", :controller => "sessions"}, :method => :post) do %>
   <%= label_tag 'Password' %>
   <%= password_field_tag :password %>
   <%= submit_tag 'Login' %>
