@@ -56,7 +56,9 @@ Scenario: Delete a post
   | New blog post  | This post is not fin.. |
   And I am on the posts page
   When I follow "Destroy" for post whose title is "My second blog" 
-  Then I should see "My first blog"
+  Then I should be on the posts page
+
+  And I should see "My first blog"
   And I should see "New blog post"
   But I should not see "My second blog"
 

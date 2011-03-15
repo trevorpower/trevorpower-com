@@ -55,6 +55,9 @@ GEM
     i18n (0.5.0)
     jnunemaker-validatable (1.8.4)
       activesupport (>= 2.3.4)
+    jquery-rails (0.2.7)
+      rails (~> 3.0)
+      thor (~> 0.14.4)
     json (1.4.6)
     mail (2.2.15)
       activesupport (>= 2.3.6)
@@ -130,6 +133,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   html_truncator
+  jquery-rails
   mm-multi-parameter-attributes
   mongo_mapper
   nokogiri
