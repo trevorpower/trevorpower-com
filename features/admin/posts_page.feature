@@ -45,7 +45,7 @@ Scenario: View a post
   | title             | body                   |
   | My new blog post  | This post is not fin.. |
   And I am on the posts page
-  When I follow "New blog post"
+  When I follow "View" for post whose title is "My new blog post"
   Then I should be on the "My new blog post" post
 
 Scenario: Delete a post
@@ -55,7 +55,7 @@ Scenario: Delete a post
   | My second blog | This is my second blog |
   | New blog post  | This post is not fin.. |
   And I am on the posts page
-  When I press "Destroy" for post whose title is "My second blog" 
+  When I follow "Destroy" for post whose title is "My second blog" 
   Then I should be on the posts page
 
   And I should see "My first blog"
@@ -67,7 +67,7 @@ Scenario: Publish a post
   | title                | body                   |  published |
   | My latest draft post | This post is not fin.. |  false     |
   And I am on the posts page
-  When I press "Publish" for post whose title is "My latest draft post"
+  When I follow "Publish" for post whose title is "My latest draft post"
   And go to the blog page
   Then I should see "My latest draft post"
 
@@ -79,7 +79,7 @@ Scenario: Hide an already published post
   Then I should see "My latest blog post"
 
   When I go to the posts page
-  And I press "Hide" for post whose title is "My latest blog post"
+  And I follow "Hide" for post whose title is "My latest blog post"
   And go to the blog page
   Then I should not see "My latest blog post"
 
