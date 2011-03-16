@@ -4,16 +4,16 @@ Blog::Application.routes.draw do
 
   resources :posts do
     member do
-      get 'publish'
-      get 'hide'
+      put 'publish'
+      put 'hide'
     end
     resources :comments, :except => [:new, :edit, :update]
   end
 
   resources :comments, :except => [ :new, :create ] do
     member do
-      get 'publish'
-      get 'hide'
+      put 'publish'
+      put 'hide'
     end
   end
 
