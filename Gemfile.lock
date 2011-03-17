@@ -29,6 +29,8 @@ GEM
       activesupport (= 3.0.4)
     activesupport (3.0.4)
     arel (2.0.9)
+    autotest-rails-pure (4.1.2)
+    autotest-standalone (4.5.5)
     aws-s3 (0.6.2)
       builder
       mime-types
@@ -74,6 +76,7 @@ GEM
       jnunemaker-validatable (~> 1.8.4)
       plucky (~> 0.3.6)
     nokogiri (1.4.4)
+    notifier (0.1.2)
     pickle (0.4.4)
       cucumber (>= 0.8)
       rake
@@ -113,6 +116,8 @@ GEM
       nokogiri (~> 1.4.4)
     spork (0.8.4)
     term-ansicolor (1.0.5)
+    test_notifier (0.3.6)
+      notifier
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -128,6 +133,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest-rails-pure
+  autotest-standalone
   aws-s3
   bson_ext
   cucumber-rails
@@ -141,4 +148,5 @@ DEPENDENCIES
   rails (= 3.0.4)
   sanitize
   spork
+  test_notifier
   webrat

@@ -40,4 +40,7 @@ group :development, :test do
   gem "database_cleaner"
   gem "pickle"
   gem "spork"
+  gem "autotest-standalone"
+  gem "autotest-rails-pure"
+  gem "test_notifier"
 end
