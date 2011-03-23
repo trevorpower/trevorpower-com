@@ -55,7 +55,8 @@ Scenario: Delete a post
   | My second blog | This is my second blog |
   | New blog post  | This post is not fin.. |
   And I am on the posts page
-  When I follow "Destroy" for post whose title is "My second blog" 
+  When I follow "Edit" for post whose title is "My second blog" 
+  And I follow "Delete"
   Then I should be on the posts page
 
   And I should see "My first blog"

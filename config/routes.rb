@@ -2,7 +2,7 @@ Blog::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  resources :posts, :except => :destroy do
+  resources :posts do
     member do
       put 'publish'
       put 'hide'

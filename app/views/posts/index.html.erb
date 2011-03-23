@@ -8,7 +8,6 @@
     <ul>
       <li><%= link_to 'View', blog_post_path(:slug => post.slug ) %></li>
       <li><%= link_to 'Edit', edit_post_path(post) %></li>
-      <li><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></li>
       <% if post.published %>
         <li><%= link_to 'Hide', hide_post_path(post), :method => :put%></li>
       <% else %>

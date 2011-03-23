@@ -1,6 +1,9 @@
-<% title "Posts" %>
-<div class="content">
+<% title "Edit Post" %>
   <%= form_for(@post) do |f| %>
+    <div data-role="header" data-theme="b">
+      <%= link_to 'Delete', @post, 'data-method' => :delete, 'data-icon' => 'delete', :confirm => 'Are you sure?' %>
+      <h2><%= yield(:title) %></h1>
+    </div>
     <% if @post.errors.any? %>  
       <div id="errorExplanation">  
         <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>  
@@ -10,7 +13,7 @@
         <% end %>  
         </ul>  
       </div>  
-      <% end %>
+    <% end %>
       <%= f.label :title %>
       <%= f.text_field :title %>
       <%= f.label :slug %>
@@ -23,5 +26,3 @@
       <%= f.date_select :published_on %><br />
       <%= f.submit 'Update' %>
   <% end %>
-  <br clear="both"/>
-</div>

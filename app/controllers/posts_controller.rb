@@ -1,5 +1,6 @@
 class PostsController < AdminController  
   before_filter :authenticate
+  #layout :edit, :only => :edit
 
   def index
     @posts = Post.all :order => 'published_on DESC'
@@ -14,9 +15,9 @@ class PostsController < AdminController
     end
   end
 
-  # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    render :layout => 'edit'
   end
 
   def create
