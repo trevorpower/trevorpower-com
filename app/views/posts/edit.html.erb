@@ -2,7 +2,7 @@
   <%= form_for(@post) do |f| %>
     <div data-role="header" data-theme="b" data-backbtn='true'>
       <%= link_to 'Cancel', posts_path, 'data-rel' => 'back', 'data-icon' => 'back' %>
-      <%= link_to 'Delete', @post, 'data-method' => :delete, 'data-icon' => 'delete', :confirm => 'Are you sure?' %>
+      <%= link_to 'Delete', @post, 'data-method' => :delete, 'data-icon' => 'delete', 'data-theme' => 'a', :confirm => 'Are you sure?' %>
       <h2><%= yield(:title) %></h1>
     </div>
     <% if @post.errors.any? %>  
