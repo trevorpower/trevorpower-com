@@ -1,6 +1,7 @@
 <% title "Edit Post" %>
   <%= form_for(@post) do |f| %>
-    <div data-role="header" data-theme="b">
+    <div data-role="header" data-theme="b" data-backbtn='true'>
+      <%= link_to 'Cancel', posts_path, 'data-rel' => 'back', 'data-icon' => 'back' %>
       <%= link_to 'Delete', @post, 'data-method' => :delete, 'data-icon' => 'delete', :confirm => 'Are you sure?' %>
       <h2><%= yield(:title) %></h1>
     </div>
@@ -17,12 +18,14 @@
       <%= f.label :title %>
       <%= f.text_field :title %>
       <%= f.label :slug %>
-      <%= f.text_field :slug, :size => "40x20" %>
+      <%= f.text_field :slug %>
       <%= f.label :body %>
       <%= f.text_area :body %>
       <%= f.label :published %>
-      <%= f.check_box :published %><br />
+      <%= f.check_box :published %>
       <%= f.label :published_on %>
-      <%= f.date_select :published_on %><br />
-      <%= f.submit 'Update' %>
+      <%= f.date_select :published_on %>
+      <div data-role='footer' class='ui-bar' data-theme='b'>
+        <%= f.submit 'Update', 'data-icon' => 'check' %>
+      </div>
   <% end %>

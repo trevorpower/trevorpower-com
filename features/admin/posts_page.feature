@@ -100,6 +100,19 @@ Scenario: Edit an existing post
   Then I should see "My second blog post (updated)"
   And I should see "Update: this has changed ..."
 
+Scenario: Cancel edit of an existing post
+  Given the following posts:
+  | title          | body                   | published |
+  | My second blog | This is my second blog | true      |
+  And I am on the posts page
+  When I follow "Edit" for post whose title is "My second blog"
+  And fill in "body" with "Update: this has changed ..."
+  And fill in "title" with "My second blog post (updated)"
+  And follow "Cancel"
+  Then I should be on the posts page
+  And I should see "My second blog"
+  But I should not see "My second blog post (updated)"
+
 # The following scenario is failing and I suspect that the webrat fill_in function is 
 # decoding the angle brackets, tests in browser show this scenario to be working fine
 # must come back to investigate later
