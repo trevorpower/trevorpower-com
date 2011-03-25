@@ -1,4 +1,4 @@
-require 'lib/import'
+require 'import'
 
 desc "Import content from previous blog"
 task :import_content => :environment do

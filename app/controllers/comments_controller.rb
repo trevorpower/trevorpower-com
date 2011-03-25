@@ -1,7 +1,6 @@
 class CommentsController < AdminController
+  before_filter :authenticate
   
-  before_filter :authenticate, :except => [ :create ]
-
   def index
     @comments = Comment.all
   end
@@ -17,7 +16,7 @@ class CommentsController < AdminController
     end
   end
 
-  def show
+  def publish
     @comment = Comment.find(params[:id])
     @comment.published = true
     @comment.save

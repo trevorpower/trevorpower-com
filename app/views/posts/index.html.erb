@@ -3,17 +3,17 @@
 <ul data-role="listview">
   <% @posts.each do |post| %>
   <li id="<%= post.dom_id %>" class="<%= post.published ? 'published' : 'draft' %>">
-    <h3><%= link_to post.title, blog_post_path(:slug => post.slug ) %></h3>
+    <h3><%= link_to post.title, '#' %></h3>
     <p><%= post.published_on.to_s(:admin) %></p>
-    <div data-inline="true">
-    <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete%>
-    <% if post.published %>
-      <%= link_to 'Hide', hide_post_path(post), :method => :put%>
-    <% else %>
-      <%= link_to 'Publish', publish_post_path(post), :method => :put%>
-    <% end %>
-    </div>
-    <%= link_to 'Edit', edit_post_path(post) %>
+    <ul>
+      <li><%= link_to 'View', blog_post_path(:slug => post.slug ) %></li>
+      <li><%= link_to 'Edit', edit_post_path(post) %></li>
+      <% if post.published %>
+        <li><%= link_to 'Hide', hide_post_path(post), :method => :put%></li>
+      <% else %>
+        <li><%= link_to 'Publish', publish_post_path(post), :method => :put%></li>
+      <% end %>
+    </ul>
   </li>
   <% end %>
 </ul>

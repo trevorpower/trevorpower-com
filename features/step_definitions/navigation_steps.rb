@@ -1,3 +1,17 @@
+module Webrat
+  class Link < Element
+    def http_method
+      if !@element["data-method"].blank?
+        @element["data-method"]
+      elsif !onclick.blank? && onclick.include?("f.submit()")
+        http_method_from_js_form
+      else
+        :get
+      end
+    end
+  end
+end
+
 Then /^I should see a link to "([^\"]*)"$/ do |url|
   response.body.should have_xpath "//a[@href = '#{url}']"
 end
@@ -46,7 +60,11 @@ When /^I (press|follow|check|uncheck|choose) "([^\"]*)" for "([^\"]*)"$/ do |act
       when "press"
         click_button(whatyouclick)
       when "follow"
-        click_link(whatyouclick)
+        if (whatyouclick =~ /(Destroy)|(Delete)/i)
+          click_link(whatyouclick, :method => 'delete')
+        else
+          click_link(whatyouclick)
+        end
       when "check"
         check(whatyouclick)
       when "uncheck"

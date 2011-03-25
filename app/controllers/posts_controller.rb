@@ -1,6 +1,5 @@
 class PostsController < AdminController  
-
-  before_filter :authenticate, :except => [ :blog, :show ]
+  before_filter :authenticate
 
   def index
     @posts = Post.all :order => 'published_on DESC'
@@ -10,14 +9,14 @@ class PostsController < AdminController
     @post = Post.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :layout => 'edit' }
       format.xml  { render :xml => @post }
     end
   end
 
-  # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    render :layout => 'edit'
   end
 
   def create
