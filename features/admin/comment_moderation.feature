@@ -1,6 +1,6 @@
 Feature: Comment moderation
   In order to remove spam or inappropriate content
-  The administrator will need view and moderate all comments
+  The administrator will need to view and moderate all comments
   
   Background:
     Given that the administrator password is "commentadmin"
@@ -39,7 +39,7 @@ Feature: Comment moderation
     | Keep up the good work 		| Johnny    | johnny@corp.net  |
     | Want to buy cheap meds		| Mr. Smith | john.smith@it.it |
     And I am on the comments page
-    When I press "Hide" for comment whose body is "Want to buy cheap meds"
+    When I follow "Hide" for comment whose body is "Want to buy cheap meds"
     And I go to the "My first post" post
     Then I should see "What a great first blog entry"
     And I should see "Keep up the good work"
@@ -57,7 +57,7 @@ Feature: Comment moderation
     And I should not see "Want to buy cheap meds"
 
     When I go to the comments page
-    And I press "Show" for comment whose body is "Want to buy cheap meds"
+    And I follow "Show" for comment whose body is "Want to buy cheap meds"
     And I go to the "My first post" post
     Then I should see "What a great first blog entry"
     And I should see "Keep up the good work"
@@ -70,7 +70,7 @@ Feature: Comment moderation
     | Keep up the good work 		| Johnny    | johnny@corp.net  |
     | Want to buy cheap meds		| Mr. Smith | john.smith@it.it |
     And I am on the comments page
-    When I press "Destroy" for comment whose body is "Keep up the good work"
+    When I follow "Destroy" for comment whose body is "Keep up the good work"
     Then I should see "What a great first blog entry"
     And I should not see "Keep up the good work"
     And I should see "Want to buy cheap meds"
