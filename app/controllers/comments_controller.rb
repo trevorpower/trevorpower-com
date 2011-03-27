@@ -2,7 +2,7 @@ class CommentsController < AdminController
   before_filter :authenticate
   
   def index
-    @comments = Comment.all
+    @comments = Comment.all :order => 'published_on DESC'
   end
 
   def hide
