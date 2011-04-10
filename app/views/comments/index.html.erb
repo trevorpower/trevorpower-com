@@ -1,9 +1,11 @@
 <% title "Comments" %> 
-<% if @allow_comments %>
-<%= link_to 'Deactivate Commenting', deactivate_comments_path, :method => 'put' %>
-<% else %>
-<%= link_to 'Activate Commenting', activate_comments_path, :method => 'put' %>
-<% end %>
+<div data-role="footer" class='ui-bar'>
+  <% if @allow_comments %>
+    <%= link_to 'Deactivate Commenting', deactivate_comments_path, :method => 'put', 'data-icon' => 'alert' %>
+  <% else %>
+    <%= link_to 'Activate Commenting', activate_comments_path, :method => 'put', 'data-icon' => 'check', 'data-theme' => 'e' %>
+  <% end %>
+</div>
 <ul data-role="listview">
   <% @comments.each do |comment| %> 
     <li id="<%= comment.dom_id %>" data-theme="<%= comment.published ? 'a' : 'd' %>">
