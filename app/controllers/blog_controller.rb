@@ -1,4 +1,5 @@
 class BlogController < ApplicationController
+
   def index
     @posts = Post.all(:published => true, :order => 'published_on DESC')
 
@@ -20,6 +21,8 @@ class BlogController < ApplicationController
     end
     
     @comments = @post.comments.all(:published => true).sort_by(&:published_on)
+
+    @allow_comments = ! ENV['commenting_active'].nil?
 
     respond_to do |format|
       format.html 
