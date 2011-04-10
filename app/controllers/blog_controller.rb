@@ -1,4 +1,5 @@
 class BlogController < ApplicationController
+
   def index
     @posts = Post.all(:published => true, :order => 'published_on DESC')
 
@@ -12,11 +13,13 @@ class BlogController < ApplicationController
   def post
     @post = Post.find_by_slug(params[:slug])
 
-    if (params[:comment].nil?)
-      @comment = @post.comments.build
-    else
+    @allow_comments = ! ENV['commenting_active'].nil?
+
+    if @allow_comments and ! params[:comment].nil?
       @comment = @post.comments.build(params[:comment])
       @comment_saved = @comment.save()
+    else
+      @comment = @post.comments.build
     end
     
     @comments = @post.comments.all(:published => true).sort_by(&:published_on)
