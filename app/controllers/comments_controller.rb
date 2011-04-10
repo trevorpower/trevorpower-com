@@ -3,6 +3,17 @@ class CommentsController < AdminController
   
   def index
     @comments = Comment.all :order => 'published_on DESC'
+    @allow_comments = ! ENV['commenting_active'].nil?
+  end
+
+  def activate
+    ENV['commenting_active'] = 'true'
+    redirect_to comments_url
+  end
+
+  def deactivate
+    ENV['commenting_active'] = nil
+    redirect_to comments_url
   end
 
   def hide

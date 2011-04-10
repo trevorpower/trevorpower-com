@@ -11,6 +11,8 @@ Blog::Application.routes.draw do
   end
 
   resources :comments, :except => [ :new, :create ] do
+    put 'deactivate', :on => :collection
+    put 'activate', :on => :collection
     member do
       put 'publish'
       put 'hide'
