@@ -16,6 +16,7 @@ class BlogControllerTest < ActionController::TestCase
   end
 
   test "post should save comment" do
+    ENV['commenting_active'] = 'true'
     currentpost = Post.create!(
       :title => 'title',
       :body => 'body'
