@@ -27,3 +27,5 @@
     </li>
   <% end %>
 </ul>
+<%= link_to 'Previous', comments_path( :page => "#{@prev_page}" )%>
+<%= link_to 'Next', comments_path( :page => "#{@next_page}" )%>

@@ -21,6 +21,24 @@ Given /^I have a post with title "([^\"]*)" and the comments:$/ do |title, comme
   post.save
 end
 
+Given /^I have a post with title "([^\"]*)" and (\d+) comments$/ do |title, count|
+  post = Post.create(
+    :title => title,
+    :slug => Post.create_slug(title),
+    :body => "body for this post (#{title})",
+    :published => true
+  )
+  count.to_i.times do |i|
+    comment = post.comments.build(
+      :body => "#{title} - comment #{i+1}",
+      :email => "test#{i}@example.com",
+      :published_on => Time.new(2011, 01, 01) + i.days
+    )
+    comment.save
+  end
+  post.save
+end
+
 When /^I delete the (\d+)(?:st|nd|rd|th) blog$/ do |pos|
   visit blogs_path
   within("table tr:nth-child(#{pos.to_i+1})") do
