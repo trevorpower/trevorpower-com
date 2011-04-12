@@ -21,6 +21,31 @@ Feature: Comment moderation
     And I should see "Want to buy cheap meds"
     And I should see "Another good article"
 
+  Scenario: Can page a long list of comments
+    Given I have a post with title "My post" and 25 comments
+
+   When I go to the comments page
+    Then I should see "My post - comment 25"
+    And I should see "My post - comment 16"
+    But I should not see "My post - comment 15"
+
+    When I follow "Next"
+    Then I should see "My post - comment 15"
+    And I should see "My post - comment 6"
+    But I should not see "My post - comment 16"
+    And I should not see "My post - comment 5"
+
+    When I follow "Next"
+    Then I should see "My post - comment 5"
+    And I should see "My post - comment 1"
+    But I should not see "My post - comment 6"
+
+    When I follow "Previous"
+    Then I should see "My post - comment 15"
+    And I should see "My post - comment 6"
+    But I should not see "My post - comment 16"
+    And I should not see "My post - comment 5"
+
   Scenario: View comment details
     Given I have a post with title "My first post" and the comments:
     | body   		    | name     | url 			| published_on | email 	     |

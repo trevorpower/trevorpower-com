@@ -27,3 +27,11 @@
     </li>
   <% end %>
 </ul>
+<div data-role='footer' class='ui-bar' data-theme='b'>
+  <% unless @prev_page.nil? %>
+    <%= link_to 'Previous', comments_path( :page => @prev_page ), 'data-icon' => 'arrow-l', 'data-transition' => 'slidedown'%>
+  <% end %>
+  <% unless @next_page.nil? %>
+    <%= link_to 'Next', comments_path( :page => @next_page ), 'data-icon' => 'arrow-r', 'data-iconpos' => 'right', :class => 'ui-btn-right', 'data-transition' => 'slideup'%>
+  <% end %>
+</div>
