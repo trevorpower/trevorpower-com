@@ -2,7 +2,16 @@ class CommentsController < AdminController
   before_filter :authenticate
   
   def index
-    @comments = Comment.all :order => 'published_on DESC'
+    page = (params[:page] || '0').to_i
+    @comments = Comment.all(
+      :order => 'published_on DESC', 
+      :skip => page * 10, 
+      :limit => 10
+    )
+
+    @prev_page = (page - 1).to_s unless page == 0
+    @next_page = (page + 1).to_s unless @comments.count < 10
+
     @allow_comments = ! ENV['commenting_active'].nil?
   end
 
