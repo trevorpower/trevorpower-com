@@ -23,7 +23,7 @@ Scenario: Add new image
   And I should see "sample-image.png"
 
 Scenario: Delete image
-  When I follow "Delete" for "sample-image.png"
+  When I follow "sample-image.png"
   And I go to the images page
   Then I should not see "sample-image"
   And I should see "another-image"
