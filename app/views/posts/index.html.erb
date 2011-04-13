@@ -2,18 +2,18 @@
 <%= link_to 'New post', new_post_path, :'data-role'=>'button' %>
 <ul data-role="listview">
   <% @posts.each do |post| %>
-  <li id="<%= post.dom_id %>" class="<%= post.published ? 'published' : 'draft' %>">
-    <h3><%= link_to post.title, '#' %></h3>
-    <p><%= post.published_on.to_s(:admin) %></p>
-    <ul>
-      <li><%= link_to 'View', blog_post_path(:slug => post.slug ) %></li>
-      <li><%= link_to 'Edit', edit_post_path(post) %></li>
-      <% if post.published %>
-        <li><%= link_to 'Hide', hide_post_path(post), :method => :put%></li>
-      <% else %>
-        <li><%= link_to 'Publish', publish_post_path(post), :method => :put%></li>
-      <% end %>
-    </ul>
-  </li>
+    <li id="<%= post.dom_id %>" class="<%= post.published ? 'published' : 'draft' %>">
+        <h3><%= post.title %></h3>
+        <p><%= post.published_on.to_s(:admin) %></p>
+        <ul>
+          <li><%= link_to 'View', blog_post_path(:slug => post.slug ) %></li>
+          <li><%= link_to 'Edit', edit_post_path(post) %></li>
+          <% if post.published %>
+              <li><%= link_to 'Hide', hide_post_path(post), :method => :put%></li>
+          <% else %>
+          <li><%= link_to 'Publish', publish_post_path(post), :method => :put%></li>
+          <% end %>
+        </ul>
+    </li>
   <% end %>
 </ul>

@@ -8,9 +8,10 @@
 <ul data-role="listview">
   <% @images.each do |image| %>
   <li id="<%= image.dom_id %>">
-    <img src="<%= image.url %>"/>
-    <h3><%= image.url %></h3>
-    <%= link_to 'Delete', image_path(image.name), :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to image_path(image.name), :confirm => 'Are you sure?', :method => :delete do %>
+      <img src="<%= image.url %>"/>
+      <h3><%= image.url %></h3>
+    <% end %>
   </li>
   <% end %>
 </ul>
