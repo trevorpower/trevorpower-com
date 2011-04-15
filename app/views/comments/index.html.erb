@@ -23,6 +23,9 @@
         <li>
           <%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %>
         </li>
+        <li>
+          <%= link_to 'Delete similar...', similar_comments_path(:id => comment.id) %>
+        </li>
       </ul>
     </li>
   <% end %>

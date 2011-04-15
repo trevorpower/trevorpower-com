@@ -11,13 +11,19 @@ Blog::Application.routes.draw do
   end
 
   resources :comments, :except => [ :new, :create ] do
-    put 'deactivate', :on => :collection
-    put 'activate', :on => :collection
+    collection do
+      put 'deactivate'
+      put 'activate'
+    end
     member do
       put 'publish'
       put 'hide'
     end
   end
+
+
+  match 'comments/:id/similar' => 'comments#similar', :via => 'get', :as => :similar_comments
+  match 'comments/:id/similar' => 'comments#destroy_similar', :via => 'delete'
 
   resources :images, :only => [ :index, :create, :destroy ], :constraints => { :id => /[a-zA-Z0-9\-\.]+/ }
   

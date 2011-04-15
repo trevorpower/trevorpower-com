@@ -57,4 +57,16 @@ class CommentsController < AdminController
     end
   end
 
+  def similar
+    @comment = Comment.find(params[:id])
+    @countWithSameName = Comment.where(:name => @comment.name).count
+  end
+
+  def destroy_similar
+    base = Comment.find(params[:id])
+    Comment.where(:name => base.name).each do |comment|
+      comment.destroy
+    end
+    redirect_to :comments
+  end
 end

@@ -1,0 +1,2 @@
+<% title "Delete Similar Comments" %> 
+<%= link_to "Delete #{@countWithSameName} from #{@comment.name}", similar_comments_path(:id => @comment.id), :method => :delete %>
