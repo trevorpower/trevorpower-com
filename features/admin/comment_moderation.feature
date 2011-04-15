@@ -121,6 +121,27 @@ Feature: Comment moderation
     But I should not see "What a great first blog entry"
     And I should not see "What a great second blog entry"
 
+  Scenario: Delete all comments with the same user name
+    Given I have a post with title "My first post" and the comments:
+    | body 				| name      | email            |
+    | What a great first blog entry 	| spammer1  | email@spam.org   |
+    | Keep up the good work 		| Johnny    | johnny@corp.net  |
+    | Want to buy cheap meds		| Mr. Smith | john.smith@it.it |
+    And I have a post with title "My second post" and the comments:
+    | body 				| name      | email            |
+    | What a great second blog entry 	| spammer2  | email@spam.org    |
+    And I am on the comments page
+    When I follow "Delete similar..." for comment whose body is "What a great first blog entry"
+    And I follow "Delete 2 from email@spam.org"
+
+    Then I should be on the comments page
+
+    And I should see "Keep up the good work"
+    And I should see "Want to buy cheap meds"
+
+    But I should not see "What a great first blog entry"
+    And I should not see "What a great second blog entry"
+
   Scenario: Can cancel out of delete similar page
     Given I have a post with title "My first post" and the comments:
     | body 				| name      | email            |

@@ -1,9 +1,12 @@
 <% title "Delete Similar Comments" %>
 <ul data-role='listview'>
   <li>
-<%= link_to "Delete #{@countWithSameName} from #{@comment.name}", similar_comments_path(:id => @comment.id), :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to "Delete #{@countWithSameName} from #{@comment.name}", similar_comments_path(:id => @comment.id, :attribute => :name), :confirm => 'Are you sure?', :method => :delete %>
+  </li>
+  <li>
+<%= link_to "Delete #{@countWithSameEmail} from #{@comment.email}", similar_comments_path(:id => @comment.id, :attribute => :email), :confirm => 'Are you sure?', :method => :delete %>
   </li>
 </ul>
 <div data-role='footer' class='ui-bar' data-theme='b'>
-  <%= link_to "Cancel", comments_path %>
+  <%= link_to "Cancel", comments_path, 'data-icon' => 'delete'%>
 </div>
