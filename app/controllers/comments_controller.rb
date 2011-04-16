@@ -61,6 +61,7 @@ class CommentsController < AdminController
     @comment = Comment.find(params[:id])
     @countWithSameName = Comment.where(:name => @comment.name).count
     @countWithSameEmail = Comment.where(:email => @comment.email).count
+    @countWithSameUrl = Comment.where(:url => @comment.url).count
     render :layout => 'edit'
   end
 
@@ -69,7 +70,7 @@ class CommentsController < AdminController
     
     delete_with_same_attribute comment, :name unless params[:deleteWithName].nil?
     delete_with_same_attribute comment, :email unless params[:deleteWithEmail].nil?
-
+    delete_with_same_attribute comment, :url unless params[:deleteWithUrl].nil?
     comment.destroy
     redirect_to :comments
   end
