@@ -64,8 +64,12 @@ Feature: Comment moderation
     | Keep up the good work 		| Johnny    | johnny@corp.net  |
     | Want to buy cheap meds		| Mr. Smith | john.smith@it.it |
     And I am on the comments page
-    When I follow "Hide" for comment whose body is "Want to buy cheap meds"
-    And I go to the "My first post" post
+
+    When I follow "Want to buy cheap meds"
+    And I follow "Hide"
+    Then I should be on the comments page
+
+    When I go to the "My first post" post
     Then I should see "What a great first blog entry"
     And I should see "Keep up the good work"
     But I should not see "Want to buy cheap meds"
@@ -82,8 +86,11 @@ Feature: Comment moderation
     And I should not see "Want to buy cheap meds"
 
     When I go to the comments page
-    And I follow "Show" for comment whose body is "Want to buy cheap meds"
-    And I go to the "My first post" post
+    And I follow "Want to buy cheap meds"
+    And I follow "Show"
+    Then I should be on the comments page
+
+    When I go to the "My first post" post
     Then I should see "What a great first blog entry"
     And I should see "Keep up the good work"
     And I should see "Want to buy cheap meds"
@@ -95,7 +102,9 @@ Feature: Comment moderation
     | Keep up the good work 		| Johnny    | johnny@corp.net  |
     | Want to buy cheap meds		| Mr. Smith | john.smith@it.it |
     And I am on the comments page
-    When I follow "Destroy" for comment whose body is "Keep up the good work"
+    When I follow "Keep up the good work"
+    And I press "Delete"
+    Then I should be on the comments page
     Then I should see "What a great first blog entry"
     And I should not see "Keep up the good work"
     And I should see "Want to buy cheap meds"
@@ -110,7 +119,7 @@ Feature: Comment moderation
     | body 				| name      | email            |
     | What a great second blog entry 	| spammer   | spam@spam.org    |
     And I am on the comments page
-    When I follow "Delete similar..." for comment whose body is "What a great first blog entry"
+    When I follow "What a great first blog entry"
 
     Then I should see "What a great first blog entry"
     And I should see "spammer"
@@ -136,7 +145,7 @@ Feature: Comment moderation
     | What a great second blog entry 	| spammer2  | email@spam.org    |
     And I am on the comments page 
 
-    When I follow "Delete similar..." for comment whose body is "What a great first blog entry"
+    When I follow "What a great first blog entry"
     Then I should see "email@spam.org"
 
     When I check "2 - Email = email@spam.org"
@@ -160,7 +169,7 @@ Feature: Comment moderation
     | What a great second blog entry | spammer2  | smap@spam.org    | http://exa.com |
     And I am on the comments page 
 
-    When I follow "Delete similar..." for comment whose body is "What a great first blog entry"
+    When I follow "What a great first blog entry"
     Then I should see "http://exa.com"
 
     When I check "2 - Url = http://exa.com"
@@ -180,7 +189,7 @@ Feature: Comment moderation
     | Keep up the good work 		| Johnny    | johnny@corp.net  |
     | Want to buy cheap meds		| Mr. Smith | john.smith@it.it |
     And I am on the comments page
-    When I follow "Delete similar..." for comment whose body is "What a great first blog entry"
+    When I follow "What a great first blog entry"
     And I follow "Cancel"
     Then I should be on the comments page
     And I should see "Keep up the good work"
