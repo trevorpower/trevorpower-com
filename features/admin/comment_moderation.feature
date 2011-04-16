@@ -113,8 +113,9 @@ Feature: Comment moderation
     When I follow "Delete similar..." for comment whose body is "What a great first blog entry"
 
     Then I should see "What a great first blog entry"
+    And I should see "spammer"
 
-    When I check "Delete 2 from spammer"
+    When I check "2 - Name = spammer"
     And I press "Delete"
     Then I should be on the comments page
 
@@ -133,9 +134,12 @@ Feature: Comment moderation
     And I have a post with title "My second post" and the comments:
     | body 				| name      | email            |
     | What a great second blog entry 	| spammer2  | email@spam.org    |
-    And I am on the comments page
+    And I am on the comments page 
+
     When I follow "Delete similar..." for comment whose body is "What a great first blog entry"
-    And I check "Delete 2 from email@spam.org"
+    Then I should see "email@spam.org"
+
+    When I check "2 - Email = email@spam.org"
     And I press "Delete"
     Then I should be on the comments page
 

@@ -4,14 +4,31 @@
     <%= link_to "Cancel", comments_path, 'data-icon' => 'delete'%>
     <h1>Comment Moderation</h1>
   </div>
-  <div data-role='content'>
+  <div data-role='content' data-theme='d'>
     <p><%= @comment.body %></p>
+    <ul data-role='listview' data-inset='true'>
+      <li data-role='list-divider' data-dividertheme='a'>From</li>
+      <li><%= @comment.name %></li>
+      <li><%= @comment.email %></li>
+      <% unless @comment.url.blank? %>
+        <li><%= @comment.url %></li>
+      <% end %>
+      <li data-role='list-divider' data-dividertheme='b'>Date</li>
+      <li><%= @comment.published_on.to_s :admin %></li>
+      <li data-role='list-divider' data-dividertheme='c'>Post</li>
+      <li><%= @comment.post.title %></li>
+    </ul>
+    <h4>Apply to Similar</h4>
     <div data-role='fieldcontain'>
       <fieldset data-role='controlgroup'>
-        <input type="checkbox" id="deleteWithName" name="deleteWithName"/>
-        <label for="deleteWithName"><%= "Delete #{@countWithSameName} from #{@comment.name}" %></label>
-        <input type="checkbox" id="deleteWithEmail" name="deleteWithEmail"/>
-        <label for="deleteWithEmail"><%= "Delete #{@countWithSameEmail} from #{@comment.email}" %></label>
+        <% if @countWithSameName > 1 %>
+          <input type="checkbox" id="deleteWithName" name="deleteWithName" data-theme='a'/>
+          <label for="deleteWithName"><%= "#{@countWithSameName} - Name = #{@comment.name}" %></label>
+        <% end %>
+        <% if @countWithSameEmail > 1 %>
+          <input type="checkbox" id="deleteWithEmail" name="deleteWithEmail" data-theme='a'/>
+          <label for="deleteWithEmail"><%= "#{@countWithSameEmail} - Email = #{@comment.email}" %></label>
+        <% end %>
       </fieldset>
     </div>
   </div>
