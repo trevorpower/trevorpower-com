@@ -1,16 +1,21 @@
 <% title "Delete Similar Comments" %>
-<div data-role='header' data-theme='b'>
-  <%= link_to "Cancel", comments_path, 'data-icon' => 'delete'%>
-  <h1>Comment Moderation</h1>
-</div>
-<div data-role='content'>
-<p><%= @comment.body %></p>
-<ul data-role='listview' data-inset='true'>
-  <li>
-<%= link_to "Delete #{@countWithSameName} from #{@comment.name}", similar_comments_path(:id => @comment.id, :attribute => :name), :confirm => 'Are you sure?', :method => :delete %>
-  </li>
-  <li>
-<%= link_to "Delete #{@countWithSameEmail} from #{@comment.email}", similar_comments_path(:id => @comment.id, :attribute => :email), :confirm => 'Are you sure?', :method => :delete %>
-  </li>
-</ul>
-</div>
+<%= form_for similar_comments_path(:id => @comment.id) do |form| %>
+  <div data-role='header' data-theme='b'>
+    <%= link_to "Cancel", comments_path, 'data-icon' => 'delete'%>
+    <h1>Comment Moderation</h1>
+  </div>
+  <div data-role='content'>
+    <p><%= @comment.body %></p>
+    <div data-role='fieldcontain'>
+      <fieldset data-role='controlgroup'>
+        <input type="checkbox" id="deleteWithName" name="deleteWithName"/>
+        <label for="deleteWithName"><%= "Delete #{@countWithSameName} from #{@comment.name}" %></label>
+        <input type="checkbox" id="deleteWithEmail" name="deleteWithEmail"/>
+        <label for="deleteWithEmail"><%= "Delete #{@countWithSameEmail} from #{@comment.email}" %></label>
+      </fieldset>
+    </div>
+  </div>
+  <div data-role='footer' class='ui-bar' data-theme='b'>
+    <%= form.submit 'Delete' %>
+  </div>
+<% end %>

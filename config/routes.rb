@@ -23,7 +23,7 @@ Blog::Application.routes.draw do
 
 
   match 'comments/:id/similar' => 'comments#similar', :via => 'get', :as => :similar_comments
-  match 'comments/:id/similar' => 'comments#destroy_similar', :via => 'delete'
+  match 'comments/:id/similar' => 'comments#destroy_similar', :via => 'post'
 
   resources :images, :only => [ :index, :create, :destroy ], :constraints => { :id => /[a-zA-Z0-9\-\.]+/ }
   

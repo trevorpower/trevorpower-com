@@ -65,11 +65,20 @@ class CommentsController < AdminController
   end
 
   def destroy_similar
-    base = Comment.find(params[:id])
-    attribute = params[:attribute]
+    comment = Comment.find(params[:id])
+    
+    delete_with_same_attribute comment, :name unless params[:deleteWithName].nil?
+    delete_with_same_attribute comment, :email unless params[:deleteWithEmail].nil?
+
+    comment.destroy
+    redirect_to :comments
+  end
+
+  private
+
+  def delete_with_same_attribute(base, attribute)
     Comment.where(attribute => base.read_attribute(attribute)).each do |comment|
       comment.destroy
     end
-    redirect_to :comments
   end
 end

@@ -24,7 +24,7 @@ Feature: Comment moderation
   Scenario: Can page a long list of comments
     Given I have a post with title "My post" and 25 comments
 
-   When I go to the comments page
+    When I go to the comments page
     Then I should see "My post - comment 25"
     And I should see "My post - comment 16"
     But I should not see "My post - comment 15"
@@ -114,8 +114,8 @@ Feature: Comment moderation
 
     Then I should see "What a great first blog entry"
 
-    When I follow "Delete 2 from spammer"
-
+    When I check "Delete 2 from spammer"
+    And I press "Delete"
     Then I should be on the comments page
 
     And I should see "Keep up the good work"
@@ -124,7 +124,7 @@ Feature: Comment moderation
     But I should not see "What a great first blog entry"
     And I should not see "What a great second blog entry"
 
-  Scenario: Delete all comments with the same user name
+  Scenario: Delete all comments with the same email
     Given I have a post with title "My first post" and the comments:
     | body 				| name      | email            |
     | What a great first blog entry 	| spammer1  | email@spam.org   |
@@ -135,8 +135,8 @@ Feature: Comment moderation
     | What a great second blog entry 	| spammer2  | email@spam.org    |
     And I am on the comments page
     When I follow "Delete similar..." for comment whose body is "What a great first blog entry"
-    And I follow "Delete 2 from email@spam.org"
-
+    And I check "Delete 2 from email@spam.org"
+    And I press "Delete"
     Then I should be on the comments page
 
     And I should see "Keep up the good work"
