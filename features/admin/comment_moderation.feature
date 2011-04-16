@@ -111,7 +111,10 @@ Feature: Comment moderation
     | What a great second blog entry 	| spammer   | spam@spam.org    |
     And I am on the comments page
     When I follow "Delete similar..." for comment whose body is "What a great first blog entry"
-    And I follow "Delete 2 from spammer"
+
+    Then I should see "What a great first blog entry"
+
+    When I follow "Delete 2 from spammer"
 
     Then I should be on the comments page
 

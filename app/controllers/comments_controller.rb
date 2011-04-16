@@ -61,6 +61,7 @@ class CommentsController < AdminController
     @comment = Comment.find(params[:id])
     @countWithSameName = Comment.where(:name => @comment.name).count
     @countWithSameEmail = Comment.where(:email => @comment.email).count
+    render :layout => 'edit'
   end
 
   def destroy_similar
