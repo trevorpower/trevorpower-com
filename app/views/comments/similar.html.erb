@@ -29,9 +29,13 @@
           <input type="checkbox" id="deleteWithEmail" name="deleteWithEmail" data-theme='a'/>
           <label for="deleteWithEmail"><%= "#{@countWithSameEmail} - Email = #{@comment.email}" %></label>
         <% end %>
-        <% if @countWithSameUrl > 1 %>
+        <% if @countWithSameUrl || 0 > 1 %>
           <input type="checkbox" id="deleteWithUrl" name="deleteWithUrl" data-theme='a'/>
           <label for="deleteWithUrl"><%= "#{@countWithSameUrl} - Url = #{@comment.url}" %></label>
+        <% end %>
+        <% if @countWithSameDomain != @countWithSameUrl %>
+          <input type="checkbox" id="deleteWithDomain" name="deleteWithDomain" data-theme='a'/>
+          <label for="deleteWithDomain"><%= "#{@countWithSameDomain} - Url =~ #{@commentDomain}" %></label>
         <% end %>
       </fieldset>
     </div>

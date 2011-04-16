@@ -1,3 +1,5 @@
+require 'uri'
+
 class CommentsController < AdminController
   before_filter :authenticate
   
@@ -61,7 +63,11 @@ class CommentsController < AdminController
     @comment = Comment.find(params[:id])
     @countWithSameName = Comment.where(:name => @comment.name).count
     @countWithSameEmail = Comment.where(:email => @comment.email).count
-    @countWithSameUrl = Comment.where(:url => @comment.url).count
+    unless (@comment.url.blank?)
+      @countWithSameUrl = Comment.where(:url => @comment.url).count
+      @commentDomain = URI.parse(@comment.url).host
+      @countWithSameDomain = Comment.where(:url => /#{Regexp.escape(@commentDomain)}/i).count
+    end
     render :layout => 'edit'
   end
 
@@ -71,6 +77,14 @@ class CommentsController < AdminController
     delete_with_same_attribute comment, :name unless params[:deleteWithName].nil?
     delete_with_same_attribute comment, :email unless params[:deleteWithEmail].nil?
     delete_with_same_attribute comment, :url unless params[:deleteWithUrl].nil?
+
+    unless (comment.url.blank?)
+      domain = URI.parse(comment.url).host
+      Comment.where(:url => /#{Regexp.escape(domain)}/i).each do |match|
+       match.destroy
+      end
+    end
+
     comment.destroy
     redirect_to :comments
   end
