@@ -9,7 +9,7 @@
 <ul data-role="listview">
   <% @comments.each do |comment| %> 
     <li id="<%= comment.dom_id %>" data-theme="<%= comment.published ? 'a' : 'd' %>">
-      <h3><a href='#'><%=h comment.name %></a><br/><%=h comment.url %></h3>
+      <h3><%=h comment.name %> - <%=h comment.url %></h3>
       <p><%=h comment.body %></p>
       <p><b><%=h comment.post_title %> - <%=h comment.published_on.to_s(:admin) %></b></p>
       <ul>
@@ -22,6 +22,9 @@
         </li>
         <li>
           <%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %>
+        </li>
+        <li>
+          <%= link_to 'Delete similar...', similar_comments_path(:id => comment.id) %>
         </li>
       </ul>
     </li>

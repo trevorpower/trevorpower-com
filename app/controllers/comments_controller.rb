@@ -57,4 +57,29 @@ class CommentsController < AdminController
     end
   end
 
+  def similar
+    @comment = Comment.find(params[:id])
+    @countWithSameName = Comment.where(:name => @comment.name).count
+    @countWithSameEmail = Comment.where(:email => @comment.email).count
+    @countWithSameUrl = Comment.where(:url => @comment.url).count
+    render :layout => 'edit'
+  end
+
+  def destroy_similar
+    comment = Comment.find(params[:id])
+    
+    delete_with_same_attribute comment, :name unless params[:deleteWithName].nil?
+    delete_with_same_attribute comment, :email unless params[:deleteWithEmail].nil?
+    delete_with_same_attribute comment, :url unless params[:deleteWithUrl].nil?
+    comment.destroy
+    redirect_to :comments
+  end
+
+  private
+
+  def delete_with_same_attribute(base, attribute)
+    Comment.where(attribute => base.read_attribute(attribute)).each do |comment|
+      comment.destroy
+    end
+  end
 end

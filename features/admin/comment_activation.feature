@@ -17,7 +17,7 @@ Feature: Comment activiation
     And go to the "My first post" post
     Then I should not see "Add Comment"
     And I should not see "Leave a Comment"
-    But I should see "Commenting has been deactivated, you can contact me direclty on the contact page"
+    But I should see "Commenting has been deactivated, but you can still contact me directly."
 
 
   Scenario: Activate commenting
