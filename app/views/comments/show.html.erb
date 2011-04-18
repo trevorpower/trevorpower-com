@@ -1,5 +1,5 @@
-<% title "Delete Similar Comments" %>
-<%= form_for similar_comments_path(:id => @comment.id) do |form| %>
+<% title "Comment Details" %>
+<%= form_for :comment, :url => { :action => 'destroy' }, :method => 'post' do |form| %>
   <div data-role='header' data-theme='b'>
     <%= link_to "Cancel", comments_path, 'data-icon' => 'delete'%>
     <h1>Comment</h1>

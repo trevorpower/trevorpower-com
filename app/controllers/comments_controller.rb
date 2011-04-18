@@ -49,17 +49,7 @@ class CommentsController < AdminController
     end
   end
 
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(comments_url) }
-      format.xml  { head :ok }
-    end
-  end
-
-  def similar
+  def show
     @comment = Comment.find(params[:id])
     @countWithSameName = Comment.where(:name => @comment.name).count
     @countWithSameEmail = Comment.where(:email => @comment.email).count
@@ -71,14 +61,14 @@ class CommentsController < AdminController
     render :layout => 'edit'
   end
 
-  def destroy_similar
+  def destroy
     comment = Comment.find(params[:id])
     
     delete_with_same_attribute comment, :name unless params[:deleteWithName].nil?
     delete_with_same_attribute comment, :email unless params[:deleteWithEmail].nil?
     delete_with_same_attribute comment, :url unless params[:deleteWithUrl].nil?
 
-    unless (comment.url.blank?)
+    unless params[:deleteWithDomain].nil?
       domain = URI.parse(comment.url).host
       Comment.where(:url => /#{Regexp.escape(domain)}/i).each do |match|
        match.destroy
@@ -86,7 +76,8 @@ class CommentsController < AdminController
     end
 
     comment.destroy
-    redirect_to :comments
+
+    redirect_to comments_url
   end
 
   private

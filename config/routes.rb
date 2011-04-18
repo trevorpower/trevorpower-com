@@ -10,7 +10,9 @@ Blog::Application.routes.draw do
     resources :comments, :except => [:new, :edit, :update]
   end
 
-  resources :comments, :except => [ :new, :create ] do
+  match 'comments/:id/delete' => 'comments#destroy', :via => 'post', :as => :destroy_comment
+
+  resources :comments, :except => [ :new, :create, :destroy, :update ] do
     collection do
       put 'deactivate'
       put 'activate'
@@ -20,10 +22,6 @@ Blog::Application.routes.draw do
       put 'hide'
     end
   end
-
-
-  match 'comments/:id/similar' => 'comments#similar', :via => 'get', :as => :similar_comments
-  match 'comments/:id/similar' => 'comments#destroy_similar', :via => 'post'
 
   resources :images, :only => [ :index, :create, :destroy ], :constraints => { :id => /[a-zA-Z0-9\-\.]+/ }
   

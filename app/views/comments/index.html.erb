@@ -9,7 +9,7 @@
 <ul data-role="listview">
   <% @comments.each do |comment| %> 
     <li id="<%= comment.dom_id %>" data-theme="<%= comment.published ? 'a' : 'd' %>">
-      <%= link_to similar_comments_path(:id => comment.id) do %>
+      <%= link_to comment_path(comment) do %>
         <h3><%=h comment.name %> - <%=h comment.url %></h3>
         <p><%=h comment.body %></p>
         <p><b><%=h comment.post_title %> - <%=h comment.published_on.to_s(:admin) %></b></p>
