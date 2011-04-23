@@ -51,29 +51,27 @@ class CommentsController < AdminController
 
   def show
     @comment = Comment.find(params[:id])
-    @countWithSameName = Comment.where(:name => @comment.name).count
-    @countWithSameEmail = Comment.where(:email => @comment.email).count
-    unless (@comment.url.blank?)
-      @countWithSameUrl = Comment.where(:url => @comment.url).count
-      @commentDomain = URI.parse(@comment.url).host
-      @countWithSameDomain = Comment.where(:url => /#{Regexp.escape(@commentDomain)}/i).count
+
+    allRules = similarity_rules(@comment).map do |name, rule|
+      {
+        :type => name,
+        :count => Comment.where(rule).count,
+        :description => describe_rule(rule)
+      }
     end
+    
+    @similarComments = allRules.select{ |rule| rule[:count] > 1 }
+
     render :layout => 'edit'
   end
 
   def destroy
     comment = Comment.find(params[:id])
     
-    delete_with_same_attribute comment, :name unless params[:deleteWithName].nil?
-    delete_with_same_attribute comment, :email unless params[:deleteWithEmail].nil?
-    delete_with_same_attribute comment, :url unless params[:deleteWithUrl].nil?
-
-    unless params[:deleteWithDomain].nil?
-      domain = URI.parse(comment.url).host
-      Comment.where(:url => /#{Regexp.escape(domain)}/i).each do |match|
-       match.destroy
-      end
-    end
+    similarity_rules(comment)
+      .reject{|name, rule| params[name].nil?}
+      .values
+      .each{|rule| Comment.where(rule).each{|related| related.destroy} }
 
     comment.destroy
 
@@ -81,6 +79,31 @@ class CommentsController < AdminController
   end
 
   private
+
+  def similarity_rules(comment)
+    rules = {}
+
+    rules[:withSameName] = {:name => comment.name}
+    rules[:withSameEmail] = {:email => comment.email}
+
+    unless comment.url.nil?
+      rules[:withSameUrl] = {:url => comment.url}
+      domain = URI.parse(comment.url).host
+      rules[:withSameDomain] = {:url => /#{Regexp.escape(domain)}/i}
+    end
+
+    rules
+  end
+
+  def describe_rule (rule)
+    attribute = rule.keys.first.capitalize
+    value = rule.values.first
+    if value.is_a?(Regexp)
+      "#{attribute} =~ #{value.inspect}"
+    else
+      "#{attribute} = #{value}"
+    end 
+  end 
 
   def delete_with_same_attribute(base, attribute)
     Comment.where(attribute => base.read_attribute(attribute)).each do |comment|

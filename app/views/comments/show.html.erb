@@ -18,27 +18,17 @@
       <li data-role='list-divider' data-dividertheme='c'>Post</li>
       <li><%= @comment.post.title %></li>
     </ul>
-    <h4>Moderate Similar</h4>
-    <div data-role='fieldcontain'>
-      <fieldset data-role='controlgroup'>
-        <% if @countWithSameName > 1 %>
-          <input type="checkbox" id="deleteWithName" name="deleteWithName" data-theme='a'/>
-          <label for="deleteWithName"><%= "#{@countWithSameName} - Name = #{@comment.name}" %></label>
-        <% end %>
-        <% if @countWithSameEmail > 1 %>
-          <input type="checkbox" id="deleteWithEmail" name="deleteWithEmail" data-theme='a'/>
-          <label for="deleteWithEmail"><%= "#{@countWithSameEmail} - Email = #{@comment.email}" %></label>
-        <% end %>
-        <% if @countWithSameUrl || 0 > 1 %>
-          <input type="checkbox" id="deleteWithUrl" name="deleteWithUrl" data-theme='a'/>
-          <label for="deleteWithUrl"><%= "#{@countWithSameUrl} - Url = #{@comment.url}" %></label>
-        <% end %>
-        <% if @countWithSameDomain != @countWithSameUrl %>
-          <input type="checkbox" id="deleteWithDomain" name="deleteWithDomain" data-theme='a'/>
-          <label for="deleteWithDomain"><%= "#{@countWithSameDomain} - Url =~ #{@commentDomain}" %></label>
-        <% end %>
-      </fieldset>
-    </div>
+    <% if @similarComments.count > 0 %>
+      <h4>Moderate Similar</h4>
+      <div data-role='fieldcontain'>
+        <fieldset data-role='controlgroup'>
+          <% @similarComments.each do |details| %>
+            <%= check_box_tag details[:type], nil, false, 'data-theme' => 'a' %>
+            <%= label_tag details[:type], "#{details[:count]} - #{details[:description]}" %>
+          <% end %>
+        </fieldset>
+      </div>
+    <% end %>
   </div>
   <div data-role='footer' class='ui-bar' data-theme='b'>
     <% if @comment.published %>

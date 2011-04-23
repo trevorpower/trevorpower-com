@@ -194,7 +194,7 @@ Feature: Comment moderation
     And I am on the comments page 
 
     When I follow "What a great first blog entry"
-    And I check "2 - Url =~ exa.com"
+    And I check "2 - Url =~ /exa\.com/i"
     And I press "Delete"
     Then I should be on the comments page
 
