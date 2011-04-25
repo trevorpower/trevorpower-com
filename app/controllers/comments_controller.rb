@@ -52,15 +52,18 @@ class CommentsController < AdminController
   def show
     @comment = Comment.find(params[:id])
 
-    allRules = similarity_rules(@comment).map do |name, rule|
+    allRules = similarity_rules(@comment).map do |rule|
       {
-        :type => name,
-        :count => Comment.where(rule).count,
-        :description => describe_rule(rule)
+        :name => rule[:name],
+        :sub => rule[:sub],
+        :count => Comment.where(rule[:query]).count,
+        :description => describe_rule(rule[:query])
       }
     end
     
-    @similarComments = allRules.select{ |rule| rule[:count] > 1 }
+    @similarComments = allRules
+      .select{ |rule| rule[:count] > 1 }
+      #.select{ |rule| rule[:sub].nil? || rule.select{ |sub| sub[:name] == rule[:sub] }}.first[:count] < rule[:count]}
 
     render :layout => 'edit'
   end
@@ -69,9 +72,9 @@ class CommentsController < AdminController
     comment = Comment.find(params[:id])
     
     similarity_rules(comment)
-      .reject{|name, rule| params[name].nil?}
-      .values
-      .each{|rule| Comment.where(rule).each{|related| related.destroy} }
+      .reject{|rule| params[rule[:name]].nil?}
+      .map{|rule| rule[:query]}
+      .each{|query| Comment.where(query).each{|related| related.destroy} }
 
     comment.destroy
 
@@ -81,18 +84,25 @@ class CommentsController < AdminController
   private
 
   def similarity_rules(comment)
-    rules = {}
+    rules = []
 
-    rules[:withSameName] = {:name => comment.name}
-    rules[:withSameEmail] = {:email => comment.email}
+    rules << same_attribute(:name, comment)
+    rules << same_attribute(:email, comment)
 
     unless comment.url.nil?
-      rules[:withSameUrl] = {:url => comment.url}
+      rules << same_attribute(:url, comment)
       domain = URI.parse(comment.url).host
-      rules[:withSameDomain] = {:url => /#{Regexp.escape(domain)}/i}
+      rules << {:name => :withSameDomain, :query => {:url => /#{Regexp.escape(domain)}/i}, :sub => :withSameUrl}
     end
 
     rules
+  end
+
+  def same_attribute(attribute, object)
+    {    
+      :name => "withSame#{attribute.capitalize}".to_sym,
+      :query => {attribute => object.read_attribute(attribute)}
+    }
   end
 
   def describe_rule (rule)
@@ -105,9 +115,4 @@ class CommentsController < AdminController
     end 
   end 
 
-  def delete_with_same_attribute(base, attribute)
-    Comment.where(attribute => base.read_attribute(attribute)).each do |comment|
-      comment.destroy
-    end
-  end
 end

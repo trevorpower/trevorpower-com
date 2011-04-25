@@ -23,8 +23,8 @@
       <div data-role='fieldcontain'>
         <fieldset data-role='controlgroup'>
           <% @similarComments.each do |details| %>
-            <%= check_box_tag details[:type], nil, false, 'data-theme' => 'a' %>
-            <%= label_tag details[:type], "#{details[:count]} - #{details[:description]}" %>
+            <%= check_box_tag details[:name], nil, false, 'data-theme' => 'a' %>
+            <%= label_tag details[:name], "#{details[:count]} - #{details[:description]}" %>
           <% end %>
         </fieldset>
       </div>
