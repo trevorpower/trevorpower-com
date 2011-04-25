@@ -1,3 +1,5 @@
+require 'uri'
+
 class CommentsController < AdminController
   before_filter :authenticate
   
@@ -47,39 +49,70 @@ class CommentsController < AdminController
     end
   end
 
-  def destroy
+  def show
     @comment = Comment.find(params[:id])
-    @comment.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(comments_url) }
-      format.xml  { head :ok }
+    allRules = similarity_rules(@comment).map do |rule|
+      {
+        :name => rule[:name],
+        :sub => rule[:sub],
+        :count => Comment.where(rule[:query]).count,
+        :description => describe_rule(rule[:query])
+      }
     end
-  end
+    
+    @similarComments = allRules
+      .select{ |rule| rule[:count] > 1 }
+      #.select{ |rule| rule[:sub].nil? || rule.select{ |sub| sub[:name] == rule[:sub] }}.first[:count] < rule[:count]}
 
-  def similar
-    @comment = Comment.find(params[:id])
-    @countWithSameName = Comment.where(:name => @comment.name).count
-    @countWithSameEmail = Comment.where(:email => @comment.email).count
-    @countWithSameUrl = Comment.where(:url => @comment.url).count
     render :layout => 'edit'
   end
 
-  def destroy_similar
+  def destroy
     comment = Comment.find(params[:id])
     
-    delete_with_same_attribute comment, :name unless params[:deleteWithName].nil?
-    delete_with_same_attribute comment, :email unless params[:deleteWithEmail].nil?
-    delete_with_same_attribute comment, :url unless params[:deleteWithUrl].nil?
+    similarity_rules(comment)
+      .reject{|rule| params[rule[:name]].nil?}
+      .map{|rule| rule[:query]}
+      .each{|query| Comment.where(query).each{|related| related.destroy} }
+
     comment.destroy
-    redirect_to :comments
+
+    redirect_to comments_url
   end
 
   private
 
-  def delete_with_same_attribute(base, attribute)
-    Comment.where(attribute => base.read_attribute(attribute)).each do |comment|
-      comment.destroy
+  def similarity_rules(comment)
+    rules = []
+
+    rules << same_attribute(:name, comment)
+    rules << same_attribute(:email, comment)
+
+    unless comment.url.nil?
+      rules << same_attribute(:url, comment)
+      domain = URI.parse(comment.url).host
+      rules << {:name => :withSameDomain, :query => {:url => /#{Regexp.escape(domain)}/i}, :sub => :withSameUrl}
     end
+
+    rules
   end
+
+  def same_attribute(attribute, object)
+    {    
+      :name => "withSame#{attribute.capitalize}".to_sym,
+      :query => {attribute => object.read_attribute(attribute)}
+    }
+  end
+
+  def describe_rule (rule)
+    attribute = rule.keys.first.capitalize
+    value = rule.values.first
+    if value.is_a?(Regexp)
+      "#{attribute} =~ #{value.inspect}"
+    else
+      "#{attribute} = #{value}"
+    end 
+  end 
+
 end
