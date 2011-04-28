@@ -1,7 +1,10 @@
+require 'bcrypt'
+
 class SessionsController < AdminController
   
   def create
-    if (params[:password] == ENV['ADMIN_PASSWORD'])
+    hash = BCrypt::Engine.hash_secret(params[:password], ENV['ADMIN_PASSWORD_SALT'])
+    if (hash == ENV['ADMIN_PASSWORD_HASH'])
       flash[:notice] = 'Successfully logged in'
       session[:authenticated] = true;
       redirect_to posts_path
