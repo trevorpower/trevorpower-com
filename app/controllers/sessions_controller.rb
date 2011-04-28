@@ -2,11 +2,15 @@ require 'bcrypt'
 
 class SessionsController < AdminController
   
+  def new
+    render :layout => 'edit'
+  end
+
   def create
     hash = BCrypt::Engine.hash_secret(params[:password], ENV['ADMIN_PASSWORD_SALT'])
     if (hash == ENV['ADMIN_PASSWORD_HASH'])
       flash[:notice] = 'Successfully logged in'
-      session[:authenticated] = true;
+      session[:authenticated] = true
       redirect_to posts_path
     else
       flash[:notice] = 'Password is incorrect'
