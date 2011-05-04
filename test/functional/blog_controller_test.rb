@@ -8,11 +8,22 @@ class BlogControllerTest < ActionController::TestCase
       :body => 'body'
     )
 
-    get :post, :slug => 'title'
+    get :comment, :slug => 'title'
     assert_response :success
     assert_not_nil assigns(:post)
     assert_not_nil assigns(:comment)
     assert_nil assigns(:comment_saved)
+  end
+
+  test "comment should return error if commenting not enabled" do
+    ENV['commenting_active'] = nil 
+    currentpost = Post.create!(
+      :title => 'title',
+      :body => 'body'
+    )
+
+    get :comment, :slug => 'title'
+    assert_response 403
   end
 
   test "post should save comment" do
@@ -29,7 +40,7 @@ class BlogControllerTest < ActionController::TestCase
     }
     
     assert_difference('Comment.count') do
-      post :post, { :comment => comment_params, :slug => currentpost.slug }
+      post :comment, { :comment => comment_params, :slug => currentpost.slug }
     end
     
     assert_response :success
