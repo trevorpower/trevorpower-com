@@ -15,12 +15,7 @@ class BlogController < ApplicationController
 
     @allow_comments = ! ENV['commenting_active'].nil?
 
-    if @allow_comments and ! params[:comment].nil?
-      @comment = @post.comments.build(params[:comment])
-      @comment_saved = @comment.save()
-    else
-      @comment = @post.comments.build
-    end
+    @comment = @post.comments.build
     
     @comments = @post.comments.all(:published => true).sort_by(&:published_on)
 
@@ -30,4 +25,23 @@ class BlogController < ApplicationController
     end
   end
 
+  def comment
+    @post = Post.find_by_slug(params[:slug])
+
+    @allow_comments = ! ENV['commenting_active'].nil?
+
+    if @allow_comments 
+      if ! params[:comment].nil?
+        @comment = @post.comments.build(params[:comment])
+        @comment_saved = @comment.save()
+      else
+        @comment = @post.comments.build
+      end
+      @comments = @post.comments.all(:published => true).sort_by(&:published_on)
+
+      render 'post'
+    else
+      render :nothing => true, :status => :forbidden    
+    end
+  end
 end

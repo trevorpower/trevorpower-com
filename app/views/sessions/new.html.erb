@@ -1,6 +1,21 @@
 <% title "Login" %>
 <%= form_tag({:action => "create", :controller => "sessions"}, :method => :post) do %>
-  <%= label_tag 'Password' %>
-  <%= password_field_tag :password %>
-  <%= submit_tag 'Login' %>
+  <div data-role="header" data-theme="b" data-backbtn='true'>
+    <%= link_to 'Cancel', posts_path, 'data-rel' => 'back', 'data-icon' => 'back' %>
+    <h2><%= yield(:title) %></h2>
+  </div>
+  <% unless flash[:notice].nil? %>
+    <div data-role='content' data-theme='e'>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <div data-role='content'>
+    <div data-role='fieldcontain'>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div>
+  </div>
+  <div data-role='footer' class='ui-bar'>
+    <%= submit_tag 'Login', 'data-icon' => 'check' %>
+  <div>
 <% end %>

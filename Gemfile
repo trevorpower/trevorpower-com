@@ -30,6 +30,7 @@ gem "sanitize"
 gem "html_truncator"
 gem "bson_ext"
 gem "jquery-rails"
+gem "bcrypt-ruby"
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

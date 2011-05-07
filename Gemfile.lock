@@ -35,6 +35,7 @@ GEM
       builder
       mime-types
       xml-simple
+    bcrypt-ruby (2.1.4)
     bson (1.2.4)
     bson_ext (1.2.4)
     builder (2.1.2)
@@ -136,6 +137,7 @@ DEPENDENCIES
   autotest-rails-pure
   autotest-standalone
   aws-s3
+  bcrypt-ruby
   bson_ext
   cucumber-rails
   database_cleaner

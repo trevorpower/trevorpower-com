@@ -32,7 +32,8 @@ Blog::Application.routes.draw do
   match 'contact' => 'contact#index', :as => :contact, :via => ['get', 'post']
   match 'contact/send_mail' => 'contact#send_mail', :via => 'post', :as => :send_mail
   match 'blog' => 'blog#index', :as => :blog
-  match 'blog/:slug' => 'blog#post', :via => ['get', 'post'], :as => :blog_post
+  match 'blog/:slug' => 'blog#post', :via => 'get', :as => :blog_post
+  match 'blog/:slug' => 'blog#comment', :via => 'post', :as => :save_comment
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
