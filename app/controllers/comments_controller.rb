@@ -63,7 +63,6 @@ class CommentsController < AdminController
     
     @similarComments = allRules
       .select{ |rule| rule[:count] > 1 }
-      #.select{ |rule| rule[:sub].nil? || rule.select{ |sub| sub[:name] == rule[:sub] }}.first[:count] < rule[:count]}
 
     render :layout => 'edit'
   end
@@ -87,12 +86,17 @@ class CommentsController < AdminController
     rules = []
 
     rules << same_attribute(:name, comment)
-    rules << same_attribute(:email, comment)
+
+    unless comment.email.nil?
+      rules << same_attribute(:email, comment)
+    end
 
     unless comment.url.nil?
       rules << same_attribute(:url, comment)
       domain = URI.parse(comment.url).host
-      rules << {:name => :withSameDomain, :query => {:url => /#{Regexp.escape(domain)}/i}, :sub => :withSameUrl}
+      unless domain.nil?
+        rules << {:name => :withSameDomain, :query => {:url => /#{Regexp.escape(domain)}/i}, :sub => :withSameUrl}
+      end
     end
 
     rules
