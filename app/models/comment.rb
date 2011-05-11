@@ -16,6 +16,8 @@ class Comment
 
   belongs_to :post
 
+  before_save :record_post_details
+
   #validates_length_of :name, :in => 4..100
   #validates_length_of :body, :in => 4..2000
   validates_format_of :email, :with => /([a-z0-9_.-]+)@([a-z0-9-]+)\.[a-z.]+/i
@@ -38,4 +40,11 @@ class Comment
   rescue
     nil 
   end
+
+  private
+
+  def record_post_details 
+    self.post_title = self.post.title
+  end
+
 end

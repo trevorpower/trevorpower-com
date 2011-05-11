@@ -47,5 +47,6 @@ class BlogControllerTest < ActionController::TestCase
     assert_not_nil assigns(:post)
     assert_not_nil assigns(:comment)
     assert_not_nil assigns(:comment_saved)
+    assert_not_nil assigns(:comment).post_title
   end
 end
