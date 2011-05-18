@@ -8,7 +8,7 @@ class BlogControllerTest < ActionController::TestCase
       :body => 'body'
     )
 
-    get :comment, :slug => 'title'
+    post :comment, :slug => 'title'
     assert_response :success
     assert_not_nil assigns(:post)
     assert_not_nil assigns(:comment)
@@ -22,8 +22,25 @@ class BlogControllerTest < ActionController::TestCase
       :body => 'body'
     )
 
-    get :comment, :slug => 'title'
+    post :comment, :slug => 'title'
     assert_response 403
+  end
+
+  test "comment should not be saved if name is not provided" do
+    ENV['commenting_active'] = 'true' 
+    currentpost = Post.create!(
+      :title => 'title',
+      :body => 'body'
+    )
+
+    comment_params = {
+      :email => 'test@example.com',
+      :body => 'a comment' 
+    }
+
+    post :comment, :slug => 'title', :comment => comment_params
+
+    assert_equal false, assigns(:comment_saved)
   end
 
   test "post should save comment" do
