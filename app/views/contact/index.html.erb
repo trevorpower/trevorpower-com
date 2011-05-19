@@ -9,14 +9,14 @@
 <p>You can send me an email using the following form:</p>
   <%= form_for @message, :url => contact_url do |f| %>
     <% if @message.errors.any? %>  
-      <div id="errorExplanation">  
-        <h2><%= pluralize(@message.errors.count, "error") %> prohibited this email from being sent:</h2>  
-        <ul>  
-        <% @message.errors.full_messages.each do |msg| %>  
-          <li><%= msg %></li>  
-        <% end %>  
-        </ul>  
-      </div>  
+      <div>  
+        <ul data-role="listview" data-theme="e" data-inset="true">  
+          <li data-role="list-divider"><%= pluralize(@message.errors.count, "error") %> prohibited this email from being sent</li>  
+          <% @message.errors.full_messages.each do |msg| %>  
+            <li><%= msg %></li>  
+          <% end %>  
+      </ul>  
+    </div>  
     <% end %>
     <%= f.label :name %>
     <%= f.text_field :name, :size => 60 %><br />
