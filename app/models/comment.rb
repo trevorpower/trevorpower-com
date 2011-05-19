@@ -2,12 +2,11 @@ require 'uri'
 
 class Comment
   include MongoMapper::Document
-  #include ActiveModel::Validations
 
-  key :name, String#, :required => true
+  key :name, String, :required => true
   key :url, String
-  key :email, String#, :required => true
-  key :body, String#, :required => true
+  key :email, String, :required => true
+  key :body, String, :required => true
   key :published_on, Date, :default => Date.today
   key :published, Boolean, :default => true
 
@@ -15,6 +14,8 @@ class Comment
   key :post_id, ObjectId
 
   belongs_to :post
+
+  before_save :record_post_details
 
   #validates_length_of :name, :in => 4..100
   #validates_length_of :body, :in => 4..2000
@@ -38,4 +39,11 @@ class Comment
   rescue
     nil 
   end
+
+  private
+
+  def record_post_details 
+    self.post_title = self.post.title
+  end
+
 end

@@ -29,7 +29,6 @@ class BlogController < ApplicationController
     @post = Post.find_by_slug(params[:slug])
 
     @allow_comments = ! ENV['commenting_active'].nil?
-
     if @allow_comments 
       if ! params[:comment].nil?
         @comment = @post.comments.build(params[:comment])
@@ -41,7 +40,7 @@ class BlogController < ApplicationController
 
       render 'post'
     else
-      render :nothing => true, :status => :forbidden    
+      head :status => :forbidden    
     end
   end
 end
