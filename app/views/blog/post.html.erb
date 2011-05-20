@@ -3,7 +3,7 @@
 
   <p class="notice"><%= flash[:notice] %></p>
   <h1><%= h(@post.title) %></h1>
-  <h3><%=h @post.published_on.to_s(:public) %></h3><br />
+  <h3><%=h @post.published_on.to_s(:public) %></h3>
   <%= @post.body.html_safe %>
 
   <% if @comments.count > 0 %>
