@@ -16,3 +16,9 @@ img {
   max-width: 100%;
   width: auto;
 }
+
+.ui-icon-rss
+{
+  background-image: url(http://s3.amazonaws.com/trevorpower-com-production/jquery-mobile-rss.png);
+}
+
