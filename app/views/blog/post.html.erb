@@ -2,8 +2,8 @@
 <% area :blog %>
 
   <p class="notice"><%= flash[:notice] %></p>
+  <h4><%=h @post.published_on.to_s(:public) %></h4>
   <h1><%= h(@post.title) %></h1>
-  <h3><%=h @post.published_on.to_s(:public) %></h3><br />
   <%= @post.body.html_safe %>
 
   <% if @comments.count > 0 %>
