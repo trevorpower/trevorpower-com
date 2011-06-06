@@ -17,7 +17,7 @@ Scenario: View images
   And I should see "another-image.gif"
 
 Scenario: Add new image
-  When I fill in file with name "sample.png" for "picture"
+  When I attach the file "features/upload_images/sample.png" to "picture"
   And I press "Upload"
   Then I should see "Image successfully uploaded"
   And I should see "sample-image.png"
