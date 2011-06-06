@@ -75,9 +75,3 @@ When /^I (press|follow|check|uncheck|choose) "([^\"]*)" for "([^\"]*)"$/ do |act
   end
 end
 
-Then /^I should see "([^"]*)" selected in the navigation bar$/ do |text|
-  within(".ui-btn-active") do |content|
-    content.should contain(text)
-  end
-end
-
