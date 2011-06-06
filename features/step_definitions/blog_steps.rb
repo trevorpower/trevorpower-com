@@ -13,11 +13,14 @@ end
 Given /^I have a post with title "([^\"]*)" and the comments:$/ do |title, comments|
   post = Post.create(
     :title => title,
-    :comments => comments.hashes,
     :slug => Post.create_slug(title),
     :body => "body for this post (#{title})",
     :published => true
   )
+  comments.hashes.each do |hash| 
+    comment = post.comments.build(hash)
+    comment.save
+  end
   post.save
 end
 
