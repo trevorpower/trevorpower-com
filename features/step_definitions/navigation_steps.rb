@@ -77,12 +77,7 @@ end
 
 Then /^I should see "([^"]*)" selected in the navigation bar$/ do |text|
   within(".ui-btn-active") do |content|
-    if content.respond_to? :should
-      content.should contain(text)
-    else
-      hc = webrat::matchers::hascontent.new(text)
-      assert hc.matches?(content), hc.failure_message
-    end
+    content.should contain(text)
   end
 end
 
