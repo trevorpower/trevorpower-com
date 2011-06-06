@@ -1,19 +1,5 @@
-module Webrat
-  class Link < Element
-    def http_method
-      if !@element["data-method"].blank?
-        @element["data-method"]
-      elsif !onclick.blank? && onclick.include?("f.submit()")
-        http_method_from_js_form
-      else
-        :get
-      end
-    end
-  end
-end
-
 Then /^I should see a link to "([^\"]*)"$/ do |url|
-  response.body.should have_xpath "//a[@href = '#{url}']"
+  page.body.should have_xpath "//a[@href = '#{url}']"
 end
 
 Then /^I should see \"([^"]*)" for (.*) whose (.*) is "([^\"]*)"$/ do |whatyoushouldsee, class_name, var_name, value|
