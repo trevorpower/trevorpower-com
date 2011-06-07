@@ -13,6 +13,15 @@ module HtmlSelectorsHelpers
 
     when "the selected navigation tab"
       ".ui-btn-active"
+
+    when /^(.*) whose (.*) is "([^\"]*)"$/
+      unless $2 == "id" then
+        id = (eval("\"#{$1}\".classify.constantize.find_by_#{$2}(\"#{$3}\").dom_id"))
+      else
+        id = $3
+      end
+      "*[id=#{id}]"
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

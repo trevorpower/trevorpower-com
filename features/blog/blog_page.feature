@@ -20,7 +20,7 @@ Scenario: View published posts
   And I should see "My second blog"
   And I should see "A post about <div> tags"
   And I should see "Grumpy and complaining"
-  And I should see "2 comments" for post whose title is "Grumpy and complaining"
+  And I should see "2 comments" within post whose title is "Grumpy and complaining"
 
 Scenario: View post details
   Given I am on the blog page
