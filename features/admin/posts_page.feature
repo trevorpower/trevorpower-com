@@ -30,10 +30,10 @@ Scenario: Create a new post
   | title          | body                   |
   | My first blog  | This is my first blog  |
   | My second blog | This is my second blog |
-  And I am on the posts page
-  When I follow "New post"
-  And I fill in "title" with "My new draft"
-  And I fill in "body" with "A long time ago, in a galaxy far far away..."
+  When I go to the posts page
+  And I follow "New post"
+  And I fill in "Title" with "My new draft"
+  And I fill in "Body" with "A long time ago, in a galaxy far far away..."
   And I press "Create"
   Then I should be on the posts page
   And I should see "My first blog"
@@ -90,8 +90,8 @@ Scenario: Edit an existing post
   | My second blog | This is my second blog | true      |
   And I am on the posts page
   When I follow "Edit" for post whose title is "My second blog"
-  And fill in "body" with "Update: this has changed ..."
-  And fill in "title" with "My second blog post (updated)"
+  And fill in "Body" with "Update: this has changed ..."
+  And fill in "Title" with "My second blog post (updated)"
   And press "Update"
   Then I should be on the posts page
   And I should see "My second blog post (updated)"
@@ -106,8 +106,8 @@ Scenario: Cancel edit of an existing post
   | My second blog | This is my second blog | true      |
   And I am on the posts page
   When I follow "Edit" for post whose title is "My second blog"
-  And fill in "body" with "Update: this has changed ..."
-  And fill in "title" with "My second blog post (updated)"
+  And fill in "Body" with "Update: this has changed ..."
+  And fill in "Title" with "My second blog post (updated)"
   And follow "Cancel"
   Then I should be on the posts page
   And I should see "My second blog"
@@ -119,8 +119,8 @@ Scenario: Cancel edit of an existing post
 Scenario: Create new post with simple HTML in the body and title
   Given I am on the posts page
   When I follow "New post"
-  And I fill in "title" with "<p> tags & '&' characters"
-  And I fill in "body" with "I <u>don't</u> like it when '&lt;p&gt;' tags &amp; '&amp;' characters are not handled properly." 
+  And I fill in "Title" with "<p> tags & '&' characters"
+  And I fill in "Body" with "I <u>don't</u> like it when '&lt;p&gt;' tags &amp; '&amp;' characters are not handled properly." 
   And I press "Create"
   And I go to the "<p> tags & '&' characters" post
   Then I should see "<p> tags & '&' characters" within "h1"
