@@ -1,14 +1,16 @@
 defaults: &defaults
   host: 127.0.0.1
   port: 27017
+  database: <%= "content-#{Rails.env}" %>
 
 development:
   <<: *defaults
-  database: content-development
 
 test:
   <<: *defaults
-  database: content-test
+
+cucumber:
+  <<: *defaults
 
 # set these environment variables on your prod server
 production:
