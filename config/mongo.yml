@@ -12,7 +12,5 @@ test:
 
 # set these environment variables on your prod server
 production:
-  uri: <%= ENV['MONGO_URL'] %>
+  uri: <%= ENV['MONGOHQ_URL'] %>
   database: content-production
-  username: <%= ENV['MONGO_USERNAME'] %>
-  password: <%= ENV['MONGO_PASSWORD'] %>
