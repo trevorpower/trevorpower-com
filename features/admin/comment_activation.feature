@@ -35,4 +35,12 @@ Feature: Comment activiation
     Then I should not see "Commenting has been deactivated"
     But I should see "Leave a Comment"
 
+  Scenario: Close a post for commenting
+    Given I have a post with title "My first post"
+    And I have a post with title "My second post"
+    And that commenting is active
 
+    When I close "My second post" to new comments
+
+    Then I should be able to comment on "My first post"
+    But I should not be able to comment on "My second post"

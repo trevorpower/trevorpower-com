@@ -55,3 +55,23 @@ Then /^I should see the following blogs:$/ do |expected_blogs_table|
   expected_blogs_table.diff!(tableish('table tr', 'td,th'))
 end
 
+When /^I close "([^"]*)" to new comments$/ do |title|
+  visit posts_path
+  within("*[id=#{Post.find_by_title(title).dom_id}]") do
+    click_link('Close to comments')
+  end
+end
+
+Then /^I should not be able to comment on "([^"]*)"$/ do |title|
+  visit blog_post_path(:slug => Post.find_by_title(title).slug)
+  page.should have_no_content('Leave a Comment')  
+  page.should have_no_content('Commenting has been deactivated')  
+  page.should have_content('This post has been closed for commenting')  
+end
+
+Then /^I should be able to comment on "([^"]*)"$/ do |title|
+  visit blog_post_path(:slug => Post.find_by_title(title).slug)
+  page.should have_content('Leave a Comment')  
+  page.should have_no_content('Commenting has been deactivated')  
+  page.should have_no_content('This post has been closed for commenting')  
+end

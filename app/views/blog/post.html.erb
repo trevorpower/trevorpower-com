@@ -46,7 +46,9 @@
     <% else %>
       <h3>Your comment has been saved</h3>
     <% end %>
-  <% else %>
+  <% elsif @post.open_for_commenting? %>
     <h3>Commenting has been deactivated, but you can still <%= link_to 'contact me directly', contact_path %>.</h3>
+  <% else %>
+    <h3>This post has been closed for commenting, but you can still <%= link_to 'contact me directly', contact_path %>.</h3>
   <% end %>
 

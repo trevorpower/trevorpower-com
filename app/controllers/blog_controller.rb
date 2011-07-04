@@ -13,7 +13,7 @@ class BlogController < ApplicationController
   def post
     @post = Post.find_by_slug(params[:slug])
 
-    @allow_comments = ! ENV['commenting_active'].nil?
+    @allow_comments = (!ENV['commenting_active'].nil?) && @post.open_for_commenting?
 
     @comment = @post.comments.build
     

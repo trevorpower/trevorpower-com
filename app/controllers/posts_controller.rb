@@ -80,4 +80,19 @@ class PostsController < AdminController
     end
   end
 
+  def open
+    @post = Post.find(params[:id])
+    @post.open_for_commenting = true
+    @post.save
+    
+    redirect_to posts_url
+  end
+
+  def close
+    @post = Post.find(params[:id])
+    @post.open_for_commenting = false
+    @post.save
+    
+    redirect_to posts_url
+  end
 end
