@@ -44,3 +44,13 @@ Feature: Comment activiation
 
     Then I should be able to comment on "My first post"
     But I should not be able to comment on "My second post"
+
+  Scenario: Open a post for commenting
+    Given I have a closed post with title "My closed post"
+    And I have a closed post with title "My second post"
+    And that commenting is active
+
+    When I open "My second post" to new comments
+
+    Then I should not be able to comment on "My closed post"
+    But I should be able to comment on "My second post"

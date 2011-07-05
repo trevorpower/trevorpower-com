@@ -75,3 +75,19 @@ Then /^I should be able to comment on "([^"]*)"$/ do |title|
   page.should have_no_content('Commenting has been deactivated')  
   page.should have_no_content('This post has been closed for commenting')  
 end
+
+Given /^I have a closed post with title "([^"]*)"$/ do |title|
+  Post.new(
+    :title => title,
+    :slug => Post.create_slug(title),
+    :body => "body for this post (#{title})",
+    :open_for_commenting => false
+  ).save!
+end
+
+When /^I open "([^"]*)" to new comments$/ do |title|
+  visit posts_path
+  within("*[id=#{Post.find_by_title(title).dom_id}]") do
+    click_link('Open to comments')
+  end
+end

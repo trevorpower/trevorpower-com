@@ -13,10 +13,10 @@
           <% else %>
           <li><%= link_to 'Publish', publish_post_path(post), :method => :put%></li>
           <% end %>
-          <% if post.published %>
+          <% if post.open_for_commenting? %>
               <li><%= link_to 'Close to comments', close_post_path(post), :method => :put%></li>
           <% else %>
-          <li><%= link_to 'Close to comments', close_post_path(post), :method => :put%></li>
+          <li><%= link_to 'Open to comments', open_post_path(post), :method => :put%></li>
           <% end %>
         </ul>
     </li>
