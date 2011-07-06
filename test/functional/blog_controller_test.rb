@@ -66,4 +66,16 @@ class BlogControllerTest < ActionController::TestCase
     assert_not_nil assigns(:comment_saved)
     assert_not_nil assigns(:comment).post_title
   end
+
+  test "comment should return error if post is closed for commenting" do
+    ENV['commenting_active'] = 'true' 
+    currentpost = Post.create!(
+      :title => 'closed-post-title',
+      :body => 'body',
+      :open_for_commenting => false
+    )
+
+    post :comment, :slug => 'closed-post-title'
+    assert_response 403
+  end
 end

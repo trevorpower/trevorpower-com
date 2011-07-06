@@ -20,7 +20,7 @@ Examples:
 
 Scenario Outline: Visiting a page shows the correct area selected in the navigation bar
 Given I am on the <Page>
-Then I should see "<Area>" selected in the navigation bar
+Then I should see "<Area>" within the selected navigation tab
 Examples:
   | Page                              | Area    |
   | home page                         | Home	|

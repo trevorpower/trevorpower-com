@@ -9,10 +9,10 @@ Scenario: Link to twitter
   Then I should see a link to "http://twitter.com/trevorpower"
 
 Scenario: Send author a message
-  When I fill in "name" with "Joe Blogs"
-  And I fill in "email" with "joe.bloggs@example.com"
-  And I fill in "subject" with "Hello"
-  And I fill in "message" with "Hello, this is a very nice website."
+  When I fill in "Name" with "Joe Blogs"
+  And I fill in "Email" with "joe.bloggs@example.com"
+  And I fill in "Subject" with "Hello"
+  And I fill in "Message" with "Hello, this is a very nice website."
   And I press "Send"
   Then 1 email should be delivered to email@trevorpower.com
 

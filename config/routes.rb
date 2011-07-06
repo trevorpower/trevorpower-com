@@ -6,6 +6,8 @@ Blog::Application.routes.draw do
     member do
       put 'publish'
       put 'hide'
+      put 'close'
+      put 'open'
     end
     resources :comments, :except => [:new, :edit, :update]
   end
