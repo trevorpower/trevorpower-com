@@ -23,7 +23,6 @@ class Post
   end
 
   def open_for_commenting?
-    puts open_for_commenting
     open_for_commenting
   end
 
