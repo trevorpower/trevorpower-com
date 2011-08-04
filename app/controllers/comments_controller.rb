@@ -61,8 +61,8 @@ class CommentsController < AdminController
       }
     end
     
-    @similarComments = allRules
-      .select{ |rule| rule[:count] > 1 }
+    @similarComments = allRules.
+      select{ |rule| rule[:count] > 1 }
 
     render :layout => 'edit'
   end
@@ -70,10 +70,10 @@ class CommentsController < AdminController
   def destroy
     comment = Comment.find(params[:id])
     
-    similarity_rules(comment)
-      .reject{|rule| params[rule[:name]].nil?}
-      .map{|rule| rule[:query]}
-      .each{|query| Comment.where(query).each{|related| related.destroy} }
+    similarity_rules(comment).
+      reject{|rule| params[rule[:name]].nil?}.
+      map{|rule| rule[:query]}.
+      each{|query| Comment.where(query).each{|related| related.destroy} }
 
     comment.destroy
 
@@ -104,13 +104,13 @@ class CommentsController < AdminController
 
   def same_attribute(attribute, object)
     {    
-      :name => "withSame#{attribute.capitalize}".to_sym,
+      :name => "withSame#{attribute.to_s.capitalize}".to_sym,
       :query => {attribute => object.read_attribute(attribute)}
     }
   end
 
   def describe_rule (rule)
-    attribute = rule.keys.first.capitalize
+    attribute = rule.keys.first.to_s.capitalize
     value = rule.values.first
     if value.is_a?(Regexp)
       "#{attribute} =~ #{value.inspect}"

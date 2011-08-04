@@ -38,7 +38,7 @@ Given /^I have a post with title "([^\"]*)" and (\d+) comments$/ do |title, coun
       :body => "#{title} - comment #{i+1}",
       :name => "commenter #{i+1}",
       :email => "test#{i}@example.com",
-      :published_on => Time.new(2011, 01, 01) + i.days
+      :published_on => Time.gm(2011, 01, 01) + i.days
     )
     comment.save!
   end

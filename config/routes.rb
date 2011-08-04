@@ -29,7 +29,7 @@ Blog::Application.routes.draw do
   
   resources :sessions, :only => [ :create ]
 
-  match '' => 'home#index', :as => :home
+  match '/' => 'home#index', :as => :home
   match 'about' => 'about#index', :as => :about
   match 'contact' => 'contact#index', :as => :contact, :via => ['get', 'post']
   match 'contact/send_mail' => 'contact#send_mail', :via => 'post', :as => :send_mail
