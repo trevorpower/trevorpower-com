@@ -21,26 +21,22 @@ class PostsController < AdminController
 
   def create
     @post = Post.new(params[:post])
-      if @post.save
-        flash[:notice] = 'Post was successfully created.'
-        redirect_to :action => 'index'
-      else
-        render :action => "new"
-      end
+    if @post.save
+      flash[:notice] = 'Post was successfully created.'
+      redirect_to :action => 'index'
+    else
+      render :action => "new"
+    end
   end
 
   def update
     @post = Post.find(params[:id])
 
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        flash[:notice] = 'Post was successfully updated.'
-        format.html { redirect_to :action => 'index' }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-      end
+    if @post.update_attributes(params[:post])
+      flash[:notice] = 'Post was successfully updated.'
+      redirect_to :action => 'index'
+    else
+      render :action => "edit"
     end
   end
 
@@ -48,10 +44,7 @@ class PostsController < AdminController
     @post = Post.find(params[:id])
     @post.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(posts_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to posts_url
   end
 
   def publish
@@ -59,10 +52,7 @@ class PostsController < AdminController
     @post.published = true
     @post.save
 
-    respond_to do |format|
-      format.html { redirect_to(posts_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to posts_url
   end
 
   def hide
@@ -70,10 +60,7 @@ class PostsController < AdminController
     @post.published = false
     @post.save
 
-    respond_to do |format|
-      format.html { redirect_to(posts_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to posts_url
   end
 
   def open
