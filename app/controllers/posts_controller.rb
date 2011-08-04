@@ -21,16 +21,12 @@ class PostsController < AdminController
 
   def create
     @post = Post.new(params[:post])
-    respond_to do |format|
       if @post.save
         flash[:notice] = 'Post was successfully created.'
-        format.html { redirect_to :action => 'index' }
-        format.xml  { render :xml => @post, :status => :created, :location => @post }
+        redirect_to :action => 'index'
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+        render :action => "new"
       end
-    end
   end
 
   def update
