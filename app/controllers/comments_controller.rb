@@ -32,10 +32,7 @@ class CommentsController < AdminController
     @comment.published = false
     @comment.save
 
-    respond_to do |format|
-      format.html { redirect_to(comments_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(comments_url)
   end
 
   def publish
@@ -43,10 +40,7 @@ class CommentsController < AdminController
     @comment.published = true
     @comment.save
 
-    respond_to do |format|
-      format.html { redirect_to(comments_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(comments_url)
   end
 
   def show

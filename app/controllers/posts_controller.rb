@@ -8,10 +8,7 @@ class PostsController < AdminController
   def new
     @post = Post.new
 
-    respond_to do |format|
-      format.html { render :layout => 'edit' }
-      format.xml  { render :xml => @post }
-    end
+    render :layout => 'edit'
   end
 
   def edit
