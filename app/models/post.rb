@@ -1,6 +1,8 @@
 class Post
   include MongoMapper::Document
-  
+
+  scope :public, where(:published => true).sort(:published_on.desc)  
+
   many :comments
 
   key :title, String, :required => true

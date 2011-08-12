@@ -4,7 +4,7 @@ class BlogController < ApplicationController
   before_filter :get_commenting_status, :except => [:index]
 
   def index
-    @posts = Post.all(:published => true, :order => 'published_on DESC')
+    @posts = Post.public.all
 
     respond_to do |format|
       format.html # blog.html.erb
