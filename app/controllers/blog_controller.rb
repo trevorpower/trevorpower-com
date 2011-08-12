@@ -17,11 +17,6 @@ class BlogController < ApplicationController
     @comment = @post.comments.build
     
     @comments = @post.comments.public.all
-
-    respond_to do |format|
-      format.html 
-      format.xml  { render :xml => @post }
-    end
   end
 
   def comment
