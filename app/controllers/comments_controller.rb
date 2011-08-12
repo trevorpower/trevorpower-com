@@ -5,11 +5,10 @@ class CommentsController < AdminController
   
   def index
     page = (params[:page] || '0').to_i
-    @comments = Comment.all(
-      :order => 'published_on DESC', 
-      :skip => page * 10, 
-      :limit => 10
-    )
+
+    @comments = Comment.sort(:published_on.desc). 
+                        skip(page * 10).
+                        limit(10).all
 
     @prev_page = (page - 1).to_s unless page == 0
     @next_page = (page + 1).to_s unless @comments.count < 10
