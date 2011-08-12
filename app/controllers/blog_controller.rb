@@ -16,7 +16,7 @@ class BlogController < ApplicationController
   def post
     @comment = @post.comments.build
     
-    @comments = @post.comments.all(:published => true).sort_by(&:published_on)
+    @comments = @post.comments.public.all
 
     respond_to do |format|
       format.html 

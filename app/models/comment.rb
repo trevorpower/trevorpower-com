@@ -3,6 +3,8 @@ require 'uri'
 class Comment
   include MongoMapper::Document
 
+  scope :public, where(:published => true).sort(:published_on.desc)
+
   key :name, String, :required => true
   key :url, String
   key :email, String, :required => true
