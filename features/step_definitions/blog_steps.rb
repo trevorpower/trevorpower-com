@@ -64,16 +64,16 @@ end
 
 Then /^I should not be able to comment on "([^"]*)"$/ do |title|
   visit blog_post_path(:slug => Post.find_by_title(title).slug)
-  page.should have_no_content('Leave a Comment')  
-  page.should have_no_content('Commenting has been deactivated')  
-  page.should have_content('This post has been closed for commenting')  
+  page.has_no_content?('Leave a Comment')  
+  page.has_no_content?('Commenting has been deactivated')  
+  page.has_content?('This post has been closed for commenting')  
 end
 
 Then /^I should be able to comment on "([^"]*)"$/ do |title|
   visit blog_post_path(:slug => Post.find_by_title(title).slug)
-  page.should have_content('Leave a Comment')  
-  page.should have_no_content('Commenting has been deactivated')  
-  page.should have_no_content('This post has been closed for commenting')  
+  page.has_content?('Leave a Comment')  
+  page.has_no_content?('Commenting has been deactivated')  
+  page.has_no_content?('This post has been closed for commenting')  
 end
 
 Given /^I have a closed post with title "([^"]*)"$/ do |title|

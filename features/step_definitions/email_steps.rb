@@ -15,7 +15,7 @@ Given(/^all emails? (?:have|has) been delivered$/) do
 end
 
 Given(/^(\d)+ emails? should be delivered$/) do |count|
-  emails.size.should == count.to_i
+  assert_equal count.to_i, emails.size
 end
 
 When(/^(?:I|they) follow "([^"]*?)" in #{capture_email}$/) do |link, email_ref|
@@ -27,11 +27,11 @@ When(/^(?:I|they) click the first link in #{capture_email}$/) do |email_ref|
 end
 
 Then(/^(\d)+ emails? should be delivered to (.*)$/) do |count, to|
-  emails("to: \"#{email_for(to)}\"").size.should == count.to_i
+  assert_equal count.to_i, emails("to: \"#{email_for(to)}\"").size
 end
 
 Then(/^(\d)+ emails? should be delivered with #{capture_fields}$/) do |count, fields|
-  emails(fields).size.should == count.to_i
+  assert_equals count.to_i, emails(fields).size
 end
 
 Then(/^#{capture_email} should be delivered to (.+)$/) do |email_ref, to|

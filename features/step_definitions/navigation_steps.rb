@@ -1,5 +1,5 @@
 Then /^I should see a link to "([^\"]*)"$/ do |url|
-  page.body.should have_xpath "//a[@href = '#{url}']"
+  page.has_xpath? "//a[@href = '#{url}']"
 end
 
 When /^I (press|follow|check|uncheck|choose) "([^\"]*)" for (.*) whose (.*) is "([^\"]*)"$/ do |action, whatyouclick, class_name, var_name, value|

@@ -1,4 +1,4 @@
 Then /^The page source should not contain "(.*)"$/ do |text|
-  page.body.should_not =~ /#{text}/m
+  assert_not_match /#{text}/m, page.body 
 end
 
