@@ -19,6 +19,8 @@ gem 'bson_ext'
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
 
+gem 'therubyracer'
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
