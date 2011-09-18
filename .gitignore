@@ -7,3 +7,5 @@ tmp/
 **/#*#
 .cucumber.results.html
 *.swp
+.sass-cache/
+
