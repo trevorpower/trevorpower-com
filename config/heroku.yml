@@ -1,0 +1,10 @@
+live: 
+  app: trevorpower-com
+  config:
+    BUNDLE_WITHOUT: "development:test"
+    GOOGLE_ANALYTICS: "UA-12345678-1"
+
+stage:
+  app: stage-trevorpower-com
+  config: &default
+    BUNDLE_WITHOUT: "development:test"

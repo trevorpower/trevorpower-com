@@ -31,6 +31,9 @@ end
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+  gem 'heroku_san'
+end
+group :development, :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'pickle'
