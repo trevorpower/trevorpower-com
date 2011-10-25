@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:trevorpower/Mongo-San.git
+  revision: 4f707ba3c60e9131856f819233f385147f211da3
+  specs:
+    mongo_san (0.1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -197,6 +203,7 @@ DEPENDENCIES
   jquery-rails
   mm-multi-parameter-attributes
   mongo_mapper
+  mongo_san!
   nokogiri
   pickle
   rails (= 3.1.0)

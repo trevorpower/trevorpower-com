@@ -32,6 +32,8 @@ end
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'heroku_san'
+  gem 'mongo_san', :git => 'git@github.com:trevorpower/Mongo-San.git'
+  #gem 'mongo_san', :path => '~/Projects/mongo_san'
 end
 group :development, :test do
   gem 'cucumber-rails'
