@@ -1,0 +1,15 @@
+- title "Login"
+= form_tag({:action => "create", :controller => "sessions"}, :method => :post) do
+  %div{"data-backbtn" => "true", "data-role" => "header", "data-theme" => "b"}
+    = link_to 'Cancel', posts_path, 'data-rel' => 'back', 'data-icon' => 'back'
+    %h2= yield(:title)
+  - unless flash[:notice].nil?
+    %div{"data-role" => "content", "data-theme" => "e"}
+      = flash[:notice]
+  %div{"data-role" => "content"}
+    %div{"data-role" => "fieldcontain"}
+      = label_tag :password
+      = password_field_tag :password
+  .ui-bar{"data-role" => "footer"}
+    = submit_tag 'Login', 'data-icon' => 'check'
+    %div

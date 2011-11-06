@@ -1,0 +1,31 @@
+- title "New Post"
+= form_for(@post) do |f|
+  %div{"data-backbtn" => "true", "data-role" => "header", "data-theme" => "b"}
+    = link_to 'Cancel', posts_path, 'data-rel' => 'back', 'data-icon' => 'back'
+    %h2
+      = yield(:title)
+  %div{"data-role" => "content"}
+    - if @post.errors.any?
+      #errorExplanation
+        %h2
+          = pluralize(@post.errors.count, "error")
+          prohibited this post from being saved:
+        %ul
+          - @post.errors.full_messages.each do |msg|
+            %li= msg
+    %fieldset{"data-role" => "fieldcontain"}
+      = f.label :title
+      = f.text_field :title
+    %fieldset{"data-role" => "fieldcontain"}
+      = f.label :body
+      = f.text_area :body
+    %fieldset{"data-role" => "fieldcontain"}
+      = f.label :published
+      = f.check_box :published
+      %br/
+    %fieldset{"data-role" => "fieldcontain"}
+      = f.label :published_on
+      = f.date_select :published_on
+      %br/
+  .ui-bar{"data-role" => "footer", "data-theme" => "b"}
+    = f.submit 'Create', 'data-icon' => 'check'

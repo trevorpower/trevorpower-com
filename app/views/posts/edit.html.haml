@@ -1,0 +1,32 @@
+- title "Edit Post"
+= form_for(@post) do |f|
+  %div{"data-backbtn" => "true", "data-role" => "header", "data-theme" => "b"}
+    = link_to 'Cancel', posts_path, 'data-rel' => 'back', 'data-icon' => 'back'
+    = link_to 'Delete', @post, 'data-method' => :delete, 'data-icon' => 'delete', 'data-theme' => 'a', :confirm => 'Are you sure?'
+    %h2
+      = yield(:title)
+  - if @post.errors.any?
+    #errorExplanation
+      %h2
+        = pluralize(@post.errors.count, "error")
+        prohibited this post from being saved:
+      %ul
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+  %fieldset{"data-role" => "fieldcontain"}
+    = f.label :title
+    = f.text_field :title
+  %fieldset{"data-role" => "fieldcontain"}
+    = f.label :slug
+    = f.text_field :slug
+  %fieldset{"data-role" => "fieldcontain"}
+    = f.label :body
+    = f.text_area :body
+  %fieldset{"data-role" => "fieldcontain"}
+    = f.label :published
+    = f.check_box :published
+  %fieldset{"data-role" => "fieldcontain"}
+    = f.label :published_on
+    = f.date_select :published_on
+  .ui-bar{"data-role" => "footer", "data-theme" => "b"}
+    = f.submit 'Update', 'data-icon' => 'check'

@@ -1,0 +1,42 @@
+- title @post.title
+- area :blog
+%p.notice= flash[:notice]
+%h4= h @post.published_on.to_s(:public)
+%h1= h(@post.title)
+= @post.body.html_safe
+- if @comments.count > 0
+  %h2 Comments
+  = render :partial => @comments
+- if @allow_comments
+  - unless @comment_saved
+    %h3 Leave a Comment
+    = form_for @comment, :url => save_comment_path(:slug => @post.slug) do |f|
+      - if @comment.errors.any?
+        %div
+          %ul{"data-inset" => "true", "data-role" => "listview", "data-theme" => "e"}
+            %li{"data-role" => "list-divider"}
+              = pluralize(@comment.errors.count, "error")
+              prohibited this comment from being saved:
+            - @comment.errors.full_messages.each do |msg|
+              %li= msg
+      %div{"data-role" => "fieldcontain"}
+        = f.label :name
+        = f.text_field :name
+      %div{"data-role" => "fieldcontain"}
+        = f.label :email
+        = f.text_field :email
+      %div{"data-role" => "fieldcontain"}
+        = f.label :url
+        = f.text_field :url
+      %div{"data-role" => "fieldcontain"}
+        = f.label :body
+        = f.text_area :body
+      = f.submit 'Add Comment'
+  - else
+    %h3 Your comment has been saved
+- elsif @post.open_for_commenting?
+  %h3
+    Commenting has been deactivated, but you can still #{link_to 'contact me directly', contact_path}.
+- else
+  %h3
+    This post has been closed for commenting, but you can still #{link_to 'contact me directly', contact_path}.

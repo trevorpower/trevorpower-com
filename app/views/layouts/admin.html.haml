@@ -1,0 +1,35 @@
+!!!
+%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html;charset=UTF-8", "http-equiv" => "content-type"}/
+    %title
+      = yield(:title) || "Admin"
+      \- Admin - Trevor Power
+    %link{:href => "http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css", :rel => "stylesheet"}/
+    = javascript_include_tag "application"
+    :javascript
+      $(document).bind("mobileinit", function(){
+        $.extend(  $.mobile , {
+          ajaxLinksEnabled: false
+        });
+      });
+        %script{:src => "http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js", :type => "text/javascript"}
+    = stylesheet_link_tag 'admin'
+    = csrf_meta_tag
+  %body
+    %div{"data-role" => "page", "data-theme" => "a"}
+      %div{"data-role" => "header", "data-theme" => "b"}
+        = link_to 'Website', home_path, 'data-ajax' => 'false', 'data-icon' => 'home'
+        = link_to 'Log Out', logout_path, 'data-ajax' => 'false', 'data-icon' => 'delete'
+        %h2
+          = yield(:title)
+      %div{"data-role" => "header", "data-theme" => "b"}
+        %div{"data-role" => "navbar"}
+          %ul
+            %li= navigate_to 'Posts', posts_path
+            %li= navigate_to 'Comments', comments_path
+            %li= navigate_to 'Images', images_path
+      - if flash[:notice]
+        %div{"data-backbtn" => "false", "data-role" => "header", "data-theme" => "e"}
+          %h3= flash[:notice]
+      = yield

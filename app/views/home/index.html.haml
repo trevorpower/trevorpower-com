@@ -1,0 +1,23 @@
+- title "Home"
+- area :home
+%h1 Welcome to Trevor Power's Homepage
+%p
+  = image_tag "DeskTop.JPG", :style => "float: right;", :title => "My interests: maps and programming", :alt => "Maps and Programming"
+  I don't have much use for a dedicated webpage at the moment but here are some links to my stuff on the web.
+%ul
+  %li
+    = link_to 'Blog', blog_path
+    (recently moved here)
+  %li
+    %a{:href => "http://www.flickr.com/photos/trevor_power"} Photos
+  %li
+    %a{:href => "http://www.linkedin.com/in/trevpower"} LinkedIn
+  %li
+    %a{:href => "http://stackoverflow.com/users/18107/tpower"} Stackoverflow
+%p
+  One of my on going (although I haven't looked at it for over a year) projects is the develpment of a website that provides services to map collectors.
+  %ul
+    %li
+      %a{:href => "http://tadmap.com"} Tadmap
+    %li
+      %a{:href => "http://blog.tadmap.com"} Blog

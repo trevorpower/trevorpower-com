@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title
+      = yield(:title) || "Admin"
+      \- Admin - Trevor Power
+    %link{:href => "http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css", :rel => "stylesheet"}/
+    = stylesheet_link_tag :all
+    = javascript_include_tag "application"
+    %script{:src => "http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js", :type => "text/javascript"}
+    = csrf_meta_tag
+  %body
+    %div{"data-back-button-text" => "Cancel", "data-role" => "page", "data-theme" => "a"}
+      = yield

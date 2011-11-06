@@ -1,0 +1,23 @@
+- title "Comments"
+.ui-bar{"data-role" => "footer"}
+  - if @allow_comments
+    = link_to 'Deactivate Commenting', deactivate_comments_path, :method => :put, 'data-icon' => 'alert'
+  - else
+    = link_to 'Activate Commenting', activate_comments_path, :method => :put, 'data-icon' => 'check', 'data-theme' => 'e'
+%ul{"data-role" => "listview"}
+  - @comments.each do |comment|
+    %li{"data-theme" => comment.published ? 'a' : 'd', :id => comment.dom_id}
+      = link_to comment_path(comment) do
+        %h3
+          = h comment.name
+          \- #{h comment.url}
+        %p= h comment.body
+        %p
+          %b
+            = h comment.post_title
+            \- #{h comment.published_on.to_s(:admin)}
+.ui-bar{"data-role" => "footer", "data-theme" => "b"}
+  - unless @prev_page.nil?
+    = link_to 'Previous', comments_path( :page => @prev_page ), 'data-icon' => 'arrow-l', 'data-transition' => 'slidedown'
+  - unless @next_page.nil?
+    = link_to 'Next', comments_path( :page => @next_page ), 'data-icon' => 'arrow-r', 'data-iconpos' => 'right', :class => 'ui-btn-right', 'data-transition' => 'slideup'

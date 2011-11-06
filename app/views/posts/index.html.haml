@@ -1,0 +1,18 @@
+- title "Posts"
+= link_to 'New post', new_post_path, :'data-role'=>'button'
+%ul{"data-role" => "listview"}
+  - @posts.each do |post|
+    %li{:class => post.published ? 'published' : 'draft', :id => post.dom_id}
+      %h3= post.title
+      %p= post.published_on.to_s(:admin)
+      %ul
+        %li= link_to 'View', blog_post_path(:slug => post.slug )
+        %li= link_to 'Edit', edit_post_path(post)
+        - if post.published
+          %li= link_to 'Hide', hide_post_path(post), :method => :put
+        - else
+          %li= link_to 'Publish', publish_post_path(post), :method => :put
+        - if post.open_for_commenting?
+          %li= link_to 'Close to comments', close_post_path(post), :method => :put
+        - else
+          %li= link_to 'Open to comments', open_post_path(post), :method => :put

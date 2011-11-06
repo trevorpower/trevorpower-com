@@ -1,0 +1,31 @@
+- title "Contact"
+- area :contact
+%p.notice= flash[:notice]
+%h1 Twitter
+%p
+  You can follow or reply to me on twitter where I go by the name
+  %a{:href => "http://twitter.com/trevorpower"} @trevorpower
+%h1 Email
+%p You can send me an email using the following form:
+= form_for @message, :url => contact_url do |f|
+  - if @message.errors.any?
+    %div
+      %ul{"data-inset" => "true", "data-role" => "listview", "data-theme" => "e"}
+        %li{"data-role" => "list-divider"}
+          = pluralize(@message.errors.count, "error")
+          prohibited this email from being sent
+        - @message.errors.full_messages.each do |msg|
+          %li= msg
+  = f.label :name
+  = f.text_field :name, :size => 60
+  %br/
+  = f.label :address, 'Email'
+  = f.text_field :address, :size => 60
+  %br/
+  = f.label :subject
+  = f.text_field :subject, :size => 60
+  %br/
+  = f.label :body, 'Message'
+  = f.text_area :body, :rols => 10, :cols => 60
+  %br/
+  = submit_tag "Send"

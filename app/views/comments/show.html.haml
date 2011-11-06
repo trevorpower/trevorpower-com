@@ -1,0 +1,30 @@
+- title "Comment Details"
+= form_for :comment, :url => { :action => 'destroy' }, :method => 'post' do |form|
+  %div{"data-role" => "header", "data-theme" => "b"}
+    = link_to "Cancel", comments_path, 'data-icon' => 'delete'
+    %h1 Comment
+  %div{"data-role" => "content", "data-theme" => "d"}
+    %p= @comment.body
+    %ul{"data-inset" => "true", "data-role" => "listview"}
+      %li{"data-dividertheme" => "a", "data-role" => "list-divider"} From
+      %li= @comment.name
+      %li= @comment.email
+      - unless @comment.url.blank?
+        %li= @comment.url
+      %li{"data-dividertheme" => "b", "data-role" => "list-divider"} Date
+      %li= @comment.published_on.to_s :admin
+      %li{"data-dividertheme" => "c", "data-role" => "list-divider"} Post
+      %li= @comment.post.title
+    - if @similarComments.count > 0
+      %h4 Moderate Similar
+      %div{"data-role" => "fieldcontain"}
+        %fieldset{"data-role" => "controlgroup"}
+          - @similarComments.each do |details|
+            = check_box_tag details[:name], nil, false, 'data-theme' => 'a'
+            = label_tag details[:name], "#{details[:count]} - #{details[:description]}"
+  .ui-bar{"data-role" => "footer", "data-theme" => "b"}
+    - if @comment.published
+      = link_to 'Hide', hide_comment_path(@comment), :method => :put, 'data-icon' => 'alert'
+    - else
+      = link_to 'Show', publish_comment_path(@comment), :method => :put, 'data-icon' => 'check'
+    = form.submit 'Delete', :confirm => 'Are you sure?', 'data-icon' => 'delete'

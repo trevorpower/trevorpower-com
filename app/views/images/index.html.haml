@@ -1,0 +1,10 @@
+- title "Images"
+= form_tag(images_url, :method => :post, :multipart => true) do
+  = file_field_tag 'picture'
+  = submit_tag 'Upload'
+%ul{"data-role" => "listview"}
+  - @images.each do |image|
+    %li{:id => image.dom_id}
+      = link_to image_path(image.name), :confirm => 'Are you sure?', :method => :delete do
+        %img{:src => image.url}/
+        %h3= image.url
