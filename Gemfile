@@ -21,9 +21,10 @@ gem 'bcrypt-ruby'
 
 gem 'therubyracer'
 
+gem 'haml-rails'
+
 group :assets do
   gem 'sass-rails'
-  gem 'haml-rails'
   gem 'coffee-rails'
   gem 'uglifier'
 end
