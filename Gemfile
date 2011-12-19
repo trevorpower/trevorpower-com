@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -35,12 +35,10 @@ end
 group :development, :test do
   gem 'heroku_san'
   gem 'mongo_san', :git => 'git@github.com:trevorpower/Mongo-San.git'
-  #gem 'mongo_san', :path => '~/Projects/mongo_san'
-end
-group :development, :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'pickle'
   gem 'spork'
   gem 'turn', :require => false
+  gem 'minitest'
 end
