@@ -1,54 +1,55 @@
 - title "About"
 - area :about
-%h1 About Me
-%p
-  = image_tag  "Avatar.jpg", :style => "float: left; margin-right: 6px; width: 194px;", :title => "Trevor Power"
-  My name is Trevor Power and I’m currently living and working in Limerick, Ireland.
-%p
-  I have a degree in
-  %a{:href => "http://www.csis.ul.ie/course/LM051/"} Computer Systems
-  from the
-  = succeed "." do
-    %a{:href => "http://www.ul.ie/"} University of Limerick
-%p
-  After graduating in 2002, I spent four years developing software for Artwork Systems (now
-  = succeed ")." do
-    %a{:href => "www.esko.com/"} EskoArtwork
-  Here I worked primarily with C++, creating applications targeting Mac OS X.
-%p
-  Since 2006 I’ve been working with .Net for
-  %a{:href => "http://www.kneat.com", :title => "Kneat - Compliance by design"} Kneat
-  as a senior software developer. Here I work with a team of developers on our main ASP.Net application.
-%p
-  By far my biggest interest is software development and I spend a lot of my spare time learning and playing with new technologies and techniques. I am developing a website called
-  %a{:href => "http://tadmap.com", :title => "Image hosting for map collectors."} Tadmap
-  for people who collect old maps (my second interest) and this has given me the opportunity to learn and develop other skills such as ASP.Net MVC, Amazon Web Services and Test Driven Development.
-%div
-  This blog is my main presence on the web but you’ll also find me here:
+%section
+  %h1 About Me
+  %p
+    = image_tag  "Avatar.jpg", :title => "Trevor Power"
+    My name is Trevor Power and I’m currently living and working in Limerick, Ireland.
+  %p
+    I have a degree in
+    %a{:href => "http://www.csis.ul.ie/course/LM051/"} Computer Systems
+    from the
+    = succeed "." do
+      %a{:href => "http://www.ul.ie/"} University of Limerick
+  %p
+    After graduating in 2002, I spent four years developing software for Artwork Systems (now
+    = succeed ")." do
+      %a{:href => "www.esko.com/"} EskoArtwork
+    Here I worked primarily with C++, creating applications targeting Mac OS X.
+  %p
+    Since 2006 I’ve been working with .Net for
+    %a{:href => "http://www.kneat.com", :title => "Kneat - Compliance by design"} Kneat
+    as a senior software developer. Here I work with a team of developers on our main ASP.Net application.
+  %p
+    By far my biggest interest is software development and I spend a lot of my spare time learning and playing with new technologies and techniques. I am developing a website called
+    %a{:href => "http://tadmap.com", :title => "Image hosting for map collectors."} Tadmap
+    for people who collect old maps (my second interest) and this has given me the opportunity to learn and develop other skills such as ASP.Net MVC, Amazon Web Services and Test Driven Development.
+  %div
+    This blog is my main presence on the web but you’ll also find me here:
+    %ul
+      %li
+        Flickr for
+        = succeed "," do
+          %a{:href => "http://www.flickr.com/photos/trevor_power/"} photos
+        some random photos also appear to the side of this page.
+      %li
+        If you’re really interested in what I’m up to you can
+        = succeed "." do
+          %a{:href => "http://twitter.com/trevorpower"} follow me on twitter
+      %li
+        I also use stackoverflow from time to time, mostly
+        = succeed "." do
+          %a{:href => "http://stackoverflow.com/users/18107/tpower"} asking questions
+      %li
+        %a{:href => "http://www.linkedin.com/in/trevpower"} Trevor Power
+        on Linked In, I don’t use this much, but if you know me you might want to link or better still leave a recommendation.
+  %div{:style => "clear: both;"}
+  %h1 About This Website
+  %p This website was built using Ruby on Rails (recently migrated to Rails 3) as a way of learning this new framework and language and also uses other technologies, some of which are listed below.
   %ul
     %li
-      Flickr for
-      = succeed "," do
-        %a{:href => "http://www.flickr.com/photos/trevor_power/"} photos
-      some random photos also appear to the side of this page.
+      %a{:href => "http://rubyonrails.org"} Ruby on Rails
     %li
-      If you’re really interested in what I’m up to you can
-      = succeed "." do
-        %a{:href => "http://twitter.com/trevorpower"} follow me on twitter
+      %a{:href => "http://jquerymobile.com"} jQuery Mobile
     %li
-      I also use stackoverflow from time to time, mostly
-      = succeed "." do
-        %a{:href => "http://stackoverflow.com/users/18107/tpower"} asking questions
-    %li
-      %a{:href => "http://www.linkedin.com/in/trevpower"} Trevor Power
-      on Linked In, I don’t use this much, but if you know me you might want to link or better still leave a recommendation.
-%div{:style => "clear: both;"}
-%h1 About This Website
-%p This website was built using Ruby on Rails (recently migrated to Rails 3) as a way of learning this new framework and language and also uses other technologies, some of which are listed below.
-%ul
-  %li
-    %a{:href => "http://rubyonrails.org"} Ruby on Rails
-  %li
-    %a{:href => "http://jquerymobile.com"} jQuery Mobile
-  %li
-    %a{:href => "http://mongodb.org"} mongoDB
+      %a{:href => "http://mongodb.org"} mongoDB

@@ -1,13 +1,11 @@
 - title "Blog"
-%ul{"data-role" => "listview"}
-  %li{"data-theme" => "e"}
+%section
+  %heading
     %a{:href => "http://feeds.feedburner.com/trevorpower"} Subscribe to this blog
   - @posts.each do |post|
-    %li{:id => post.slug}
-      = link_to blog_post_path(:slug => post.slug) do
-        %h3= post.title
-        %p= HTML_Truncator.truncate(Sanitize.clean(post.body), 80, "...").html_safe
-        %p
-          %b= h post.published_on.to_s(:public)
+    %article{:id => post.slug}
+      %h1= link_to post.title, blog_post_path(:slug => post.slug)
+      .date= h post.published_on.to_s(:public)
       - if post.comments.all(:published => true).count > 0
-        %p.ui-li-count= pluralize(post.comments.all(:published => true).count, 'comment')
+        .comment-summary= pluralize(post.comments.all(:published => true).count, 'comment')
+      %p= HTML_Truncator.truncate(Sanitize.clean(post.body), 80, "...").html_safe

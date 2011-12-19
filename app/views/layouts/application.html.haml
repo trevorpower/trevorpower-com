@@ -2,80 +2,72 @@
 %html
   %head
     %title= (yield(:title) || "Blog") + " - Trevor Power"
+    %meta{"name" => "viewport","content" => "width=device-width, initial-scale=1.0"}
     %link{:href => "http://alexgorbatchev.com/pub/sh/current/styles/shCore.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css", :rel => "stylesheet", :type => "text/css"}/
     %script{:src => "http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js", :type => "text/javascript"}
     %script{:src => "http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js", :type => "text/javascript"}
-    %link{:href => "http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css", :rel => "stylesheet"}/
     = javascript_include_tag "application"
-    :javascript
-      $(document).bind("mobileinit", function(){
-        $.extend(  $.mobile , {
-          ajaxLinksEnabled: false
-        });
-      });
-    %script{:src => "http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js", :type => "text/javascript"}
     = stylesheet_link_tag "application"
     = csrf_meta_tag
   %body
-    %div{"data-role" => "page", "data-theme" => "c"}
-      %div{"data-role" => "header", "data-theme" => "a"}
-        %h2
-          = image_tag "trevor-power.png", :alt => "Trevor Power"
-        %div{"data-role" => "navbar"}
-          %ul
-            %li= navigate_to 'Home', home_path, :home
-            %li= navigate_to 'Blog', blog_path, :blog
-            %li= navigate_to 'About', about_path, :about
-            %li= navigate_to 'Contact', contact_path, :contact
-      %div{"data-role" => "content"}
-        = yield
-      :javascript
-        function path()
-        {
-          var args = arguments, result = [];
-              
-          for(var i = 0; i < args.length; i++)
-              result.push(args[i].replace('@', 'http://alexgorbatchev.com/pub/sh/current/scripts/'));
-          return result
-        };
-  
-        SyntaxHighlighter.autoloader.apply(null, path(
-          'applescript            @shBrushAppleScript.js',
-          'actionscript3 as3      @shBrushAS3.js',
-          'bash shell             @shBrushBash.js',
-          'coldfusion cf          @shBrushColdFusion.js',
-          'cpp c                  @shBrushCpp.js',
-          'c# c-sharp csharp      @shBrushCSharp.js',
-          'css                    @shBrushCss.js',
-          'delphi pascal          @shBrushDelphi.js',
-          'diff patch pas         @shBrushDiff.js',
-          'erl erlang             @shBrushErlang.js',
-          'groovy                 @shBrushGroovy.js',
-          'java                   @shBrushJava.js',
-          'jfx javafx             @shBrushJavaFX.js',
-          'js jscript javascript  @shBrushJScript.js',
-          'perl pl                @shBrushPerl.js',
-          'php                    @shBrushPhp.js',
-          'text plain             @shBrushPlain.js',
-          'py python              @shBrushPython.js',
-          'ruby rails ror rb      @shBrushRuby.js',
-          'sass scss              @shBrushSass.js',
-          'scala                  @shBrushScala.js',
-          'sql                    @shBrushSql.js',
-          'vb vbnet               @shBrushVb.js',
-          'xml xhtml xslt html    @shBrushXml.js'
-        ));
-        SyntaxHighlighter.all();
-      :javascript
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-10968948-2']);
-        _gaq.push(['_trackPageview']);
+
+    %header
+      %h1= image_tag "trevor-power.png", :alt => "Trevor Power"
+      %ul
+        %li= navigate_to 'Home', home_path, :home
+        %li= navigate_to 'Blog', blog_path, :blog
+        %li= navigate_to 'About', about_path, :about
+        %li= navigate_to 'Contact', contact_path, :contact
+
+    = yield
+
+    :javascript
+      function path()
+      {
+        var args = arguments, result = [];
+            
+        for(var i = 0; i < args.length; i++)
+            result.push(args[i].replace('@', 'http://alexgorbatchev.com/pub/sh/current/scripts/'));
+        return result
+      };
       
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      
-      
+      SyntaxHighlighter.autoloader.apply(null, path(
+        'applescript            @shBrushAppleScript.js',
+        'actionscript3 as3      @shBrushAS3.js',
+        'bash shell             @shBrushBash.js',
+        'coldfusion cf          @shBrushColdFusion.js',
+        'cpp c                  @shBrushCpp.js',
+        'c# c-sharp csharp      @shBrushCSharp.js',
+        'css                    @shBrushCss.js',
+        'delphi pascal          @shBrushDelphi.js',
+        'diff patch pas         @shBrushDiff.js',
+        'erl erlang             @shBrushErlang.js',
+        'groovy                 @shBrushGroovy.js',
+        'java                   @shBrushJava.js',
+        'jfx javafx             @shBrushJavaFX.js',
+        'js jscript javascript  @shBrushJScript.js',
+        'perl pl                @shBrushPerl.js',
+        'php                    @shBrushPhp.js',
+        'text plain             @shBrushPlain.js',
+        'py python              @shBrushPython.js',
+        'ruby rails ror rb      @shBrushRuby.js',
+        'sass scss              @shBrushSass.js',
+        'scala                  @shBrushScala.js',
+        'sql                    @shBrushSql.js',
+        'vb vbnet               @shBrushVb.js',
+        'xml xhtml xslt html    @shBrushXml.js'
+      ));
+      SyntaxHighlighter.all();
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-10968948-2']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    

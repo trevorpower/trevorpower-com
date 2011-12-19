@@ -12,7 +12,7 @@ module HtmlSelectorsHelpers
       "html > body"
 
     when "the selected navigation tab"
-      ".ui-btn-active"
+      ".active"
 
     when /^(.*) whose (.*) is "([^\"]*)"$/
       unless $2 == "id" then
