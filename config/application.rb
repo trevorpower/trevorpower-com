@@ -18,12 +18,6 @@ end
 module Blog
   class Application < Rails::Application
 
-
-  #config.action_mailer.smtp_settings = {
-  #  :address => ENV['SMTP_SERVER'],
-  #  :user_name => ENV['SMTP_USER_NAME'],
-  #  :password => ENV['SMTP_PASSWORD']
-  #}
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
