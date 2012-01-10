@@ -22,6 +22,7 @@ gem 'bcrypt-ruby'
 gem 'therubyracer'
 
 gem 'haml-rails'
+gem 'maruku'
 
 group :assets do
   gem 'sass-rails'

@@ -26,6 +26,7 @@ body {
 }
 
 header {
+  border-top: 7px solid $base01;
   h1 {
     margin: 0px;
     padding: 0px;
@@ -38,6 +39,7 @@ header {
   ul {
     padding: 0px;
     margin: 0px;
+    margin-top: 10px;
     li {
       list-style-type: none;
       display: inline;
@@ -57,6 +59,9 @@ header {
 }
 
 @mixin page-content {
+  .errors {
+    color: $red;
+  }
   clear: both;
   margin: 10px;
   a {
@@ -76,6 +81,7 @@ section {
     font-size: 30pt; 
   }
 }
+
 
 article {
   @include page-content; 
@@ -102,6 +108,48 @@ article {
   }
   p {
     margin-top: 0px;
+  }
+}
+
+@mixin control-borders {
+  border: solid 2px $base02;
+}
+
+form {
+  label {
+    display: block;
+    padding-top: 12px;
+    font-size: 12pt; 
+  }
+  textarea, input[type=text] {
+    @include control-borders;
+    width: 100%;
+    background-color: $base2;
+    color: $base03;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 14pt; 
+  }
+  input[type=submit] {
+    @include control-borders;
+    background-color: $blue;
+    color: $base03;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 800;
+    font-size: 16pt; 
+    padding: 8px 12px;
+    margin: 0px;
+  }
+  fieldset {
+    border: none;
+    padding-right: 10px;
+    width: 600px;
+    float: left;
+  }
+  fieldset.footer {
+    width: auto;
+    float: none;
+    clear: both;
   }
 }
 
