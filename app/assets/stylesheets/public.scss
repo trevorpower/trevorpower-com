@@ -26,6 +26,7 @@ body {
 }
 
 header {
+  width: 100%;
   border-top: 7px solid $base01;
   h1 {
     margin: 0px;
@@ -116,6 +117,7 @@ article {
 }
 
 form {
+  width: 100%;
   label {
     display: block;
     padding-top: 12px;
@@ -166,8 +168,26 @@ form {
       margin-top: 20px;
     }
   } 
+  form {
+    fieldset {
+      width: auto;
+    }
+  }
 }
 
+@media all and (max-width: 600px) {
+  header
+  {
+    ul {
+      width: 100%;
+      li {
+        a {
+          font-size: 11pt;
+        }
+      }
+    }
+  } 
+}
 
 .ui-icon-rss
 {
