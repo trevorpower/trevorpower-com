@@ -173,9 +173,21 @@ form {
       width: auto;
     }
   }
+  section {
+    margin-top: 20px;
+  }
 }
 
 @media all and (max-width: 600px) {
+  section > img {
+    height: 140px;
+    width: auto;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 5px;
+  }
   header
   {
     ul {
