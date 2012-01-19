@@ -6,7 +6,7 @@
       = yield(:title) || "Admin"
       \- Admin - Trevor Power
     %link{:href => "http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css", :rel => "stylesheet"}/
-    = javascript_include_tag "application"
+    = javascript_include_tag "admin"
     :javascript
       $(document).bind("mobileinit", function(){
         $.extend(  $.mobile , {
