@@ -5,8 +5,8 @@
       = yield(:title) || "Admin"
       \- Admin - Trevor Power
     %link{:href => "http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css", :rel => "stylesheet"}/
-    = stylesheet_link_tag :all
-    = javascript_include_tag "application"
+    = stylesheet_link_tag :admin
+    = javascript_include_tag "admin"
     %script{:src => "http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js", :type => "text/javascript"}
     = csrf_meta_tag
   %body
