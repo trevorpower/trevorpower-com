@@ -1,10 +1,8 @@
 !!!
-%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+%html
   %head
     %meta{:content => "text/html;charset=UTF-8", "http-equiv" => "content-type"}/
-    %title
-      = yield(:title) || "Admin"
-      \- Admin - Trevor Power
+    %title= (yield(:title) || "Admin") + " - Admin - Trevor Power"
     %link{:href => "http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css", :rel => "stylesheet"}/
     = javascript_include_tag "admin"
     :javascript
